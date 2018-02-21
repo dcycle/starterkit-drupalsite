@@ -1,7 +1,7 @@
 Starterkit for a complete Drupal 8 site
 =====
 
-[![CircleCI](https://circleci.com/gh/dcycle/starterkit-drupal8site.svg?style=svg&circle-token=f3f212c28b01135e7cbdb781c719cd8375204d3a)](https://circleci.com/gh/dcycle/starterkit-drupal8site)
+[![CircleCI](https://circleci.com/gh/dcycle/starterkit-drupal8site.svg?style=svg)](https://circleci.com/gh/dcycle/starterkit-drupal8site)
 
 Contents
 -----
