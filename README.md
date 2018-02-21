@@ -126,10 +126,12 @@ Because our git repo does not contain actual Drupal or module code, it downloads
 Theming
 -----
 
+We are using the [CDN Drupal Bootstrap subtheme](https://drupal-bootstrap.org/api/bootstrap/starterkits%21cdn%21README.md/group/sub_theming_cdn/8).
+
 Acquia
 -----
 
-settings.
+This project provides some integration with Acquia Cloud.
 
 ### Prerequisites on the Acquia server
 
