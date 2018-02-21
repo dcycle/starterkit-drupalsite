@@ -1,0 +1,6 @@
+all:
+  css:
+    theme:
+      css/css.css: {}
+  # js:
+  #   example/js.js: {}

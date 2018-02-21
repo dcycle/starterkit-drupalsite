@@ -1,0 +1,10 @@
+<?php
+
+use Drupal\my_custom_module\App;
+
+/**
+ * Implements hook_cron().
+ */
+function my_custom_module_cron() {
+  App::instance()->hookCron();
+}

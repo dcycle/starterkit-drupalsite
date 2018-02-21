@@ -1,0 +1,6 @@
+my_custom_module.admin:
+  title: 'My Site'
+  description: 'Manage custom settings'
+  parent: system.admin
+  route_name: my_custom_module.settings
+  weight: -100

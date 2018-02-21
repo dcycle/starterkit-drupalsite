@@ -1,0 +1,3 @@
+# Preventing Docker for scanning very large files makes Docker faster.
+do-not-commit
+legacy-data

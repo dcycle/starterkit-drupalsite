@@ -1,0 +1,5 @@
+name: My custom module
+type: module
+description: Custom code for this site.
+core: '8.x'
+php: '7.x'

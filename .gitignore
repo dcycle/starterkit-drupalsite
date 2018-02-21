@@ -1,0 +1,8 @@
+.DS_Store
+settings.source.sh
+# Ignore legacy data but only if it appears in the root of the git repo.
+/legacy-data
+# You can put things like database dumps, temporary files in ./do-not-commit,
+# which you might have to create first, and avoid them being accidentally
+# committed to git.
+do-not-commit

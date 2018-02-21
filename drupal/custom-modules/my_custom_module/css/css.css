@@ -1,0 +1,6 @@
+/**
+ * Workaround for https://www.drupal.org/project/drupal/issues/736066.
+ */
+.ajaxy > div {
+  display: inline;
+}
