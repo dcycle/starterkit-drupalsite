@@ -13,9 +13,7 @@ Step 2:
     cd ~/Desktop && git clone https://github.com/dcycle/starterkit-drupal8site.git
     cd ~/Desktop/starterkit-drupal8site && ./scripts/deploy.sh
     
-Step 3:
-
-    Click on the login link at the end of the command line output and enjoy a fully installed Drupal 8 environment.
+Step 3: Click on the login link at the end of the command line output and enjoy a fully installed Drupal 8 environment.
 
 About
 -----
