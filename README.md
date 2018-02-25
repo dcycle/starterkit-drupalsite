@@ -7,6 +7,7 @@ Quickstart
 -----
 
 Step 1: Install [Docker](https://www.docker.com/get-docker) (nothing else required)
+
 Step 2: 
 
     cd ~/Desktop && git clone https://github.com/dcycle/starterkit-drupal8site.git
