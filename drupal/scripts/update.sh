@@ -45,4 +45,5 @@ echo "User 1 should not be used in day-to-day operations, change its password"
 echo "at every deployment (use drush "$DRUSHENV" uli to get a login link to user 1)"
 drush "$DRUSHENV" upwd 1 --password=$RANDOM$RANDOM$RANDOM$RANDOM$RANDOM
 
-drush "$DRUSHENV" cron
+echo "Run cron, try not to fail if there is no mailserver"
+drush "$DRUSHENV" cron | true
