@@ -3,8 +3,17 @@ Starterkit for a complete Drupal 8 site
 
 [![CircleCI](https://circleci.com/gh/dcycle/starterkit-drupal8site.svg?style=svg)](https://circleci.com/gh/dcycle/starterkit-drupal8site)
 
-Contents
+Quickstart
 -----
+
+Step 1: Install [Docker](https://www.docker.com/get-docker) (nothing else required)
+
+Step 2: 
+
+    cd ~/Desktop && git clone https://github.com/dcycle/starterkit-drupal8site.git
+    cd ~/Desktop/starterkit-drupal8site && ./scripts/deploy.sh
+    
+Step 3: Click on the login link at the end of the command line output and enjoy a fully installed Drupal 8 environment.
 
 About
 -----
@@ -20,7 +29,8 @@ A starterkit to build a Drupal 8 project.
 
 ### Where to find the code
 
-* The code lives on [GitHub](https://github.com/dcycle/starterkit-drupal8site).
+* The [code lives on GitHub](https://github.com/dcycle/starterkit-drupal8site).
+* The [issue queue is on GitHub](https://github.com/dcycle/starterkit-drupal8site/issues).
 * If you fork of copy this directory for your own project, enter other environments here (production, stage, secondary git origins).
 
 Initial installation on Docker
