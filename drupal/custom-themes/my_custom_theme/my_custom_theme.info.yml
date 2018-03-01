@@ -20,4 +20,4 @@ regions:
   page_bottom: 'Page bottom'
 
 libraries:
-  - 'THEMENAME/global-styling'
+  - 'my_custom_theme/global-styling'
