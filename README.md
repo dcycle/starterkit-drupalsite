@@ -8,12 +8,17 @@ Quickstart
 
 Step 1: Install [Docker](https://www.docker.com/get-docker) (nothing else required)
 
-Step 2: 
+Step 2:
 
     cd ~/Desktop && git clone https://github.com/dcycle/starterkit-drupal8site.git
     cd ~/Desktop/starterkit-drupal8site && ./scripts/deploy.sh
-    
+
 Step 3: Click on the login link at the end of the command line output and enjoy a fully installed Drupal 8 environment.
+
+HTTPS quickstart
+-----
+
+    cd ~/Desktop/starterkit-drupal8site && ./scripts/https-deploy.sh
 
 About
 -----
