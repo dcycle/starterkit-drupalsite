@@ -30,7 +30,13 @@ fi
 if [ -z "$VIRTUAL_HOST" ]; then
   while [ -z "$DOMAIN" ]; do
     echo "Enter a domain and we'll add it to $ENVFILELOCATION"
+    echo "We need a domain to access your local development environment. This"
+    echo "is because there is only one secure (443) port on your computer, and"
+    echo "you might have several applications running. They are distinguished"
+    echo "by domain name."
+    echo ''
     echo "For example, type 'my-website.local':"
+    echo ''
     read DOMAIN
   done
   echo "You entered $DOMAIN"
