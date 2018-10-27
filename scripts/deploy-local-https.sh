@@ -37,6 +37,8 @@ if [ -z "$VIRTUAL_HOST" ]; then
     echo ''
     echo "For example, type 'my-website.local':"
     echo ''
+    echo "**YOU NEED TO USE THE FORMAT my-website.local, WITH A DOT!**"
+    echo ''
     read DOMAIN
   done
   echo "You entered $DOMAIN"
