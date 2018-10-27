@@ -20,6 +20,8 @@ HTTPS quickstart
 
     cd ~/Desktop/starterkit-drupal8site && ./scripts/https-deploy.sh
 
+See the article [Local development using Docker and HTTPS, Dcycle Blog, Oct. 27, 2018](https://blog.dcycle.com/blog/2018-10-27) for details on how this works.
+
 About
 -----
 
