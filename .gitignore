@@ -6,3 +6,5 @@ settings.source.sh
 # which you might have to create first, and avoid them being accidentally
 # committed to git.
 do-not-commit
+# We want to ignore environment variables used by Docker Compose
+.env

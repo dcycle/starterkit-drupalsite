@@ -1,11 +1,13 @@
 ---
-version: '2'
+version: '3'
 
 services:
   drupal:
     build:
       context: .
       dockerfile: Dockerfile
+    environment:
+      - VIRTUAL_HOST=${VIRTUAL_HOST}
     volumes:
       - "./drupal/custom-modules:/var/www/html/modules/custom"
       - "./drupal/custom-themes:/var/www/html/themes/custom"

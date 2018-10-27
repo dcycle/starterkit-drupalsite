@@ -14,7 +14,7 @@ field_name: body
 entity_type: node
 bundle: article
 label: Body
-description: ''
+description: 'Please do not paste from Word.'
 required: false
 translatable: true
 default_value: {  }
