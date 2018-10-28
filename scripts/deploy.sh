@@ -53,5 +53,5 @@ echo 'If all went well you can now access your site at:'
 ./scripts/uli.sh
 echo '-----'
 echo ''
-echo 'Please visit /admin/reports/status and fix any problems.'
+echo 'You might want to visit /admin/reports/status and fix any problems.'
 echo ''

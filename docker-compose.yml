@@ -1,11 +1,17 @@
 ---
-version: '2'
+version: '3'
 
 services:
   drupal:
     build:
       context: .
       dockerfile: Dockerfile
+    environment:
+      # The virtual host is used when we want to access our site via an
+      # Nginx Proxy locally; and is required by the script
+      # ./scripts/https-deploy.sh.
+      # See https://blog.dcycle.com/blog/2018-10-27 for details.
+      - VIRTUAL_HOST=${VIRTUAL_HOST}
     volumes:
       - "./drupal/custom-modules:/var/www/html/modules/custom"
       - "./drupal/custom-themes:/var/www/html/themes/custom"

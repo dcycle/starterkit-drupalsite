@@ -8,12 +8,19 @@ Quickstart
 
 Step 1: Install [Docker](https://www.docker.com/get-docker) (nothing else required)
 
-Step 2: 
+Step 2:
 
     cd ~/Desktop && git clone https://github.com/dcycle/starterkit-drupal8site.git
     cd ~/Desktop/starterkit-drupal8site && ./scripts/deploy.sh
-    
+
 Step 3: Click on the login link at the end of the command line output and enjoy a fully installed Drupal 8 environment.
+
+HTTPS quickstart
+-----
+
+    cd ~/Desktop/starterkit-drupal8site && ./scripts/https-deploy.sh
+
+See the article [Local development using Docker and HTTPS, Dcycle Blog, Oct. 27, 2018](https://blog.dcycle.com/blog/2018-10-27) for details on how this works.
 
 About
 -----
@@ -65,6 +72,14 @@ To shut down your containers and _destroy your data_:
 
     docker-compose down -v
     docker network rm starterkit_drupal8site_default
+    rm .env
+
+If your project is the only project using the local https via the [Nginx Proxy], you might want to destroy the nginx-proxy container
+
+    docker kill nginx-proxy
+    docker rm nginx-proxy
+
+You might also want to remove, from /etc/hosts, the line which contains your local development domain (use `sudo vi /etc/hosts` to edit that file); and also remove the certificate for your domain from `~/.docker-compose-certs`.
 
 Prscribed development process
 -----
