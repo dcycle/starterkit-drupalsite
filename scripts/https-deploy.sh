@@ -153,12 +153,12 @@ echo "Your application should be accessible on http://$VIRTUAL_HOST"
 curl -I "http://$VIRTUAL_HOST"
 echo ''
 echo '---MAKING SURE A CERT EXISTS TO ACCESS YOUR APP ON PORT 443---'
-CERTSDIR="$HOME/certs"
+CERTSDIR="$HOME/.docker-compose-certs"
 echo "Certs directory is $CERTSDIR"
 ls "$CERTSDIR/$VIRTUAL_HOST.crt" 2>/dev/null && CERTEXISTS=1 || CERTEXISTS=0
 if [ "$CERTEXISTS" == 0 ]; then
   echo "$CERTSDIR/$VIRTUAL_HOST.crt does not exist, will attempt to create it"
-  docker run -v "$HOME/certs:/certs"  jwilder/nginx-proxy /bin/bash -c "cd /certs && openssl req -x509 -out $VIRTUAL_HOST.crt -keyout $VIRTUAL_HOST.key -newkey rsa:2048 -nodes -sha256 -subj '/CN=localhost' -extensions EXT -config <(printf "'"'"[dn]\nCN=localhost\n[req]\ndistinguished_name = dn\n[EXT]\nsubjectAltName=DNS:$VIRTUAL_HOST\nkeyUsage=digitalSignature\nextendedKeyUsage=serverAuth"'"'")"
+  docker run -v "$CERTSDIR:/certs"  jwilder/nginx-proxy /bin/bash -c "cd /certs && openssl req -x509 -out $VIRTUAL_HOST.crt -keyout $VIRTUAL_HOST.key -newkey rsa:2048 -nodes -sha256 -subj '/CN=localhost' -extensions EXT -config <(printf "'"'"[dn]\nCN=localhost\n[req]\ndistinguished_name = dn\n[EXT]\nsubjectAltName=DNS:$VIRTUAL_HOST\nkeyUsage=digitalSignature\nextendedKeyUsage=serverAuth"'"'")"
 else
   echo "$CERTSDIR/$VIRTUAL_HOST.crt exists"
 fi
@@ -172,13 +172,13 @@ echo ''
 echo '---NEXT STEPS---'
 echo "Your application should now be available at:"
 echo ''
-echo " ==> (secure) https://$VIRTUAL_HOST (*) (**)"
+echo " ==> (secure) https://$VIRTUAL_HOST (*)"
 echo " ==> (insecure) http://$VIRTUAL_HOST"
 echo ''
 echo '(*) The key is self-signed so your browser will say it is not'
 echo '    recognized; you will need to manually accept it.'
-echo '(**) If it does not work at first, try using an incognito'
-echo '     (private) browser window.'
+echo ''
+echo 'You can run ./scripts/uli.sh to get a one-time login link.'
 echo ''
 echo 'HAPPY CODING!'
 echo ''
