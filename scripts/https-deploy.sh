@@ -22,7 +22,7 @@ echo '      # The virtual host is used when we want to access our site via an'
 echo '      # Nginx Proxy locally; and is required by the script'
 echo '      # ./scripts/https-deploy.sh.'
 echo '      # See https://blog.dcycle.com/blog/2018-10-27 for details.'
-echo '      - VIRTUAL_HOST=${VIRTUAL_HOST}'
+echo '      - VIRTUAL_HOST=''$''{VIRTUAL_HOST}'
 if [ -f ./docker-compose.yml ]; then
   echo 'Compose file exists, moving on.'
 else
@@ -31,7 +31,7 @@ else
   >&2 echo  'https://github.com/dcycle/starterkit-drupal8site/blob/master/docker-compose.yml'
   exit 1
 fi
-cat docker-compose.yml | grep 'VIRTUAL_HOST' && VHEXISTS=1 || VHEXISTS=0
+grep 'VIRTUAL_HOST' docker-compose.yml && VHEXISTS=1 || VHEXISTS=0
 if [ "$VHEXISTS" == 1 ]; then
   echo 'Compose file contains VIRTUAL_HOST, moving on.'
 else
