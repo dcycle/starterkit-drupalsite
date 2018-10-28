@@ -172,11 +172,13 @@ echo ''
 echo '---NEXT STEPS---'
 echo "Your application should now be available at:"
 echo ''
-echo " ==> (secure) https://$VIRTUAL_HOST (*)"
+echo " ==> (secure) https://$VIRTUAL_HOST (*) (**)"
 echo " ==> (insecure) http://$VIRTUAL_HOST"
 echo ''
 echo '(*) The key is self-signed so your browser will say it is not'
 echo '    recognized; you will need to manually accept it.'
+echo '(**) If it does not work at first, try using an incognito'
+echo '     (private) browser window.'
 echo ''
 echo 'HAPPY CODING!'
 echo ''
