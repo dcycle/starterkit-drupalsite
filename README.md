@@ -79,7 +79,7 @@ If your project is the only project using the local https via the [Nginx Proxy],
     docker kill nginx-proxy
     docker rm nginx-proxy
 
-You might also want to remove, from /etc/hosts, the line which contains your local development domain (use `sudo vi /etc/hosts` to edit that file).
+You might also want to remove, from /etc/hosts, the line which contains your local development domain (use `sudo vi /etc/hosts` to edit that file); and also remove the certificate for your domain from `~/.docker-compose-certs`.
 
 Prscribed development process
 -----

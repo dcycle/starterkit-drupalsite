@@ -2,6 +2,7 @@
 #
 # Set everything up for local https development.
 # See https://blog.dcycle.com/blog/2018-10-27
+# See https://github.com/dcycle/starterkit-drupal8site/blob/master/scripts/https-deploy.sh
 #
 set -e
 
@@ -10,6 +11,50 @@ BASE="$(pwd)"
 echo ''
 echo '===SETTING UP LOCAL HTTPS DEVELOPMENT==='
 echo 'See https://blog.dcycle.com/blog/2018-10-27 for details.'
+echo ''
+echo '---PREFLIGHT: ./docker-compose.yml---'
+echo 'Making sure our ./docker-compose.yml file contains VIRTUAL_HOST; if'
+echo 'it does not, that might mean you copied this script fom'
+echo 'https://github.com/dcycle/starterkit-drupal8site/blob/master/scripts/https-deploy.sh'
+echo 'without adding these lines to your docker-compose file:'
+echo '    environment:'
+echo '      # The virtual host is used when we want to access our site via an'
+echo '      # Nginx Proxy locally; and is required by the script'
+echo '      # ./scripts/https-deploy.sh.'
+echo '      # See https://blog.dcycle.com/blog/2018-10-27 for details.'
+echo '      - VIRTUAL_HOST=${VIRTUAL_HOST}'
+if [ -f ./docker-compose.yml ]; then
+  echo 'Compose file exists, moving on.'
+else
+  >&2 echo './docker-compose.yml file does not exist.'
+  >&2 echo 'Please make sure it looks like'
+  >&2 echo  'https://github.com/dcycle/starterkit-drupal8site/blob/master/docker-compose.yml'
+  exit 1
+fi
+cat docker-compose.yml | grep 'VIRTUAL_HOST' && VHEXISTS=1 || VHEXISTS=0
+if [ "$VHEXISTS" == 1 ]; then
+  echo 'Compose file contains VIRTUAL_HOST, moving on.'
+else
+  >&2 echo './docker-compose.yml file does not contain VIRTUAL_HOST.'
+  >&2 echo 'Please make sure it looks like'
+  >&2 echo  'https://github.com/dcycle/starterkit-drupal8site/blob/master/docker-compose.yml'
+  exit 1
+fi
+echo ''
+echo '---PREFLIGHT: ./scripts/deploy.sh---'
+echo 'Making sure our ./scripts/deploy.sh file exists; if'
+echo 'it does not, that might mean you copied this script fom'
+echo 'https://github.com/dcycle/starterkit-drupal8site/blob/master/scripts/https-deploy.sh'
+echo 'but you do not have ./scripts/deploy.sh in your project.'
+if [ -f ./scripts/deploy.sh ]; then
+  echo './scripts/deploy.sh exists, moving on.'
+else
+  >&2 echo './scripts/deploy.sh file does not exist.'
+  >&2 echo 'Please make sure it lauches your project on a random port.'
+  >&2 echo 'It can look like'
+  >&2 echo  'https://github.com/dcycle/starterkit-drupal8site/blob/master/scripts/deploy.sh'
+  exit 1
+fi
 echo ''
 echo '---DETERMINE LOCAL DOMAIN---'
 echo 'Looking for a domain such as example.local'
@@ -87,7 +132,7 @@ if [ "$RUNNING" == 0 ]; then
   if [ "$EXISTS" == 0 ]; then
     docker run -d -p 80:80 -p 443:443 \
       --name nginx-proxy \
-      -v "$HOME"/certs:/etc/nginx/certs:ro \
+      -v "$HOME"/.docker-compose-certs:/etc/nginx/certs:ro \
       -v /etc/nginx/vhost.d \
       -v /usr/share/nginx/html \
       -v /var/run/docker.sock:/tmp/docker.sock:ro \
