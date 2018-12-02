@@ -12,6 +12,7 @@ services:
       # ./scripts/https-deploy.sh.
       # See https://blog.dcycle.com/blog/2018-10-27 for details.
       - VIRTUAL_HOST=${VIRTUAL_HOST}
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
     volumes:
       - "./drupal/custom-modules:/var/www/html/modules/custom"
       - "./drupal/custom-themes:/var/www/html/themes/custom"
@@ -30,7 +31,7 @@ services:
     image: mysql:5
     environment:
       MYSQL_DATABASE: drupal
-      MYSQL_ROOT_PASSWORD: drupal
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       MYSQL_ALLOW_EMPTY_PASSWORD: 'no'
     volumes:
       - "mysql:/var/lib/mysql"
