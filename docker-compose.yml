@@ -27,7 +27,7 @@ services:
 
   # Database server
   mysql:
-    image: mysql:5.5.59
+    image: mysql:5
     environment:
       MYSQL_DATABASE: drupal
       MYSQL_ROOT_PASSWORD: drupal
