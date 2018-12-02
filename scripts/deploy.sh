@@ -5,6 +5,8 @@
 #
 set -e
 
+BASE="$(pwd)"
+
 # See http://patorjk.com/software/taag/#p=display&f=Ivrit&t=D8%20Starterkit%0A
 cat ./scripts/lib/my-ascii-art.txt
 
@@ -15,6 +17,35 @@ echo 'is updated automatically every Wednesday with the latest version of'
 echo 'Drupal and Drush. If the image has changed since the latest deployment,'
 echo 'the environment will be completely rebuild based on this image.'
 docker pull dcycle/drupal:8
+
+echo ''
+echo '-----'
+echo 'Determining or creating mysql root password'
+ENVFILELOCATION="$BASE/.env"
+echo "Looking in $ENVFILELOCATION"
+if [ -f "$ENVFILELOCATION" ]; then
+  echo "$ENVFILELOCATION exists"
+  echo "Looking for variable MYSQL_ROOT_PASSWORD in $ENVFILELOCATION"
+  source "$ENVFILELOCATION"
+  if [ -z "$MYSQL_ROOT_PASSWORD" ]; then
+    echo "MYSQL_ROOT_PASSWORD is not set in $ENVFILELOCATION"
+  else
+    echo "MYSQL_ROOT_PASSWORD is set; not showing here for security reasons"
+  fi
+else
+  echo "$ENVFILELOCATION does not exist"
+fi
+if [ -z "$MYSQL_ROOT_PASSWORD" ]; then
+  PW=$(docker run --rm dcycle/drupal:8 /bin/bash -c 'cat /proc/sys/kernel/random/uuid')
+  LINE="MYSQL_ROOT_PASSWORD=$PW"
+  echo "$LINE" >> "$ENVFILELOCATION"
+  echo "We entered a MySQL root password in $ENVFILELOCATION"
+  source "$ENVFILELOCATION"
+fi
+if [ -z "$MYSQL_ROOT_PASSWORD" ]; then
+  >&2 echo "Unexpected error: MYSQL_ROOT_PASSWORD does not exist"
+  exit 1
+fi
 
 echo ''
 echo '-----'
