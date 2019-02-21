@@ -4,6 +4,8 @@
 # See https://blog.dcycle.com/blog/2018-10-27
 # See https://github.com/dcycle/starterkit-drupal8site/blob/master/scripts/https-deploy.sh
 #
+# This file originally lives on https://github.com/dcycle/starterkit-drupal8site/blob/master/scripts/https-deploy.sh.
+#
 set -e
 
 BASE="$(pwd)"
