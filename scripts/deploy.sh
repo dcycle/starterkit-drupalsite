@@ -5,7 +5,7 @@
 #
 set -e
 
-BASE="$(pwd)"
+export BASE="$(pwd)"
 
 # See http://patorjk.com/software/taag/#p=display&f=Ivrit&t=D8%20Starterkit%0A
 cat ./scripts/lib/my-ascii-art.txt

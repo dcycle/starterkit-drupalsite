@@ -8,7 +8,7 @@
 #
 set -e
 
-BASE="$(pwd)"
+export BASE="$(pwd)"
 
 echo ''
 echo '===SETTING UP LOCAL HTTPS DEVELOPMENT==='
