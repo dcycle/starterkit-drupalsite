@@ -2,6 +2,12 @@
 version: '3'
 
 services:
+  mail:
+    # Dummy email client for development, see ./README.md.
+    image: mailhog/mailhog
+    ports:
+      - "8025"
+
   drupal:
     build:
       context: .
@@ -24,6 +30,7 @@ services:
       - "80"
     links:
       - mysql:mysql
+      - mail:mail
     working_dir: /var/www/html
 
   # Database server
