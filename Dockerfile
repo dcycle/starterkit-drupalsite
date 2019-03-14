@@ -55,4 +55,7 @@ RUN drush dl stage_file_proxy
 # starterkit-drupal8site-settings.inc is used instead.
 ADD drupal/settings/local-settings.php /var/www/site-php/starterkit-drupal8site/starterkit-drupal8site-settings.inc
 
+# Mail should be sent to a dummy mail interface, see ./README.md for details.
+RUN drush dl smtp
+
 EXPOSE 80

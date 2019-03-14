@@ -59,22 +59,8 @@ else
 fi
 echo ''
 echo '---DETERMINE LOCAL DOMAIN---'
-echo 'Looking for a domain such as example.local'
-ENVFILELOCATION="$BASE/.env"
-echo "Looking in $ENVFILELOCATION"
-if [ -f "$ENVFILELOCATION" ]; then
-  echo "$ENVFILELOCATION exists"
-  echo "Looking for variable VIRTUAL_HOST in $ENVFILELOCATION"
-  source "$ENVFILELOCATION"
-  if [ -z "$VIRTUAL_HOST" ]; then
-    echo "VIRTUAL_HOST is not set in $ENVFILELOCATION"
-  else
-    echo "VIRTUAL_HOST is $VIRTUAL_HOST"
-  fi
-else
-  echo "$ENVFILELOCATION does not exist"
-fi
-if [ -z "$VIRTUAL_HOST" ]; then
+source ./scripts/lib/set-local-domain.sh
+if [ "$VIRTUAL_HOST" == localhost ]; then
   while [ -z "$DOMAIN" ]; do
     echo "Enter a domain and we'll add it to $ENVFILELOCATION"
     echo "We need a domain to access your local development environment. This"

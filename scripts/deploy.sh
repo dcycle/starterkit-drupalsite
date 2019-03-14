@@ -57,6 +57,13 @@ echo 'See https://github.com/docker/compose/issues/3736.'
 docker network ls | grep starterkit_drupal8site_default || docker network create starterkit_drupal8site_default
 
 echo ''
+echo '---DETERMINE LOCAL DOMAIN---'
+echo 'The local domain variable, used by https-deploy.sh does not need to be'
+echo 'set during non-https deployment, however we will set it anyway because'
+echo 'otherwise docker-compose up will complain that the variable is not set.'
+source ./scripts/lib/set-local-domain.sh
+
+echo ''
 echo '-----'
 echo 'About to start persistent (-d) containers based on the images defined'
 echo 'in ./Dockerfile and ./docker-compose.yml. We are also telling'

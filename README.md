@@ -3,24 +3,29 @@ Starterkit for a complete Drupal 8 site
 
 [![CircleCI](https://circleci.com/gh/dcycle/starterkit-drupal8site.svg?style=svg)](https://circleci.com/gh/dcycle/starterkit-drupal8site)
 
-Quickstart
+Contents
 -----
 
-Step 1: Install [Docker](https://www.docker.com/get-docker) (nothing else required)
-
-Step 2:
-
-    cd ~/Desktop && git clone https://github.com/dcycle/starterkit-drupal8site.git
-    cd ~/Desktop/starterkit-drupal8site && ./scripts/deploy.sh
-
-Step 3: Click on the login link at the end of the command line output and enjoy a fully installed Drupal 8 environment.
-
-HTTPS quickstart
------
-
-    cd ~/Desktop/starterkit-drupal8site && ./scripts/https-deploy.sh
-
-See the article [Local development using Docker and HTTPS, Dcycle Blog, Oct. 27, 2018](https://blog.dcycle.com/blog/2018-10-27) for details on how this works.
+* About
+* Quickstart
+* HTTPS quickstart
+* Initial installation on Docker
+* Incremental deployment (updating) on Docker
+* Power up/power down the Docker environment
+* Uninstalling the Docker environment
+* Prescribed development process
+* Patches
+* Development design patterns
+* Running automated tests
+* Security and maintenance updates
+* Theming
+* Acquia
+* Login links for Acquia environments
+* Linting
+* Getting a local version of the database
+* Logging
+* Logging emails during development
+* Troubleshooting
 
 About
 -----
@@ -39,6 +44,25 @@ A starterkit to build a Drupal 8 project.
 * The [code lives on GitHub](https://github.com/dcycle/starterkit-drupal8site).
 * The [issue queue is on GitHub](https://github.com/dcycle/starterkit-drupal8site/issues).
 * If you fork of copy this directory for your own project, enter other environments here (production, stage, secondary git origins).
+
+Quickstart
+-----
+
+Step 1: Install [Docker](https://www.docker.com/get-docker) (nothing else required)
+
+Step 2:
+
+    cd ~/Desktop && git clone https://github.com/dcycle/starterkit-drupal8site.git
+    cd ~/Desktop/starterkit-drupal8site && ./scripts/deploy.sh
+
+Step 3: Click on the login link at the end of the command line output and enjoy a fully installed Drupal 8 environment.
+
+HTTPS quickstart
+-----
+
+    cd ~/Desktop/starterkit-drupal8site && ./scripts/https-deploy.sh
+
+See the article [Local development using Docker and HTTPS, Dcycle Blog, Oct. 27, 2018](https://blog.dcycle.com/blog/2018-10-27) for details on how this works.
 
 Initial installation on Docker
 -----
@@ -81,7 +105,7 @@ If your project is the only project using the local https via the [Nginx Proxy],
 
 You might also want to remove, from /etc/hosts, the line which contains your local development domain (use `sudo vi /etc/hosts` to edit that file); and also remove the certificate for your domain from `~/.docker-compose-certs`.
 
-Prscribed development process
+Prescribed development process
 -----
 
 The development cycle is as follows:
@@ -207,6 +231,26 @@ To access logs you can then use
       -f ./do-not-commit/log/drupal.log \
 
 Or the Mac OS X Console application.
+
+Logging emails during development
+-----
+
+We are using a dummy email server with a full GUI, [Mailhog](https://github.com/mailhog/MailHog), as a destination for our emails during development.
+
+Here is how it works:
+
+When you create or update your environment ./scripts/deploy.sh, or at any time by running ./scripts/uli.sh, you will see something like:
+
+    => Drupal: http://0.0.0.0:32783/...
+    => Dummy email client: http://0.0.0.0:32781
+
+The ports will be different each time, but using the above ports as an example, you can:
+
+(1) visit http://0.0.0.0:32783/user/password
+(2) enter "admin"
+(3) you should see "Further instructions have been sent to your email address."
+(4) to view the actual email in a GUI, visit (in this example) http://0.0.0.0:32781
+
 
 Troubleshooting
 -----
