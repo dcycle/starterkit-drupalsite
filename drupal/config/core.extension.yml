@@ -5,7 +5,6 @@ module:
   breakpoint: 0
   ckeditor: 0
   color: 0
-  comment: 0
   config: 0
   contact: 0
   contextual: 0
@@ -43,6 +42,7 @@ module:
   update: 0
   user: 0
   views_ui: 0
+  webform: 0
   menu_link_content: 1
   views: 10
   standard: 1000

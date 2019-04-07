@@ -26,6 +26,7 @@ services:
       - "./drupal/config:/var/www/config"
       - "./drupal/scripts:/scripts"
       - "./do-not-commit/log:/var/log"
+      - "./do-not-commit/dom-captures:/var/www/html/dom-captures"
     ports:
       - "80"
     links:
