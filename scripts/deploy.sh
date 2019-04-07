@@ -36,7 +36,7 @@ else
   echo "$ENVFILELOCATION does not exist"
 fi
 if [ -z "$MYSQL_ROOT_PASSWORD" ]; then
-  PW=$(docker run --rm dcycle/drupal:8 /bin/bash -c 'cat /proc/sys/kernel/random/uuid')
+  PW=$(./scripts/uuid.sh)
   LINE="MYSQL_ROOT_PASSWORD=$PW"
   echo "$LINE" >> "$ENVFILELOCATION"
   echo "We entered a MySQL root password in $ENVFILELOCATION"
