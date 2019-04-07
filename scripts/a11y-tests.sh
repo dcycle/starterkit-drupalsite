@@ -15,4 +15,4 @@ docker run --rm --network starterkit_drupal8site_default dcycle/pa11y:1 http://d
 docker run --rm --network starterkit_drupal8site_default dcycle/pa11y:1 http://drupal/dom-captures/user.html -T 10
 docker run --rm --network starterkit_drupal8site_default dcycle/pa11y:1 http://drupal/dom-captures/node-1-edit.html -T 10
 
-echo 'If this script passes, that means the number of errors is below the threshold set.'
+echo 'If this script passes, that means the number of errors is below the allowed threshold.'
