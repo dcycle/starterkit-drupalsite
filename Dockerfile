@@ -38,8 +38,10 @@ ADD drupal/settings/services.yml /var/www/html/sites/default/services.yml
 # Avoid memory limits with large database imports.
 RUN echo 'memory_limit = 512M' >> /usr/local/etc/php/php.ini
 
-RUN apt-get -y install rsyslog
-RUN echo 'local0.* /var/log/drupal.log' >> /etc/rsyslog.conf
+RUN apt-get update && \
+  apt-get --no-install-recommends -y install rsyslog && \
+  rm -rf /var/lib/apt/lists/* && \
+  echo 'local0.* /var/log/drupal.log' >> /etc/rsyslog.conf
 
 # Avoid memory limits with large database imports.
 RUN echo 'upload_max_filesize = 25M' >> /usr/local/etc/php/php.ini
