@@ -29,3 +29,5 @@ $config['smtp.settings']['smtp_on'] = TRUE;
 $config['smtp.settings']['smtp_host'] = 'mail';
 $config['smtp.settings']['smtp_port'] = 1025;
 $config['system.mail']['interface']['default'] = 'SMTPMailSystem';
+
+$config['system.logging']['error_level'] = 'verbose';
