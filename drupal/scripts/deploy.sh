@@ -34,7 +34,6 @@ if [[ "$OUTPUT" == *"ERROR"* ]]; then
 else
   echo "Assuming Drupal is already running, because there is a users table with at least one entry."
 fi
-echo "Run the update script whether or not this is an initial deployment."
 mkdir -p /var/www/html/sites/default/files
 chown -R www-data:www-data /var/www/html/sites/default/files
 
