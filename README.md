@@ -235,7 +235,7 @@ Or the Mac OS X Console application.
 Logging emails during development
 -----
 
-We are using a dummy email server with a full GUI, [Mailhog](https://github.com/mailhog/MailHog), as a destination for our emails during development.
+We are using a dummy email server with a full GUI, [Mailhog](https://github.com/mailhog/MailHog), as a destination for our emails during development. This is described in [Debug outgoing emails with Mailhog, a dummy mailserver with a GUI, March 14, 2019, Dcycle Blog](https://blog.dcycle.com/blog/2019-03-14/mailhog/).
 
 Here is how it works:
 
