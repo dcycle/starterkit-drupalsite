@@ -9,7 +9,8 @@ RUN echo 'opcache.enable=0' >> /usr/local/etc/php/php.ini
 # if they do not.
 # smtp: Mail should be sent to a dummy mail interface, see ./README.md for
 # details.
-RUN composer require \
+# See https://getcomposer.org/doc/articles/troubleshooting.md#memory-limit-errors
+RUN export COMPOSER_MEMORY_LIMIT=-1 && composer require \
   drupal/devel \
   drupal/field_group \
   drupal/token \
