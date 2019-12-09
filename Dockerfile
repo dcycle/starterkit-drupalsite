@@ -1,4 +1,4 @@
-FROM dcycle/drupal:8drush9
+FROM dcycle/drupal:8drush
 
 # Make sure opcache is disabled during development so that our changes
 # to PHP are reflected immediately.
@@ -9,7 +9,8 @@ RUN echo 'opcache.enable=0' >> /usr/local/etc/php/php.ini
 # if they do not.
 # smtp: Mail should be sent to a dummy mail interface, see ./README.md for
 # details.
-RUN composer require \
+# See https://getcomposer.org/doc/articles/troubleshooting.md#memory-limit-errors
+RUN export COMPOSER_MEMORY_LIMIT=-1 && composer require \
   drupal/devel \
   drupal/field_group \
   drupal/token \
@@ -34,9 +35,10 @@ ADD drupal/settings/services.yml /var/www/html/sites/default/services.yml
 # Avoid memory limits with large database imports.
 RUN echo 'memory_limit = 512M' >> /usr/local/etc/php/php.ini
 
-RUN apt-get -y update && \
-  apt-get -y install rsyslog
-RUN echo 'local0.* /var/log/drupal.log' >> /etc/rsyslog.conf
+RUN apt-get update && \
+  apt-get --no-install-recommends -y install rsyslog && \
+  rm -rf /var/lib/apt/lists/* && \
+  echo 'local0.* /var/log/drupal.log' >> /etc/rsyslog.conf
 
 # Avoid memory limits with large database imports.
 RUN echo 'upload_max_filesize = 25M' >> /usr/local/etc/php/php.ini
