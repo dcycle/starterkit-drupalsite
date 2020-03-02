@@ -11,6 +11,7 @@ Contents
 * HTTPS quickstart
 * Initial installation on Docker
 * Incremental deployment (updating) on Docker
+* ./scripts/docker-compose.sh instead of docker-compose
 * Power up/power down the Docker environment
 * Uninstalling the Docker environment
 * Prescribed development process
@@ -78,16 +79,21 @@ Updating your local installation is the same command as the installation command
 
 This will bring in new features and keep your existing data.
 
+./scripts/docker-compose.sh instead of docker-compose
+-----
+
+The `docker-compose` command will, by default, use `docker-compose.yml`, but in our setup, `docker-compose.yml` by itself is not valid, because we have several environment types (dev, build, ...). Using `./scripts/docker-compose.sh` will find the right environment type based on the contents of the unversioned `.env` file. For example, if the environment type is "dev", we will use, automatically, `docker-compose.yml` but also `docker-compose.dev.yml` as described in ./scripts/dev/env.txt.
+
 Power up/power down the Docker environment
 -----
 
 To shut down your containers but _keep your data for next time_:
 
-    docker-compose down
+    ./scripts/docker-compose.sh down
 
 To power up your containers:
 
-    docker-compose up -d
+    ./scripts/docker-compose.sh up -d
 
 Uninstalling the Docker environment
 -----
@@ -95,11 +101,6 @@ Uninstalling the Docker environment
 To shut down your containers and _destroy your data_:
 
     ./scripts/destroy.sh
-
-
-    docker-compose down -v
-    docker network rm starterkit_drupal8site_default
-    rm .env
 
 If your project is the only project using the local https via the [Nginx Proxy], you might want to destroy the nginx-proxy container
 
@@ -187,7 +188,7 @@ This project provides some integration with Acquia Cloud.
 
 ### Prerequisites on the Acquia server
 
-* We need to install the same version of PHP as can be found on the containers by typing `docker-compose exec drupal /bin/bash -c 'php -v'`.
+* We need to install the same version of PHP as can be found on the containers by typing `./scripts/docker-compose.sh exec drupal /bin/bash -c 'php -v'`.
 * Make sure you are periodically calling "drush cron" from the command line using [this technique](https://docs.acquia.com/acquia-cloud/manage/cron) on your Acquia site.
 
 ### Notes about cron on Acquia
@@ -219,7 +220,7 @@ Getting a local version of the database
 
 If you have a .sql file with the database database, you can run:
 
-docker-compose exec drupal /bin/bash -c 'drush sqlc' < /path/to/db.sql
+./scripts/docker-compose.sh exec drupal /bin/bash -c 'drush sqlc' < /path/to/db.sql
 
 You can set up the Stage File Proxy module to fetch files from the live server instead of importing the files.
 
@@ -262,7 +263,7 @@ Troubleshooting
 
 Make sure you completely delete your environment using:
 
-    docker-compose down -v
+    ./scripts/docker-compose.sh down -v
 
 Make sure you have the latest stable version of your OS and of Docker.
 If you're really in a bind, you can do a factory reset of Docker (which will kill your local data).
@@ -270,11 +271,11 @@ Make sure Docker has 6Gb of RAM. (On Mac OS, for example, this can be done using
 
 Rerun `./scripts/deploy.sh`, and reimport the stage database if you need it (see "Getting a local version of the database", above).
 
-### docker-compose down -v results in a network error
+### ./scripts/docker-compose.sh down -v results in a network error
 
 If you run `docker network rm starterkit_drupal8site_default` and you get "ERROR: network starterkit_drupal8site_default id ... has active endpoints", you might need to disconnect the Drupal 7 site from the Drupal 8 network first. This should be done in the migration process, but it might not have worked. If such is the case, type:
 
-    docker network disconnect starterkit_drupal8site_default $(docker-compose ps -q database)
+    docker network disconnect starterkit_drupal8site_default $(./scripts/docker-compose.sh ps -q database)
 
 ### Beware case-sensitivity
 
@@ -282,7 +283,7 @@ Docker is meant to mimic the Acquia environment relatively well, but there can b
 
 * if you `use path/to/class` instead of `path/To/Class`, it will work in Docker (local) and in automated tests, but fail on Acquia.
 
-### docker-compose build --no-cache
+### ./scripts/docker-compose.sh build --no-cache
 
 Docker will, by default, used cached versions of each step of the build process for images. For example:
 
@@ -291,7 +292,7 @@ Docker will, by default, used cached versions of each step of the build process 
 
 If you _know_ "something" has changed, you might want to run:
 
-    docker-compose build --no-cache
+    ./scripts/docker-compose.sh build --no-cache
     ./scripts/deploy.sh
 
 ### Can't see the syslogs (see the "Logging" section, above)
