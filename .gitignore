@@ -8,3 +8,6 @@ settings.source.sh
 do-not-commit
 # We want to ignore environment variables used by Docker Compose
 .env
+
+# See ./.docker-compose-remember-info.sh for details
+.docker-compose-info

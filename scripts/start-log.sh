@@ -6,4 +6,4 @@
 #
 set -e
 
-docker-compose exec drupal /bin/bash -c 'service rsyslog start'
+docker exec "$(./scripts/docker-compose-container.sh drupal)" /bin/bash -c 'service rsyslog start'

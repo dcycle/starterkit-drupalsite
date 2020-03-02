@@ -94,6 +94,9 @@ Uninstalling the Docker environment
 
 To shut down your containers and _destroy your data_:
 
+    ./scripts/destroy.sh
+
+
     docker-compose down -v
     docker network rm starterkit_drupal8site_default
     rm .env

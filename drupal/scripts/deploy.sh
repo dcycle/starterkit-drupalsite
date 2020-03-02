@@ -36,5 +36,6 @@ else
 fi
 mkdir -p /var/www/html/sites/default/files
 chown -R www-data:www-data /var/www/html/sites/default/files
+cp /scripts/public-htaccess-file.txt /var/www/html/sites/default/files/.htaccess
 
 service rsyslog start

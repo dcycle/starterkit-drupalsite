@@ -2,16 +2,7 @@
 version: '3'
 
 services:
-  mail:
-    # Dummy email client for development, see ./README.md.
-    image: mailhog/mailhog
-    ports:
-      - "8025"
-
   drupal:
-    build:
-      context: .
-      dockerfile: Dockerfile
     environment:
       # The virtual host is used when we want to access our site via an
       # Nginx Proxy locally; and is required by the script
@@ -19,31 +10,22 @@ services:
       # See https://blog.dcycle.com/blog/2018-10-27 for details.
       - VIRTUAL_HOST=${VIRTUAL_HOST}
       - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
-    volumes:
-      - "./drupal/custom-modules:/var/www/html/modules/custom"
-      - "./drupal/custom-themes:/var/www/html/themes/custom"
-      - "drupal-files:/var/www/html/sites/default/files:rw"
-      - "./drupal/config:/var/www/config"
-      - "./drupal/scripts:/scripts"
-      - "./do-not-commit/log:/var/log"
-      - "./do-not-commit/dom-captures:/var/www/html/dom-captures"
     ports:
       - "80"
+    volumes:
+      - "drupal-files:/var/www/html/sites/default/files:rw"
     links:
       - mysql:mysql
-      - mail:mail
     working_dir: /var/www/html
 
   # Database server
   mysql:
-    image: mysql:5
     environment:
       MYSQL_DATABASE: drupal
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       MYSQL_ALLOW_EMPTY_PASSWORD: 'no'
     volumes:
       - "mysql:/var/lib/mysql"
-      - ./mysql/cnf:/etc/mysql/conf.d
 
 # Specifying the network name makes it predictable on all environments,
 # for example when running ./scripts/migrate-all.sh, or when running browser

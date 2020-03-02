@@ -1,0 +1,12 @@
+---
+version: '3'
+
+services:
+  drupal:
+    build:
+      context: .
+      dockerfile: Dockerfile-drupal-build
+  mysql:
+    build:
+      context: .
+      dockerfile: Dockerfile-mysql-build
