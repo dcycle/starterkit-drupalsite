@@ -1,9 +1,5 @@
 FROM dcycle/drupal:8drush
 
-# Make sure opcache is disabled during development so that our changes
-# to PHP are reflected immediately.
-RUN echo 'opcache.enable=0' >> /usr/local/etc/php/php.ini
-
 # Download contrib modules
 # stage_file_proxy: During local development, fetch files from the stage site
 # if they do not.
@@ -49,5 +45,7 @@ RUN echo 'post_max_size = 25M' >> /usr/local/etc/php/php.ini
 # So local-settings.php serves is never deployed to Acquia. There,
 # starterkit-drupal8site-settings.inc is used instead.
 ADD drupal/settings/local-settings.php /var/www/site-php/starterkit-drupal8site/starterkit-drupal8site-settings.inc
+
+COPY drupal/scripts /scripts
 
 EXPOSE 80

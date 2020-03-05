@@ -5,5 +5,5 @@
 
 set -e
 
-docker-compose exec drupal /bin/bash -c \
+docker exec "$(./scripts/docker-compose-container.sh drupal)" /bin/bash -c \
   "/scripts/deploy.sh"

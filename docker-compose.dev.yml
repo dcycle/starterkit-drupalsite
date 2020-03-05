@@ -1,0 +1,41 @@
+---
+version: '3'
+
+services:
+  mail:
+    # Dummy email client for development, see ./README.md.
+    image: mailhog/mailhog
+    ports:
+      - "8025"
+
+  drupal:
+    build:
+      context: .
+      dockerfile: Dockerfile-drupal-dev
+    volumes:
+      - "./drupal/custom-modules:/var/www/html/modules/custom"
+      - "./drupal/custom-themes:/var/www/html/themes/custom"
+      - "./drupal/config:/var/www/config"
+      - "./drupal/scripts:/scripts"
+      - "./do-not-commit/log:/var/log"
+      - "./do-not-commit/dom-captures:/var/www/html/dom-captures"
+    links:
+      - mail:mail
+
+  # Database server
+  mysql:
+    image: mysql:5
+    volumes:
+      - ./mysql/cnf:/etc/mysql/conf.d
+
+# Specifying the network name makes it predictable on all environments,
+# for example when running ./scripts/migrate-all.sh, or when running browser
+# tests on a CI environment, or any other tasks which requires external
+# docker containers to connect to our network.
+# This network (starterkit_drupal8site_default) has been previously created in
+# ./scripts/deploy.sh
+# See https://github.com/docker/compose/issues/3736.
+networks:
+  default:
+    external:
+      name: starterkit_drupal8site_default

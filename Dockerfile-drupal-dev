@@ -1,0 +1,5 @@
+FROM local-starterkit-drupal8-base
+
+# Make sure opcache is disabled during development so that our changes
+# to PHP are reflected immediately.
+RUN echo 'opcache.enable=0' >> /usr/local/etc/php/php.ini

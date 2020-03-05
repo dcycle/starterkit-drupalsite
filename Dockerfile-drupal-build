@@ -1,0 +1,6 @@
+FROM local-starterkit-drupal8-base
+
+COPY drupal/custom-modules /var/www/html/modules/custom
+COPY drupal/custom-themes /var/www/html/themes/custom
+COPY drupal/config /var/www/config
+COPY drupal/scripts /scripts
