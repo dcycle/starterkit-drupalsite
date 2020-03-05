@@ -11,7 +11,7 @@ $databases['default']['default'] = [
   'collation' => 'utf8mb4_general_ci',
 ];
 
-$settings['hash_salt'] = 'whatever';
+$settings['hash_salt'] = getenv('HASH_SALT');
 
 // Override config, see
 // https://www.drupal.org/docs/8/api/configuration-api/configuration-override-system

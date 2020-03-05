@@ -275,6 +275,14 @@ The ports will be different each time, but using the above ports as an example, 
 Troubleshooting
 -----
 
+### Do not use "docker-compose", use "./scripts/docker-compose.sh"
+
+We construct our docker-compose environment based on an _environment type_ (see above), therefore the `docker-compose.yml` file, on its own, is invalid and will produce:
+
+    ERROR: The Compose file is invalid because ...
+
+The solution is to use, for example, `./scripts/docker-compose.sh ps` instead of `docker-compose ps`.
+
 ### First steps if anything goes wrong
 
 Make sure you completely delete your environment using:

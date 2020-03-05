@@ -10,6 +10,7 @@ services:
       # See https://blog.dcycle.com/blog/2018-10-27 for details.
       - VIRTUAL_HOST=${VIRTUAL_HOST}
       - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - HASH_SALT=${HASH_SALT}
     ports:
       - "80"
     volumes:
