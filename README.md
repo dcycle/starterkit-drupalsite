@@ -12,6 +12,7 @@ Contents
 * Initial installation on Docker
 * Incremental deployment (updating) on Docker
 * ./scripts/docker-compose.sh instead of docker-compose
+* Environment types
 * Power up/power down the Docker environment
 * Uninstalling the Docker environment
 * Prescribed development process
@@ -78,6 +79,21 @@ Updating your local installation is the same command as the installation command
     ./scripts/deploy.sh
 
 This will bring in new features and keep your existing data.
+
+Environment types
+-----
+
+When you run ./scripts/deploy.sh, you can specify one of these **environment types**. If you do not specify an environment type, the "dev" environment type is used.
+
+**dev** (default): used for local development.
+
+* Opcache is turned off: PHP parses your code at every call, insteading of using optimization cache.
+* Volumes are shared between your host and your container, meaning changes to your code on your host machine are used by your container.
+
+**build**: used to build an image, potentially for storage on a Docker registry.
+
+* Opcache is turned on because "build" mode is not designed to do development.
+* Code is copied to the container, so your container will have everything it needs to run.
 
 ./scripts/docker-compose.sh instead of docker-compose
 -----
