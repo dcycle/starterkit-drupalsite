@@ -59,6 +59,10 @@ Step 2:
 
 Step 3: Click on the login link at the end of the command line output and enjoy a fully installed Drupal 8 environment.
 
+You can SSH into your container by running:
+
+    ./scripts/ssh.sh
+
 HTTPS quickstart
 -----
 

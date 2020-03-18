@@ -29,8 +29,12 @@ done
 
 OUTPUT=$(echo 'select * from users limit 1'|{ mysql --user=root --password="$MYSQL_ROOT_PASSWORD" --database=drupal --host=mysql 2>&1 || true; })
 if [[ "$OUTPUT" == *"ERROR"* ]]; then
-  echo "Installing Drupal because we did not find an entry in the users table."
-  drush sqlc < /scripts/initial.sql
+  echo "Using starter data because we did not find an entry in the users table."
+  echo "Instaling the starter database..."
+  drush sqlc < /starter-data/initial.sql
+  echo "Instaling the starter files such as images..."
+  cp -r /starter-data/files/* /var/www/html/sites/default/files/
+  echo "Done installing starter data."
 else
   echo "Assuming Drupal is already running, because there is a users table with at least one entry."
 fi
