@@ -156,14 +156,14 @@ Our approach is to include everything necessary for development within our codeb
 
 Here is how this works:
 
-* In ./drupal/starter-data, you will find a starter database and stater files such as images.
-* When you run ./scripts/deploy.sh, the code will use the starter database to populate the environment.
-* Developers who create, for example, a new content type xyz and a new view at, for example, /listing, will run ./scripts/export-config.sh to export the content type and view.
+* In `./drupal/starter-data`, you will find a starter database and starter files such as images.
+* When you run `./scripts/deploy.sh`, the code will use the starter data to populate the environment.
+* Developers who create, for example, a new content type xyz and a new view at, for example, /listing, will run `./scripts/export-config.sh` to export the content type and view.
 
-The above will only create the functionality (configuration) associated with the new content type and view; however the next developer to run ./scripts/deploy.sh on a new environment, or a testbot, will not have any dummy (starter) data associated with this new configuration. The following steps can be added to a development workflow to remedy this:
+The above will only create the functionality (configuration) associated with the new content type and view; however the next developer to run `./scripts/deploy.sh` on a new environment, or a testbot, will not have any dummy (starter) data associated with this new configuration. The following steps can be added to a development workflow to remedy this:
 
 * Developers can now create a few dummy nodes of type xyz, along with images in image fields.
-* They will then run ./scripts/update-starter-data.sh which will take this new data and make it part of the codebase.
+* They will then run `./scripts/update-starter-data.sh` which will take this new data and make it part of the codebase.
 * This new data will now be available to new developers (and existing developers if they run `./scripts/destroy.sh`, then `./scripts/deploy.sh` again).
 * This new data will be available to `./tests/browser-tests/test01.js`, which is called by `./scripts/end-to-end-tests.sh` in the continuous integration process.
 * You will also be able to test for accessibility at `./scripts/a11y-tests.sh`.
