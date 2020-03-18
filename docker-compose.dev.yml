@@ -17,6 +17,7 @@ services:
       - "./drupal/custom-themes:/var/www/html/themes/custom"
       - "./drupal/config:/var/www/config"
       - "./drupal/scripts:/scripts"
+      - "./drupal/starter-data:/starter-data"
       - "./do-not-commit/log:/var/log"
       - "./do-not-commit/dom-captures:/var/www/html/dom-captures"
     links:
