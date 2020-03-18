@@ -165,8 +165,8 @@ The above will only create the functionality (configuration) associated with the
 * Developers can now create a few dummy nodes of type xyz, along with images in image fields.
 * They will then run `./scripts/update-starter-data.sh` which will take this new data and make it part of the codebase.
 * This new data will now be available to new developers (and existing developers if they run `./scripts/destroy.sh`, then `./scripts/deploy.sh` again).
-* This new data will be available to `./tests/browser-tests/test01.js`, which is called by `./scripts/end-to-end-tests.sh` in the continuous integration process.
-* You will also be able to test for accessibility at `./scripts/a11y-tests.sh`.
+* This new data will be available to auomated test code at `./tests/browser-tests/test01.js` (which is called by `./scripts/end-to-end-tests.sh` in the continuous integration process).
+* You will also be able to test for accessibility of your new code, with dummy data, at `./scripts/a11y-tests.sh` (also called during the continuous integration process).
 
 With this approach, functionality and configuration is deeply integrated with dummy data in the same codebase.
 
