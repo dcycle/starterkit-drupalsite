@@ -16,7 +16,7 @@ class App {
   /**
    * Testable implementation of hook_cron().
    */
-  public function hookCron() {
+  public function hookCron () {
     // Just an example of where you'd implement testable hooks.
   }
 
