@@ -43,6 +43,9 @@ it('It should be possible to log in and edit a node', async function() {
 
     await page.waitForSelector('#edit-status-value')
     await screenshot(page, 'node-1-edit', await page.content());
+
+    await page.goto('http://drupal/test-node')
+    await screenshot(page, 'test-node', await page.content());
   }
   catch (error) {
     console.log('Exception alert')
