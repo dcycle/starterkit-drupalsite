@@ -83,3 +83,4 @@ echo '-----'
 echo ''
 echo 'You might want to visit /admin/reports/status and fix any problems.'
 echo ''
+source ./scripts/lib/hook.source.sh successful-deploy-message
