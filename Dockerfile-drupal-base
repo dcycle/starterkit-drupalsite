@@ -1,4 +1,4 @@
-FROM dcycle/drupal:8drush
+FROM dcycle/drupal:9
 
 # Download contrib modules
 # stage_file_proxy: During local development, fetch files from the stage site
@@ -12,7 +12,7 @@ RUN export COMPOSER_MEMORY_LIMIT=-1 && composer require \
   drupal/token \
   drupal/metatag \
   drupal/pathauto \
-  drupal/webform \
+  drupal/webform:^6 \
   drupal/paragraphs \
   drupal/masquerade \
   drupal/bootstrap \

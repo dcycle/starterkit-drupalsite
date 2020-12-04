@@ -1,4 +1,4 @@
-FROM local-starterkit-drupal8-base
+FROM local-starterkit-drupal9-base
 
 COPY drupal/custom-modules /var/www/html/modules/custom
 COPY drupal/custom-themes /var/www/html/themes/custom

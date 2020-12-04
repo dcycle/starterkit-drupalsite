@@ -7,7 +7,7 @@ set -e
 
 export BASE="$(pwd)"
 
-# See http://patorjk.com/software/taag/#p=display&f=Ivrit&t=D8%20Starterkit%0A
+# See http://patorjk.com/software/taag/#p=display&f=Ivrit&t=D9%20Starterkit%0A
 cat ./scripts/lib/my-ascii-art.txt
 
 echo ''
@@ -16,16 +16,16 @@ echo 'Ensuring the integrity of the .env file.'
 source ./scripts/lib/assert-env.source.sh
 
 echo ''
-  echo '-----'
+echo '-----'
 echo 'About to try to get the latest version of images including'
 echo 'https://hub.docker.com/r/dcycle/drupal/ from the Docker hub. This image'
 echo 'is updated automatically every Wednesday with the latest version of'
 echo 'Drupal and Drush. If the image has changed since the latest deployment,'
 echo 'the environment will be completely rebuilt based on this image.'
-docker pull dcycle/drupal:8drush
+docker pull dcycle/drupal:9
 docker pull mysql:5
 
-docker build -f="Dockerfile-drupal-base" -t local-starterkit-drupal8-base .
+docker build -f="Dockerfile-drupal-base" -t local-starterkit-drupal9-base .
 source ./scripts/lib/hook.source.sh pull-extra-images
 source ./scripts/lib/hook.source.sh post-pull-steps
 

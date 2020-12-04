@@ -1,4 +1,4 @@
-FROM local-starterkit-drupal8-base
+FROM local-starterkit-drupal9-base
 
 # Make sure opcache is disabled during development so that our changes
 # to PHP are reflected immediately.

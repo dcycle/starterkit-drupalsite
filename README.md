@@ -1,4 +1,4 @@
-Starterkit for a complete Drupal 8 site
+Starterkit for a complete Drupal 8 or 9 site
 =====
 
 [![CircleCI](https://circleci.com/gh/dcycle/starterkit-drupal8site.svg?style=svg)](https://circleci.com/gh/dcycle/starterkit-drupal8site)
@@ -33,7 +33,12 @@ Contents
 About
 -----
 
-A starterkit to build a Drupal 8 project.
+A starterkit to build a Drupal 8 or 9 project.
+
+### Which branch to use
+
+* The master branch of Drupal 8
+* The 9 branch of Drupal 9
 
 ### Features
 
@@ -58,7 +63,7 @@ Step 2:
     cd ~/Desktop && git clone https://github.com/dcycle/starterkit-drupal8site.git
     cd ~/Desktop/starterkit-drupal8site && ./scripts/deploy.sh
 
-Step 3: Click on the login link at the end of the command line output and enjoy a fully installed Drupal 8 environment.
+Step 3: Click on the login link at the end of the command line output and enjoy a fully installed Drupal 8 or 9 environment (depending on the branch used -- see above).
 
 You can SSH into your container by running:
 
@@ -212,6 +217,31 @@ We are not using Drupal's automated testing framework, rather:
 * PHPUnit is used to test the code;
 * Any Drupal-specific code is wrapped in methods `./drupal/custom-modules/my_custom_module/src/traits/Environment.php`, then mocked in the unit tests. See `./drupal/custom-modules/my_custom_module/test/AppTest.php` for an example.
 * Running tests is done using `./scripts/test.sh` (which includes linting) or `./scripts/unit.sh` (which does not include linting), requiring only Docker and no additional setup.
+
+When submitting a core or contrib patch, debugging failing tests
+-----
+
+Let's use an example:
+
+On Dec. 4th, 2020, [this comment was submitted to a core issue, along with a patch](https://www.drupal.org/project/drupal/issues/2273889#comment-13926796). The test failed with 21 failures. Here is how I reproduced the failure locally for debugging purposes:
+
+* From the issue comment, click on the failing test, in this case [PHP 7.3 & MySQL 5.7 27,916 pass, 21 fail](https://www.drupal.org/pift-ci-job/1904405).
+* In [the resulting page](https://www.drupal.org/pift-ci-job/1904405), note what you'd like to debug. In this example, we can the class `Drupal\Tests\locale\Functional\LocalePluralFormatTest` seems to fail.
+* Make sure you have a running local environment; this can be done using `./scripts/deploy 9`.
+* Make sure the patch in question is applied to the Drupal codebase on the container (note that a current limitation of this approach is that we are using the latest stable code, not the latest HEAD):
+
+    ./scripts/shell.sh
+    > curl -O https://www.drupal.org/files/issues/2020-12-04/2273889-42-core-plural-index.diff
+    > patch -p1 < 2273889-42-core-plural-index.diff
+    > exit
+
+* Now run the failing test locally:
+
+```
+./scripts/test-class.sh "Drupal\Tests\locale\Functional\LocalePluralFormatTest"
+```
+
+Voilà, you will now get the same results locally as you do on Drupal's testbot, making it easier to work on patches.
 
 Security and maintenance updates
 -----
