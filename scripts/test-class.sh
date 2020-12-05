@@ -9,4 +9,4 @@ if [ -z "$1" ]; then
   exit 1
 fi
 
-./scripts/docker-compose.sh exec drupal /bin/bash -c 'mkdir -p sites/default/files/simpletest && chown -R www-data:www-data sites/default/files/simpletest && drush en -y simpletest && php core/scripts/run-tests.sh --verbose --class "'"$1"'"'
+./scripts/docker-compose.sh exec --user www-data drupal /bin/bash -c 'php core/scripts/run-tests.sh --verbose --class "'"$1"'"'
