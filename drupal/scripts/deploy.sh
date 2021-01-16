@@ -30,6 +30,7 @@ do
     fi
   else
     echo "MySQL is up! Moving on..."
+    break
   fi
 done
 
