@@ -19,7 +19,7 @@ OUTPUT="ERROR"
 TRIES=15
 for i in `seq 1 "$TRIES"`;
 do
-  OUTPUT=$(echo 'show databases'|{ mysql -h mysql -u root --password=drupal 2>&1 || true; })
+  OUTPUT=$(echo 'show databases'|{ mysql -h mysql -u root --password="$MYSQL_ROOT_PASSWORD" 2>&1 || true; })
   if [[ "$OUTPUT" == *"ERROR"* ]]; then
     if [ "$i" == "$TRIES" ];then
       echo "MySQL container after $TRIES tries, with error $OUTPUT. Abandoning. We suggest you reset Docker to factory defaults, then give Docker 6Gb instead of 2Gb RAM in the Resources section of the preferences pane, and try again. If you are still getting an error please open a ticket at https://github.com/dcycle/starterkit-drupal8site/issues with this message and any other information about your environment."
