@@ -10,6 +10,8 @@ echo "Test initial deployment"
 ./scripts/deploy.sh
 echo "Test incremental deployment"
 ./scripts/deploy.sh
+echo "Test running environment"
+./scripts/test-running-environment.sh
 echo "End-to-end tests"
 ./scripts/end-to-end-tests.sh
 echo "Accessibility tests"
