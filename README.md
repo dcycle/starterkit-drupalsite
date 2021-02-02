@@ -1,13 +1,13 @@
 Starterkit for a complete Drupal 8 site
 =====
 
-**Master branch (Drupal 8, this branch)**
-
-[![CircleCI](https://circleci.com/gh/dcycle/starterkit-drupal8site/tree/master.svg?style=svg)](https://circleci.com/gh/dcycle/starterkit-drupal8site/tree/master)
-
-"9" branch (Drupal 9, default branch)
+["9" branch (Drupal 9, default branch)](https://github.com/dcycle/starterkit-drupal8site)
 
 [![CircleCI](https://circleci.com/gh/dcycle/starterkit-drupal8site/tree/9.svg?style=svg)](https://circleci.com/gh/dcycle/starterkit-drupal8site/tree/9)
+
+**[Master branch (Drupal 8, this branch)](https://github.com/dcycle/starterkit-drupal8site/tree/master)**
+
+[![CircleCI](https://circleci.com/gh/dcycle/starterkit-drupal8site/tree/master.svg?style=svg)](https://circleci.com/gh/dcycle/starterkit-drupal8site/tree/master)
 
 Contents
 -----
