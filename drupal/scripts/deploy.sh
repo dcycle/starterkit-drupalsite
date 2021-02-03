@@ -42,6 +42,7 @@ if [[ "$OUTPUT" == *"ERROR"* ]]; then
   echo "Instaling the starter files such as images..."
   cp -r /starter-data/files/* /var/www/html/sites/default/files/
   echo "Done installing starter data."
+  /scripts/update-config-in-code-if-updb-modifies-config-in-db.sh
 else
   echo "Assuming Drupal is already running, because there is a users table with at least one entry."
 fi
