@@ -785,7 +785,7 @@ $settings['entity_update_batch_size'] = 50;
 # }
 
 $settings['install_profile'] = 'standard';
-$settings["config_sync_directory"] = '../config';
+$settings['config_sync_directory'] = '../config';
 
 // On Acquia Cloud, this include file configures Drupal to use the correct
 // database in each site environment (Dev, Stage, or Prod). To use this
