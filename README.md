@@ -168,7 +168,7 @@ Here is how this works:
 * When you run `./scripts/deploy.sh`, the code will use the starter data to populate the environment (see also the section "Database schema versions and project versions", below).
 * Developers who create, for example, a new content type xyz and a new view at, for example, /listing, will run `./scripts/export-config.sh` to export the content type and view.
 
-The above exports the configuration into code at `./drupal/config`, but not in the database. This does not matter, because any time `./scripts/deploy.sh` is run, configuration in code will be imported into the running database.
+The above exports the configuration into code at `./drupal/config`, but not in the starter database. This does not matter, because any time `./scripts/deploy.sh` is run, configuration in code will be imported into the running database.
 
 However the next developer to run `./scripts/deploy.sh` on a new environment, or a testbot, will not have any dummy (starter) data associated with this new configuration. The following steps can be added to a development workflow to remedy this:
 
@@ -183,7 +183,7 @@ With this approach, functionality and configuration is deeply integrated with du
 Database schema versions and project versions
 -----
 
-This project (Drupal 8/9 Starterkit) decouples module versions from the project code. Concretely, in ./Dockerfile-drupal-base, for example, we download, via composer, modules such as Webform.
+This project (Drupal 8/9 Starterkit) decouples module versions from the project code. Concretely, in ./Dockerfile-drupal-base, for example, we download, via composer, modules such as _the latest version_ (not _a specific version_) of Webform.
 
 In addition, because Drupal code requires a database to do anything useful, and because we want the benefits of version control on our code, we include, as stated above in the "Starter data" section, in `./drupal/starter-data/`, a minimal database and files which work with our code.
 
@@ -193,9 +193,12 @@ Because, as mentioned, module versions are decoupled from project code, new vers
 
 If you would like to update the starter database dump based on the current (post-hook_update_N()-)database, you can do so by running ./scripts/update-starter-data.sh (which updates the starter database and also the starter files such as images, based on what is in the running environment).
 
-We include, in ./drupal/config, minimal configuration which works with our code.
+We include, in ./drupal/config, minimal configuration which works with our code. There are two ways in this config can be updated:
 
-The above approach allows you to check out any version of the starterkit code, and run the deployment script, ending up with a useful website.
+* If module update hooks update the configuration, the code is updated as part of the deployment process (see "hook_update_N() and configuration", below)
+* Developers can run ./scripts/export-config-sh to update the configuration based on new features such as fields, content types, newly-installed modules...
+
+Combined, the above approach allows you to check out any version of the starterkit code, and run the deployment script, ending up with a useful website.
 
 hook_update_N() and configuration
 -----
@@ -206,7 +209,7 @@ Except in the following case:
 
 Drupal modules sometimes use update hooks to modify configuration. For more details see [hook_update_N(), a powerful and dangerous tool to use sparingly, January 29, 2021, Dcycle blog](https://blog.dcycle.com/blog/2021-01-29/hook_update_n/).
 
-Because of [#3110362 If an update hook modifies configuration, then old configuration is imported, the changes made by the update hook are forever lost.](https://www.drupal.org/project/drupal/issues/3110362), and our decoupling of code from and module versions, we will, as part of our deployment script, exit with an error code if our config ends up different in our code and database.
+Because of [#3110362 If an update hook modifies configuration, then old configuration is imported, the changes made by the update hook are forever lost.](https://www.drupal.org/project/drupal/issues/3110362), and our decoupling of code from and module versions, we will, as part of our deployment script, update the configuration in code if update hooks update the configuration in the database.
 
 Here is an example of how it works:
 
