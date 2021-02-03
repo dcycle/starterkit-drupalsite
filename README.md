@@ -23,6 +23,8 @@ Contents
 * Uninstalling the Docker environment
 * Prescribed development process
 * Starter data
+* Database schema versions and project versions
+* hook_update_N() and configuration
 * Patches
 * Development design patterns
 * Running automated tests
@@ -163,10 +165,12 @@ Our approach is to include everything necessary for development within our codeb
 Here is how this works:
 
 * In `./drupal/starter-data`, you will find a starter database and starter files such as images.
-* When you run `./scripts/deploy.sh`, the code will use the starter data to populate the environment.
+* When you run `./scripts/deploy.sh`, the code will use the starter data to populate the environment (see also the section "Database schema versions and project versions", below).
 * Developers who create, for example, a new content type xyz and a new view at, for example, /listing, will run `./scripts/export-config.sh` to export the content type and view.
 
-The above will only create the functionality (configuration) associated with the new content type and view; however the next developer to run `./scripts/deploy.sh` on a new environment, or a testbot, will not have any dummy (starter) data associated with this new configuration. The following steps can be added to a development workflow to remedy this:
+The above exports the configuration into code at `./drupal/config`, but not in the starter database. This does not matter, because any time `./scripts/deploy.sh` is run, configuration in code will be imported into the running database.
+
+However the next developer to run `./scripts/deploy.sh` on a new environment, or a testbot, will not have any dummy (starter) data associated with this new configuration. The following steps can be added to a development workflow to remedy this:
 
 * Developers can now create a few dummy nodes of type xyz, along with images in image fields.
 * They will then run `./scripts/update-starter-data.sh` which will take this new data and make it part of the codebase.
@@ -175,6 +179,52 @@ The above will only create the functionality (configuration) associated with the
 * You will also be able to test for accessibility of your new code, with dummy data, at `./scripts/a11y-tests.sh` (also called during the continuous integration process).
 
 With this approach, functionality and configuration is deeply integrated with dummy data in the same codebase.
+
+Database schema versions and project versions
+-----
+
+This project (Drupal 8/9 Starterkit) decouples module versions from the project code. Concretely, in ./Dockerfile-drupal-base, for example, we download, via composer, modules such as _the latest version_ (not _a specific version_) of Webform.
+
+In addition, because Drupal code requires a database to do anything useful, and because we want the benefits of version control on our code, we include, as stated above in the "Starter data" section, in `./drupal/starter-data/`, a minimal database and files which work with our code.
+
+The UUID defined in ./drupal/config/system.site.yml is (and needs to be) identical to the UUID in the starter database.
+
+Because, as mentioned, module versions are decoupled from project code, new versions of modules might implement hook_update_N() to modify the database. So concretely, if you create an instance of this project, it will use the starter database, then update it using the update hooks of the latest versions of all modules, which might be (and probably are) different from the versions used to create the starter database.
+
+If you would like to update the starter database dump based on the current (post-hook_update_N()-)database, you can do so by running ./scripts/update-starter-data.sh (which updates the starter database and also the starter files such as images, based on what is in the running environment).
+
+We include, in ./drupal/config, minimal configuration which works with our code. There are two ways in this config can be updated:
+
+* If module update hooks update the configuration, the code is updated as part of the deployment process (see "hook_update_N() and configuration", below) but only for newly installed sites.
+* Developers can run ./scripts/export-config-sh to update the configuration based on new features such as fields, content types, newly-installed modules...
+
+Combined, the above approach allows you to check out any version of the starterkit code, and run the deployment script, ending up with a useful website.
+
+hook_update_N() and configuration
+-----
+
+When an update hook modifies the database, our process works seamlessly for developers, even if the starter database is in a different schema than what is expected from the modules: `./scripts/deploy.sh` imports the outdated started database, then updates it using `drush updb`.
+
+Except in the following case:
+
+Drupal modules sometimes use update hooks to modify configuration. For more details see [hook_update_N(), a powerful and dangerous tool to use sparingly, January 29, 2021, Dcycle blog](https://blog.dcycle.com/blog/2021-01-29/hook_update_n/).
+
+Because of [#3110362 If an update hook modifies configuration, then old configuration is imported, the changes made by the update hook are forever lost.](https://www.drupal.org/project/drupal/issues/3110362), and our decoupling of code from and module versions, we will, as part of our deployment script, update the configuration in code if update hooks update the configuration in the database.
+
+Here is an example of how it works:
+
+Let's say our starter database has been created with Webform 5.23. Its default "default_page_base_path" config is "form" without a leading slash:
+
+    drush config:get webform.settings settings.default_page_base_path
+    # 'webform.settings:settings.default_page_base_path': form
+
+Running ./scripts/deploy.sh -- on a CI server or on a new installation or after having called ./scripts/destroy.sh -- will do the following: import the starter database normally, then run the ./drupal/scripts/update-config-in-code-if-updb-modifies-config-in-db.sh script (which on the container exists at /scripts/update-config-in-code-if-updb-modifies-config-in-db.sh):
+
+* import the configuration
+* run hook updb
+* then export the configuration
+
+**Simply running ./scripts/deploy.sh thus has the potential to actually modify your configuration in code. This is necessary to prevent configuration from becoming outdated, which can lead to [#3110362 If an update hook modifies configuration, then old configuration is imported, the changes made by the update hook are forever lost.](https://www.drupal.org/project/drupal/issues/3110362) on production**.
 
 Patches
 -----

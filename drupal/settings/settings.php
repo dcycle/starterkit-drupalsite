@@ -785,11 +785,7 @@ $settings['entity_update_batch_size'] = 50;
 # }
 
 $settings['install_profile'] = 'standard';
-# The sync key must be present to avoid an error.
-$config_directories['sync'] = $config_directories['deploy'] = '../config';
-# See https://github.com/drush-ops/drush/issues/4052.
-# See also ./drupal/scripts/update.sh.
-$config_directories['dockerlocalconfig'] = '/tmp/localconfig';
+$settings['config_sync_directory'] = '../config';
 
 // On Acquia Cloud, this include file configures Drupal to use the correct
 // database in each site environment (Dev, Stage, or Prod). To use this

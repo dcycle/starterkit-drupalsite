@@ -1,6 +1,6 @@
 settings:
   default_status: open
-  default_page_base_path: form
+  default_page_base_path: /form
   default_ajax: false
   default_ajax_effect: fade
   default_ajax_speed: 500
@@ -10,12 +10,14 @@ settings:
   default_form_exception_message: 'Unable to display this webform. Please contact the site administrator.'
   default_submit_button_label: Submit
   default_reset_button_label: Reset
+  default_delete_button_label: Delete
   default_form_submit_once: false
   default_form_confidential_message: 'This form is confidential. You must <a href="[site:login-url]/logout?destination=[current-page:url:relative]">Log out</a> to submit it.'
   default_form_access_denied_message: 'Please login to access this form.'
   default_form_disable_back: false
   default_form_submit_back: false
   default_form_unsaved: false
+  default_form_disable_remote_addr: false
   default_form_novalidate: false
   default_form_disable_inline_errors: false
   default_form_required: false
@@ -28,6 +30,8 @@ settings:
   default_wizard_next_button_label: 'Next Page >'
   default_wizard_start_label: Start
   default_wizard_confirmation_label: Complete
+  default_wizard_toggle_show_label: 'Show all'
+  default_wizard_toggle_hide_label: 'Hide all'
   default_preview_next_button_label: Preview
   default_preview_prev_button_label: '< Previous'
   default_preview_label: Preview
@@ -58,6 +62,7 @@ settings:
       - entity.node.webform.results_submissions
       - entity.node.webform.user.drafts
       - entity.node.webform.user.submissions
+  default_results_customize: false
   default_previous_submission_message: 'You have already submitted this webform. <a href="#">View your previous submission</a>.'
   default_previous_submissions_message: 'You have already submitted this webform. <a href="#">View your previous submissions</a>.'
   default_autofill_message: 'This submission has been autofilled with your previous submission.'
@@ -66,6 +71,9 @@ settings:
   confirmation_back_classes: "button\n"
   default_limit_total_message: 'No more submissions are permitted.'
   default_limit_user_message: 'No more submissions are permitted.'
+  default_share: false
+  default_share_node: false
+  default_share_theme_name: ''
   dialog: false
   dialog_options:
     narrow:
@@ -82,6 +90,8 @@ assets:
   javascript: ''
 handler:
   excluded_handlers: {  }
+variant:
+  excluded_variants: {  }
 export:
   temp_directory: ''
   exporter: delimited
@@ -102,6 +112,7 @@ export:
   signature_format: status
   delimiter: ','
   excel: false
+  archive_type: tar
   excluded_exporters: {  }
 batch:
   default_batch_export_size: 500
@@ -111,6 +122,9 @@ batch:
   default_batch_email_size: 500
 purge:
   cron_size: 100
+form:
+  filter_category: ''
+  filter_state: ''
 element:
   machine_name_pattern: a-z0-9_
   empty_message: '{Empty}'
@@ -124,14 +138,14 @@ element:
   default_empty_option: true
   default_empty_option_required: ''
   default_empty_option_optional: ''
-  default_icheck: ''
-  default_google_maps_api_key: ''
   default_algolia_places_app_id: ''
   default_algolia_places_api_key: ''
   excluded_elements:
     password: password
     password_confirm: password_confirm
     webform_location_geocomplete: webform_location_geocomplete
+  default_icheck: ''
+  default_google_maps_api_key: ''
 html_editor:
   disabled: false
   element_format: ''
@@ -174,6 +188,7 @@ ui:
   offcanvas_disabled: false
   promotions_disabled: false
   description_help: true
+  toolbar_item: false
 libraries:
   excluded_libraries:
     - choices
@@ -183,6 +198,7 @@ libraries:
 requirements:
   cdn: true
   bootstrap: true
+  clientside_validation: true
   spam: true
 langcode: en
 third_party_settings:
