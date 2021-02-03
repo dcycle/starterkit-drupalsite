@@ -195,7 +195,7 @@ If you would like to update the starter database dump based on the current (post
 
 We include, in ./drupal/config, minimal configuration which works with our code. There are two ways in this config can be updated:
 
-* If module update hooks update the configuration, the code is updated as part of the deployment process (see "hook_update_N() and configuration", below)
+* If module update hooks update the configuration, the code is updated as part of the deployment process (see "hook_update_N() and configuration", below) but only for newly installed sites.
 * Developers can run ./scripts/export-config-sh to update the configuration based on new features such as fields, content types, newly-installed modules...
 
 Combined, the above approach allows you to check out any version of the starterkit code, and run the deployment script, ending up with a useful website.
@@ -220,22 +220,11 @@ Let's say our starter database has been created with Webform 5.23. Its default "
 
 Running ./scripts/deploy.sh -- on a CI server or on a new installation or after having called ./scripts/destroy.sh -- will do the following: import the starter database normally, then run the ./drupal/scripts/update-config-in-code-if-updb-modifies-config-in-db.sh script (which on the container exists at /scripts/update-config-in-code-if-updb-modifies-config-in-db.sh):
 
-* drush config:import the configuration
-* export the existing target configuration to an a specific location at /tmp/config-updb-check
-* git init that
-* run the update hooks. This potentially modifies configuration on the database. For example, if we are using Webform 6, whis will update "default_page_base_path" to "/form"
-* run drush config:status to make sure update hooks have not modified configuration.
-* if the configuration has been modified by update hooks, then stop with a message telling developers to update the configuration.
-* if the configuraiton has not been modified, then continue, importing the new configuration.
+* import the configuration
+* run hook updb
+* then export the configuration
 
-If as a developer you get a message to update the configuration, then you can  run
-
-    ./scripts/destroy.sh
-    ./scripts/deploy.sh
-    # The above will fail
-    ./scripts/export-config.sh
-    ./scripts/destroy.sh
-    ./scripts/deploy.sh
+**Simply running ./scripts/deploy.sh thus has the potential to actually modify your configuration in code. This is necessary to prevent configuration from becoming outdated, which can lead to [#3110362 If an update hook modifies configuration, then old configuration is imported, the changes made by the update hook are forever lost.](https://www.drupal.org/project/drupal/issues/3110362) on production**.
 
 Patches
 -----
