@@ -225,33 +225,6 @@ $databases = array();
  */
 
 /**
- * Location of the site configuration files.
- *
- * The $config_directories array specifies the location of file system
- * directories used for configuration data. On install, the "sync" directory is
- * created. This is used for configuration imports. The "active" directory is
- * not created by default since the default storage for active configuration is
- * the database rather than the file system. (This can be changed. See "Active
- * configuration settings" below).
- *
- * The default location for the "sync" directory is inside a randomly-named
- * directory in the public files path. The setting below allows you to override
- * the "sync" location.
- *
- * If you use files for the "active" configuration, you can tell the
- * Configuration system where this directory is located by adding an entry with
- * array key CONFIG_ACTIVE_DIRECTORY.
- *
- * Example:
- * @code
- *   $config_directories = array(
- *     CONFIG_SYNC_DIRECTORY => '/directory/outside/webroot',
- *   );
- * @endcode
- */
-$config_directories = array();
-
-/**
  * Settings:
  *
  * $settings contains environment-specific configuration, such as the files
@@ -610,25 +583,6 @@ if ($settings['hash_salt']) {
  */
 # ini_set('pcre.backtrack_limit', 200000);
 # ini_set('pcre.recursion_limit', 200000);
-
-/**
- * Active configuration settings.
- *
- * By default, the active configuration is stored in the database in the
- * {config} table. To use a different storage mechanism for the active
- * configuration, do the following prior to installing:
- * - Create an "active" directory and declare its path in $config_directories
- *   as explained under the 'Location of the site configuration files' section
- *   above in this file. To enhance security, you can declare a path that is
- *   outside your document root.
- * - Override the 'bootstrap_config_storage' setting here. It must be set to a
- *   callable that returns an object that implements
- *   \Drupal\Core\Config\StorageInterface.
- * - Override the service definition 'config.storage.active'. Put this
- *   override in a services.yml file in the same directory as settings.php
- *   (definitions in this file will override service definition defaults).
- */
-# $settings['bootstrap_config_storage'] = array('Drupal\Core\Config\BootstrapConfigStorageFactory', 'getFileStorage');
 
 /**
  * Configuration overrides.

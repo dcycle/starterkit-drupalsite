@@ -26,7 +26,7 @@ echo "[info] Start by exporting configuration which should be considered as"
 echo "[info] data, that is which should not be deleted."
 # See https://github.com/drush-ops/drush/issues/4052.
 # See also ./drupal/settings/settings.php
-drush $DRUSHENV cex -y --destination=/tmp/localconfig
+drush $DRUSHENV config:export -y --destination=/tmp/localconfig
 echo "[info] Combine the config in code with the local config to keep."
 cp "$CONFIGLOCATION"/* /tmp/combinedconfig/
 echo "[info] We want to keep webforms the following webforms, not delete them:"
