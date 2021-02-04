@@ -17,7 +17,7 @@ echo "[info] Adding newline between , and ( making it easier to read code diffs.
 # shellcheck disable=SC1004
 sed -i -e 's/,(/,\
 (/g' ./drupal/starter-data/initial.sql
-rm ./drupal/starter-data/initial.sql-e
+rm -f ./drupal/starter-data/initial.sql-e
 echo " => Done updating starter db."
 
 echo " => "

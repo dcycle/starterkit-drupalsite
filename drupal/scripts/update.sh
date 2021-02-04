@@ -42,7 +42,7 @@ fi
 # the same settings are in ./scripts/export-config.sh.
 
 drush $DRUSHENV cr
-drush $DRUSHENV cim -y --source=/tmp/combinedconfig
+drush $DRUSHENV config:import -y --source=/tmp/combinedconfig
 echo "[info] Clearing cache"
 drush $DRUSHENV cr
 
