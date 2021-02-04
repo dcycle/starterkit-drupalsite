@@ -10,6 +10,10 @@ echo "Test initial deployment"
 ./scripts/deploy.sh
 echo "Test incremental deployment"
 ./scripts/deploy.sh
+echo "Test exporting config"
+./scripts/export-config.sh
+echo "Test update starter data"
+./scripts/update-starter-data.sh
 echo "Test running environment"
 ./scripts/test-running-environment.sh
 echo "End-to-end tests"
