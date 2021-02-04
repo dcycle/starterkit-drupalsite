@@ -6,7 +6,7 @@
 set -e
 
 docker exec "$(./scripts/docker-compose-container.sh drupal)" /bin/bash -c \
-  "drush cex -y deploy"
+  "drush config:export -y"
 
 # We consider certain items to be data whereas Drupal considers them to
 # be configuration. Data should not be exported to the codebase so remove
