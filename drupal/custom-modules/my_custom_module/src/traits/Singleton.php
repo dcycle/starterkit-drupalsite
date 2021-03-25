@@ -26,7 +26,7 @@ trait Singleton {
    * @return Concord
    *   The single instance of the concord class.
    */
-  static public function instance() {
+  public static function instance() {
     // See http://stackoverflow.com/questions/15443458
     $class = get_called_class();
 
