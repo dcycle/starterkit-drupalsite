@@ -15,3 +15,4 @@ do-not-commit
 # Lambdatest puts these files here if I trigger a tunnel from this directory.
 lt.log
 ltcupdate
+.phpunit.result.cache
