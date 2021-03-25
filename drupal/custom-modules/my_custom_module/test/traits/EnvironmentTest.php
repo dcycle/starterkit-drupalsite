@@ -8,7 +8,9 @@ use PHPUnit\Framework\TestCase;
 /**
  * Dummy object using Utilities for testing.
  */
+// @codingStandardsIgnoreStart
 class DummyObject {
+// @codingStandardsIgnoreEnd
   use Environment;
 
 }
