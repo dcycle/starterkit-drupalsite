@@ -26,24 +26,24 @@ class AdminSettingsForm extends FormBase {
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
     $form = [];
-    $form['basic'] = array(
+    $form['basic'] = [
       '#type' => 'details',
       '#title' => $this->t('Basic site settings'),
       '#description' => $this->t('Information about the environment.'),
       '#open' => FALSE,
-    );
-    $form['basic']['my-information'] = array(
+    ];
+    $form['basic']['my-information'] = [
       '#type' => 'textfield',
       '#title' => $this->t('Placeholder'),
       '#description' => $this->t('Placeholder.'),
       '#default_value' => $this->stateGet('my-information', 'Default string'),
-    );
+    ];
     $form['actions']['#type'] = 'actions';
-    $form['actions']['submit'] = array(
+    $form['actions']['submit'] = [
       '#type' => 'submit',
       '#value' => $this->t('Save'),
       '#button_type' => 'primary',
-    );
+    ];
     return $form;
   }
 

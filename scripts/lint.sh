@@ -8,8 +8,8 @@ echo '...'
 echo '// @codingStandardsIgnoreEnd'
 echo ''
 
-docker run --rm -v "$(pwd)"/drupal/custom-modules:/code dcycle/php-lint --standard=DrupalPractice /code
-docker run --rm -v "$(pwd)"/drupal/custom-modules:/code dcycle/php-lint --standard=Drupal /code
+docker run --rm -v "$(pwd)"/drupal/custom-modules:/code dcycle/php-lint:2 --standard=DrupalPractice /code
+docker run --rm -v "$(pwd)"/drupal/custom-modules:/code dcycle/php-lint:2 --standard=Drupal /code
 echo 'Linting shell scripts'
 docker run --rm -v "$(pwd)":/code dcycle/shell-lint ./scripts/lint.sh
 docker run --rm -v "$(pwd)":/code dcycle/shell-lint ./scripts/https-deploy.sh

@@ -43,7 +43,7 @@ trait Environment {
   /**
    * Mockable wrapper around t().
    */
-  public function t($string, array $args = array(), array $options = array()) {
+  public function t($string, array $args = [], array $options = []) {
     // @codingStandardsIgnoreStart
     return t($string, $args, $options);
     // @codingStandardsIgnoreEnd
