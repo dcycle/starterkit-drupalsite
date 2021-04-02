@@ -103,7 +103,7 @@ echo '---FINDING THE NETWORK NAME---'
 # Linter says "^-- SC2046: Quote this to prevent word splitting". on the
 # following line; not sure why...
 # shellcheck disable=SC2046
-NETWORK=$(docker container inspect $(docker-compose ps -q drupal) -f "{{json .NetworkSettings.Networks }}" | sed 's/^{"//g' | sed 's/".*$//g')
+NETWORK=$(docker container inspect $(./scripts/docker-compose.sh ps -q drupal) -f "{{json .NetworkSettings.Networks }}" | sed 's/^{"//g' | sed 's/".*$//g')
 if [ -z "$NETWORK" ]; then
   >&2 echo "Unexpected error: NETWORK cannot be found"
   exit 1
