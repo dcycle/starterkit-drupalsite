@@ -16,3 +16,5 @@ do-not-commit
 lt.log
 ltcupdate
 .phpunit.result.cache
+
+drupal/settings/local-settings/unversioned.php
