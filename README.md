@@ -19,6 +19,7 @@ Contents
 * Incremental deployment (updating) on Docker
 * ./scripts/docker-compose.sh instead of docker-compose
 * Environment types
+* Local and environment-specific settings
 * Power up/power down the Docker environment
 * Uninstalling the Docker environment
 * Prescribed development process
@@ -112,6 +113,16 @@ When you run ./scripts/deploy.sh, you can specify one of these **environment typ
 -----
 
 The `docker-compose` command will, by default, use `docker-compose.yml`, but in our setup, `docker-compose.yml` by itself is not valid, because we have several environment types (dev, build, ...). Using `./scripts/docker-compose.sh` will find the right environment type based on the contents of the unversioned `.env` file. For example, if the environment type is "dev", we will use, automatically, `docker-compose.yml` but also `docker-compose.dev.yml` as described in ./scripts/dev/env.txt.
+
+Local and environment-specific settings
+-----
+
+If you need environment-specific settings, or need to track sensitiv api keys,
+you can create a file named:
+
+    ./drupal/settings/local-settings/unversioned.php
+
+Use ./drupal/settings/local-settings/unversioned.example.php as an example.
 
 Power up/power down the Docker environment
 -----
