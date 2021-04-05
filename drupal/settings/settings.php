@@ -748,3 +748,11 @@ $settings['config_sync_directory'] = '../config';
 if (file_exists('/var/www/site-php')) {
   require('/var/www/site-php/starterkit-drupal8site/starterkit-drupal8site-settings.inc');
 }
+
+if (file_exists('/local-settings/versioned.php')) {
+  require('/local-settings/versioned.php');
+}
+
+if (file_exists('/local-settings/unversioned.php')) {
+  require('/local-settings/unversioned.php');
+}

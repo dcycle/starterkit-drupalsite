@@ -40,12 +40,6 @@ RUN apt-get update && \
 RUN echo 'upload_max_filesize = 25M' >> /usr/local/etc/php/php.ini
 RUN echo 'post_max_size = 25M' >> /usr/local/etc/php/php.ini
 
-# We are trying to emulate Acquia's server setup as much as possible. In
-# Acquia's system, local settings are at /var/www/site-php...
-# So local-settings.php serves is never deployed to Acquia. There,
-# starterkit-drupal8site-settings.inc is used instead.
-ADD drupal/settings/local-settings.php /var/www/site-php/starterkit-drupal8site/starterkit-drupal8site-settings.inc
-
 COPY drupal/scripts /scripts
 
 EXPOSE 80
