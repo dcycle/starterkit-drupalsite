@@ -9,6 +9,8 @@ echo " => Updating the database at ./drupal/starter-data/initial.sql"
 echo " => from the live database."
 echo " => "
 
+echo " => Sanitizing database."
+docker exec "$(./scripts/docker-compose-container.sh drupal)" /bin/bash -c 'drush -y sql-sanitize'
 echo " => Truncating cache tables for a smaller footprint."
 docker exec "$(./scripts/docker-compose-container.sh drupal)" /bin/bash -c 'echo "show tables" | drush sqlc | grep cache_ | xargs -I {} echo "truncate {};" | drush sqlc'
 echo " => Updating starter db."
