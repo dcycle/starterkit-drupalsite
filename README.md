@@ -33,6 +33,7 @@ Contents
 * Theming
 * Acquia
 * Login links for Acquia environments
+* Pantheon
 * Linting
 * Getting a local version of the database
 * Logging
@@ -344,6 +345,11 @@ Login links for Acquia environments
 -----
 
     ./scripts/acquia/uli.sh
+
+Pantheon
+-----
+
+If you are using Pantheon as a host, please refer to ./scripts/pantheon/README.md.
 
 Linting
 -----
