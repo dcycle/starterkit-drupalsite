@@ -18,4 +18,4 @@ ltcupdate
 .phpunit.result.cache
 
 drupal/settings/local-settings/unversioned.php
-config/unversioned.source.sh
+unversioned.source.sh

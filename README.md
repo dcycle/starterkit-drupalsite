@@ -351,6 +351,11 @@ Pantheon (experimental)
 
 If you are using Pantheon as a host, please refer to ./scripts/pantheon/README.md.
 
+Docker on production
+-----
+
+If you are deploying to a Docker host, please refer to ./scripts/docker-host/README.md.
+
 Linting
 -----
 
