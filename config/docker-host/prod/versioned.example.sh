@@ -1,0 +1,3 @@
+DOCKERHOSTUSER=notroot
+DOCKERHOSTIP=1.2.3.4
+DOCKERHOSTDOMAIN=my-domain.example.com

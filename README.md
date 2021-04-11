@@ -34,6 +34,7 @@ Contents
 * Acquia
 * Login links for Acquia environments
 * Pantheon (experimental)
+* Docker on production
 * Linting
 * Getting a local version of the database
 * Logging
@@ -350,6 +351,11 @@ Pantheon (experimental)
 -----
 
 If you are using Pantheon as a host, please refer to ./scripts/pantheon/README.md.
+
+Docker on production
+-----
+
+If you are using Pantheon as a host, please refer to ./scripts/docker-host/README.md.
 
 Linting
 -----
