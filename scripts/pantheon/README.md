@@ -1,3 +1,5 @@
+**These scripts are experimental**.
+
 The scripts herein are designed to help you manage environments on Pantheon.
 
 Setup
