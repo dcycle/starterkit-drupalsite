@@ -40,12 +40,3 @@ Building your local site
 Here is what we mean by building: taking code from your docker container, and moving it to the Pantheon git repo, and then to the Pantheon dev server, and finally running drush cim and drush updb. Here is how to do this:
 
     ./scripts/pantheon/build.sh
-
-
-Go
-
-* Make sure your pantheon dev site is in SFTP mode, not GIT.
-* Go to your dev site URL and install Drupal (it does not matter if it's Drupal 8; we'll change that later) using the GUI installer.
-* In "Configure site" (site name, email, etc...), put dummy data, it will be changed later.
-
-Setting up
