@@ -23,4 +23,3 @@ This has been tested with 4Gb Docker hosts with backups enabled, on DigitalOcean
 Once you have set up your config files (in the above example for default--prod--and stage), run:
 
     export ENV=prod && ./scripts/docker-host/deploy.sh
-    export ENV=stage && ./scripts/docker-host/initial-setup.sh
