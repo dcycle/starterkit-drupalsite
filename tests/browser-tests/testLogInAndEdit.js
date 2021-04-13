@@ -11,12 +11,13 @@ it('It should be possible to log in and edit a node', async function() {
   })
   var result = false
   try {
+    console.log('Testing ' + __filename)
     const page = await browser.newPage()
     console.log('set viewport')
     await page.setViewport({ width: 1280, height: 800 })
     console.log('go to the login page')
     await page.goto('http://drupal/user')
-    await testBase.assertInSourceCode(page, 'Logd in');
+    await testBase.assertInSourceCode(page, 'Log in');
     console.log('enter credentials')
     await page.type('[name=name]', process.env.DRUPALUSER)
     await page.type('[name=pass]', process.env.DRUPALPASS)

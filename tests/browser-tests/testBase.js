@@ -34,6 +34,8 @@ exports.assertInSourceCode = async function(page, text, filename="") {
 }
 
 exports.showError = async function (error, browser) {
+  // See https://www.asciiart.eu/computers/computers
+  console.log('Exception alert')
   console.log('         _______');
   console.log('        |.-----.|');
   console.log('        ||x . x||');
