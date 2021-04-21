@@ -43,5 +43,5 @@ source "$BASE"/lib/assert-reverse-proxy.source.sh
 
 echo " ====> Updating the reverse proxy"
 
-docker network connect "$DOCKERNETWORK" nginx-proxy
+docker network connect "$DOCKERNETWORK" nginx-proxy || true
 docker restart nginx-letsencrypt
