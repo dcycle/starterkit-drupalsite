@@ -37,6 +37,11 @@ if [ -z "$DOCKERHOSTIP" ]; then
   exit 1
 fi
 
+if [ -z "$DOCKERPREVHOSTDOMAIN" ]; then
+  >&2 echo "DOCKERPREVHOSTDOMAIN must be defined in config; see ./scripts/docker-host/README.md"
+  exit 1
+fi
+
 if [ -z "$DOCKERHOSTDOMAIN" ]; then
   >&2 echo "DOCKERHOSTDOMAIN must be defined in config; see ./scripts/docker-host/README.md"
   exit 1

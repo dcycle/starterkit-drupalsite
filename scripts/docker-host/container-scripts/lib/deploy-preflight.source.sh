@@ -34,6 +34,12 @@ if [ -z "$DOCKERHOSTDOMAIN" ]; then
 fi
 echo "DOCKERHOSTDOMAIN is $DOCKERHOSTDOMAIN"
 
+if [ -z "$DOCKERPREVHOSTDOMAIN" ]; then
+  >&2 echo "Please export DOCKERPREVHOSTDOMAIN=...; see ./scripts/docker-host/README.md"
+  exit 1
+fi
+echo "DOCKERPREVHOSTDOMAIN is $DOCKERPREVHOSTDOMAIN"
+
 if [ -z "$DOCKERNETWORK" ]; then
   >&2 echo "Please export DOCKERNETWORK=...; see ./scripts/docker-host/README.md"
   exit 1

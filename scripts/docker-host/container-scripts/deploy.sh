@@ -31,7 +31,7 @@ fi
 
 echo " ====> Making sure $DOCKERHOSTDIR exists with at least one deployment"
 
-sed -i "s/localhost/$DOCKERHOSTDOMAIN/" "$DOCKERHOSTFULLDIR/.env"
+sed -i "s/$DOCKERPREVHOSTDOMAIN/$DOCKERHOSTDOMAIN/" "$DOCKERHOSTFULLDIR/.env"
 
 echo " ====> Updating the deployment."
 
