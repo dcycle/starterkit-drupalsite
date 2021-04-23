@@ -8,3 +8,5 @@ echo "Linting"
 ./scripts/lint.sh
 echo "Unit"
 ./scripts/unit.sh
+echo "Static analysis"
+./scripts/static.sh
