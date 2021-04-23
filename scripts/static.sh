@@ -4,6 +4,12 @@
 #
 set -e
 
+echo 'Performing static analsys'
+echo 'If you are getting a false negative, use:'
+echo ''
+echo '// @phpstan-ignore-next-line'
+echo ''
+
 # See https://github.com/dcycle/docker-phpstan-drupal.
 docker run --rm \
   -v "$(pwd)"/drupal/custom-modules:/var/www/html/modules/custom \

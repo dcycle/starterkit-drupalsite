@@ -1,3 +1,7 @@
+#!/bin/bash
+#
+# Linting.
+#
 set -e
 
 echo 'Linting PHP files'
