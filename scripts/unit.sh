@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Unit tests.
+# PHP unit tests.
 #
 set -e
 
