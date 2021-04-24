@@ -6,7 +6,7 @@ DcycleDrupalStarterkit = {
 };
 
 // Required for unit tests.
-if (module !== undefined) {
+if (typeof module !== "undefined") {
   module.exports = DcycleDrupalStarterkit;
 }
 // @codingStandardsIgnoreEnd
