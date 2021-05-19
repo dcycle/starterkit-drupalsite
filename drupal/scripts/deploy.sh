@@ -46,8 +46,10 @@ if [[ "$OUTPUT" == *"ERROR"* ]]; then
 else
   echo "Assuming Drupal is already running, because there is a users table with at least one entry."
 fi
-mkdir -p /var/www/html/sites/default/files
-chown -R www-data:www-data /var/www/html/sites/default/files
-cp /scripts/public-htaccess-file.txt /var/www/html/sites/default/files/.htaccess
+/scripts/prep-file-directory.sh \
+  /var/www/html/sites/default/files \
+  /scripts/public-htaccess-file.txt
+/scripts/prep-file-directory.sh \
+  /drupal-private-files
 
 service rsyslog start

@@ -19,6 +19,7 @@ services:
       - "80"
     volumes:
       - "drupal-files:/var/www/html/sites/default/files:rw"
+      - "drupal-private-files:/drupal-private-files:rw"
       - "./drupal/settings/local-settings:/local-settings"
     links:
       - mysql:mysql
@@ -48,3 +49,4 @@ networks:
 volumes:
   mysql:
   drupal-files:
+  drupal-private-files:
