@@ -24,6 +24,7 @@ Contents
 * Uninstalling the Docker environment
 * Prescribed development process
 * Starter data
+* Private and public files
 * Database schema versions and project versions
 * hook_update_N() and configuration
 * Patches
@@ -196,6 +197,15 @@ However the next developer to run `./scripts/deploy.sh` on a new environment, or
 * You will also be able to test for accessibility of your new code, with dummy data, at `./scripts/a11y-tests.sh` (also called during the continuous integration process).
 
 With this approach, functionality and configuration is deeply integrated with dummy data in the same codebase.
+
+Private and public files
+-----
+
+./docker-compose.yml defines two volumes, `drupal-files` (the public files) and `drupal-private-files`, the private files.
+
+The public files volume maps to `/var/www/html/sites/default/files` on the container; the private files volume maps to `/drupal-private-files` on the container. The latter is also set in ./drupal/settings/local-settings/versioned.php.
+
+This means that both public files and private files will persist beyond the life of the drupal container.
 
 Database schema versions and project versions
 -----
@@ -404,7 +414,6 @@ The ports will be different each time, but using the above ports as an example, 
 (2) enter "admin"
 (3) you should see "Further instructions have been sent to your email address."
 (4) to view the actual email in a GUI, visit (in this example) http://0.0.0.0:32781
-
 
 Troubleshooting
 -----
