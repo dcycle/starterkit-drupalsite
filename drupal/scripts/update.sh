@@ -28,7 +28,7 @@ echo "[info] data, that is which should not be deleted."
 # See also ./drupal/settings/settings.php
 drush $DRUSHENV config:export -y --destination=/tmp/localconfig
 echo "[info] Combine the config in code with the local config to keep."
-cp "$CONFIGLOCATION"/* /tmp/combinedconfig/
+cp -r "$CONFIGLOCATION"/* /tmp/combinedconfig/
 echo "[info] We want to keep webforms the following webforms, not delete them:"
 if ls /tmp/localconfig/webform.webform.* 1> /dev/null 2>&1; then
   ls -lah /tmp/localconfig/webform.webform.*
