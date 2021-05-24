@@ -5,10 +5,12 @@ dependencies:
   config:
     - field.field.node.article.body
     - field.field.node.article.field_image
+    - field.field.node.article.field_private_file
     - field.field.node.article.field_tags
     - image.style.thumbnail
     - node.type.article
   module:
+    - file
     - image
     - path
     - text
@@ -43,6 +45,13 @@ content:
       progress_indicator: throbber
       preview_image_style: thumbnail
     third_party_settings: {  }
+  field_private_file:
+    weight: 121
+    settings:
+      progress_indicator: throbber
+    third_party_settings: {  }
+    type: file_generic
+    region: content
   field_tags:
     type: entity_reference_autocomplete_tags
     weight: 3

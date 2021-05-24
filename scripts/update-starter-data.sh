@@ -26,5 +26,7 @@ echo " => "
 echo " => Updating the files at ./drupal/starter-data/files from live files on" echo " => the container."
 echo " => "
 rm -rf ./drupal/starter-data/files
+rm -rf ./drupal/starter-data/private-files
 docker exec "$(./scripts/docker-compose-container.sh drupal)" /bin/bash -c 'cp -r /var/www/html/sites/default/files /starter-data/files'
-docker exec "$(./scripts/docker-compose-container.sh drupal)" /bin/bash -c 'rm -rf /starter-data/files/css /starter-data/files/js /starter-data/files/php /starter-data/files/styles /starter-data/files/.htaccess'
+docker exec "$(./scripts/docker-compose-container.sh drupal)" /bin/bash -c 'cp -r /drupal-private-files /starter-data/private-files'
+docker exec "$(./scripts/docker-compose-container.sh drupal)" /bin/bash -c 'rm -rf /starter-data/files/languages /starter-data/files/css /starter-data/files/js /starter-data/files/php /starter-data/files/styles /starter-data/files/.htaccess'
