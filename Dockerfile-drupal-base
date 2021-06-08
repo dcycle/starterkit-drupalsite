@@ -1,4 +1,4 @@
-FROM dcycle/drupal:9
+FROM dcycle/drupal:9php8
 
 # Download contrib modules
 # stage_file_proxy: During local development, fetch files from the stage site
