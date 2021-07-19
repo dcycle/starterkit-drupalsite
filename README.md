@@ -29,6 +29,7 @@ Contents
 * hook_update_N() and configuration
 * Patches
 * Development design patterns
+* Removing modules
 * Running automated tests
 * Security and maintenance updates
 * Theming
@@ -282,6 +283,21 @@ We do not use SASS in this project to avoid complexity. If you want to implement
 ### Common code as traits
 
 We make use of traits to allow classes to implement common code and the Singleton design pattern (see ./drupal/custom-modules/my_custom_module/src/App.php and ./drupal/custom-modules/my_custom_module/my_cystom_module.module for usage).
+
+Removing modules
+-----
+
+During development, you might decide that a module needs to be disabled and replaced by some other module or approach.
+
+Your pull request **should not** remove the module from the Dockerfile. The reason is: the production environment needs to have the module available in order to disable it.
+
+If you like, you might put a comment in your Dockerfile stating when the module can be deleted, perhaps 3 months from now, something like:
+
+    # On 2021-10-19, remove block_class
+    RUN docker-compose require \
+      ...
+      drupal/block_class \
+      ...
 
 Running automated tests
 -----
