@@ -18,6 +18,7 @@ services:
     ports:
       - "80"
     volumes:
+      - "./do-not-commit:/do-not-commit:rw"
       - "drupal-files:/var/www/html/sites/default/files:rw"
       - "drupal-private-files:/drupal-private-files:rw"
       - "./drupal/settings/local-settings:/local-settings"
