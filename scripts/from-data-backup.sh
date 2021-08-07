@@ -33,8 +33,6 @@ echo "Start by creating an emergency rollback data backup..."
 ./scripts/create-data-backup.sh "$1-rollback"
 
 echo "Rollback done. Restoring from $1..."
-cd $BASEDIR
-
 TARBALL="$1.tar.gz"
 
 echo "We are in $BASEDIR"
@@ -49,16 +47,12 @@ else
 fi
 
 echo "Extracting it..."
-tar xzvf "$TARBALL"
 FULLDIRONCONTAINER="/do-not-commit/data-dumps/$1"
 FULLDIRONLOCAL=".$FULLDIRONCONTAINER"
+./scripts/docker-compose.sh exec drupal /bin/bash -c "cd /do-not-commit/data-dumps && tar xzvf $TARBALL"
 echo "It is extracted."
 echo "On the container it is at $FULLDIRONCONTAINER"
 echo "On local it is at $FULLDIRONLOCAL"
-
-echo "Moving back to our initial working directory"
-cd -
-pwd
 
 echo "$FULLDIRONLOCAL should exist."
 

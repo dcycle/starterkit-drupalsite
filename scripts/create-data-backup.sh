@@ -24,10 +24,7 @@ FULLDIRONLOCAL=".$FULLDIRONCONTAINER"
 ./scripts/docker-compose.sh exec drupal /bin/bash -c "cp -r /var/www/html/sites/default/files $FULLDIRONCONTAINER"
 ./scripts/docker-compose.sh exec drupal /bin/bash -c "cp -r /drupal-private-files $FULLDIRONCONTAINER"
 
-cd ./do-not-commit/data-dumps
-tar -czvf "$DIRNAME".tar.gz "$DIRNAME"
-rm -rf "$DIRNAME"
-cd -
+./scripts/docker-compose.sh exec drupal /bin/bash -c "cd /do-not-commit/data-dumps && tar -czvf $DIRNAME.tar.gz $DIRNAME && rm -rf $DIRNAME"
 
 echo "All done exporting a backup."
 echo ""
