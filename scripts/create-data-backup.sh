@@ -18,9 +18,8 @@ echo "Using dirname $DIRNAME"
 
 FULLDIRONCONTAINER="/do-not-commit/data-dumps/$DIRNAME"
 FULLDIRONLOCAL=".$FULLDIRONCONTAINER"
-rm -rf "$FULLDIRONLOCAL"
-mkdir -p "$FULLDIRONLOCAL"
-
+./scripts/docker-compose.sh exec drupal /bin/bash -c "rm -rf $FULLDIRONCONTAINER"
+./scripts/docker-compose.sh exec drupal /bin/bash -c "mkdir -p $FULLDIRONCONTAINER"
 ./scripts/docker-compose.sh exec drupal /bin/bash -c "drush sql-dump > $FULLDIRONCONTAINER/db.sql"
 ./scripts/docker-compose.sh exec drupal /bin/bash -c "cp -r /var/www/html/sites/default/files $FULLDIRONCONTAINER"
 ./scripts/docker-compose.sh exec drupal /bin/bash -c "cp -r /drupal-private-files $FULLDIRONCONTAINER"
