@@ -22,6 +22,6 @@ echo "Accessibility tests"
 ./scripts/a11y-tests.sh
 BACKUPID="$(./scripts/lib/data-unique-dirname.sh)"
 echo "Export test to $BACKUPID"
-./scripts/create-data-backup.sh
+./scripts/create-data-backup.sh "$BACKUPID"
 echo "Import test to $BACKUPID"
 ./scripts/from-data-backup.sh "$BACKUPID"
