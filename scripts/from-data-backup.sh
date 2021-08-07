@@ -38,7 +38,7 @@ TARBALL="$1.tar.gz"
 echo "We are in $BASEDIR"
 echo "$TARBALL should exist"
 
-if [ ! -f "$TARBALL" ]; then
+if [ ! -f "./do-not-commit/data-dumps/$TARBALL" ]; then
   >&2 echo "It does not seem to :("
   ls -lah
   exit 1
