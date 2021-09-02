@@ -30,4 +30,8 @@ $config['smtp.settings']['smtp_host'] = 'mail';
 $config['smtp.settings']['smtp_port'] = 1025;
 $config['system.mail']['interface']['default'] = 'SMTPMailSystem';
 $config['system.logging']['error_level'] = 'verbose';
+
 $settings['file_private_path'] = '/drupal-private-files';
+
+$config['system.performance']['css']['preprocess'] = FALSE;
+$config['system.performance']['js']['preprocess'] = FALSE;
