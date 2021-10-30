@@ -16,7 +16,25 @@ trait Environment {
    * Mockable wrapper around drupal_set_message().
    */
   protected function drupalSetMessage($message = NULL, $type = 'status', $repeat = FALSE) {
-    return drupal_set_message($message, $type, $repeat);
+    $messenger = \Drupal::messenger();
+
+    switch ($type) {
+      case 'warning':
+        $messenger->addWarning($message);
+        break;
+
+      case 'status':
+        $messenger->addStatus($message);
+        break;
+
+      case 'error':
+        $messenger->addError($message);
+        break;
+
+      default:
+        $messenger->addMessage($message);
+        break;
+    }
   }
 
   /**
