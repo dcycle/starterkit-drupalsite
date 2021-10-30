@@ -1,6 +1,6 @@
 # See https://github.com/dcycle/docker-phpstan-drupal/blob/master/README.md#custom-config-file
 parameters:
-  excludes_analyse:
+  excludePaths:
   - */tests/*
   - */test/*
 includes:
