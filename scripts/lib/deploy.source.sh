@@ -25,7 +25,6 @@ echo 'the environment will be completely rebuilt based on this image.'
 docker pull dcycle/drupal:9php8
 docker pull mariadb
 
-docker build -f="Dockerfile-drupal-base" -t local-starterkit-drupal9-base .
 source ./scripts/lib/hook.source.sh pull-extra-images
 source ./scripts/lib/hook.source.sh post-pull-steps
 
