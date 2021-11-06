@@ -1,3 +1,3 @@
-FROM mysql:5
+FROM mariadb
 
 COPY ./mysql/cnf /etc/mysql/conf.d

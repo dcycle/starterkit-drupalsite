@@ -23,9 +23,8 @@ echo 'is updated automatically every Wednesday with the latest version of'
 echo 'Drupal and Drush. If the image has changed since the latest deployment,'
 echo 'the environment will be completely rebuilt based on this image.'
 docker pull dcycle/drupal:9php8
-docker pull mysql:5
+docker pull mariadb
 
-docker build -f="Dockerfile-drupal-base" -t local-starterkit-drupal9-base .
 source ./scripts/lib/hook.source.sh pull-extra-images
 source ./scripts/lib/hook.source.sh post-pull-steps
 
@@ -50,6 +49,7 @@ echo '-----'
 echo 'About to start persistent (-d) containers based on the images defined'
 echo 'in ./Dockerfile and ./docker-compose.yml. We are also telling'
 echo 'docker-compose to rebuild the images if they are out of date.'
+echo "Using compose files $DOCKER_COMPOSE_FILES"
 # Cannot quote $DOCKER_COMPOSE_FILES here
 # shellcheck disable=SC2086
 docker-compose $DOCKER_COMPOSE_FILES up -d --build
