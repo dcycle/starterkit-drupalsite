@@ -1,3 +1,5 @@
+_core:
+  default_config_hash: ysHEvvazIuaJ5BdY0dUw2_my_Q5hM8ypdXwFfaIrvMw
 toolbar_items:
   - devel.admin_settings_link
   - devel.cache_clear
@@ -7,5 +9,3 @@ toolbar_items:
   - devel.reinstall
   - devel.route_info
   - devel.run_cron
-_core:
-  default_config_hash: ysHEvvazIuaJ5BdY0dUw2_my_Q5hM8ypdXwFfaIrvMw

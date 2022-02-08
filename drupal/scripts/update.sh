@@ -29,7 +29,7 @@ echo "[info] data, that is which should not be deleted."
 drush $DRUSHENV config:export -y --destination=/tmp/localconfig
 echo "[info] Combine the config in code with the local config to keep."
 cp -r "$CONFIGLOCATION"/* /tmp/combinedconfig/
-echo "[info] We want to keep webforms the following webforms, not delete them:"
+echo "[info] We want to keep the following webforms, not delete them:"
 if ls /tmp/localconfig/webform.webform.* 1> /dev/null 2>&1; then
   ls -lah /tmp/localconfig/webform.webform.*
   cp /tmp/localconfig/webform.webform.* /tmp/combinedconfig/
