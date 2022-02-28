@@ -434,6 +434,13 @@ The ports will be different each time, but using the above ports as an example, 
 Troubleshooting
 -----
 
+### If you cannot import translations
+
+After enabling config_translation, also change the owner and group of /var/www/html/sites/default/files/translations:
+
+    drush en config_translation
+    chown www-data:www-data /var/www/html/sites/default/files/translations 
+
 ### Do not use "docker-compose", use "./scripts/docker-compose.sh"
 
 We construct our docker-compose environment based on an _environment type_ (see above), therefore the `docker-compose.yml` file, on its own, is invalid and will produce:
