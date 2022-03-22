@@ -4,4 +4,4 @@
 #
 set -e
 
-docker run --rm dcycle/drupal:9php8 /bin/bash -c 'cat /proc/sys/kernel/random/uuid'
+docker run --rm dcycle/drupal:9php8-php-alpine /bin/bash -c 'cat /proc/sys/kernel/random/uuid'
