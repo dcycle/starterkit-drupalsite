@@ -53,5 +53,3 @@ fi
   /scripts/public-htaccess-file.txt
 /scripts/prep-file-directory.sh \
   /drupal-private-files
-
-service rsyslog start
