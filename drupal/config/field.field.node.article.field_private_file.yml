@@ -12,7 +12,7 @@ field_name: field_private_file
 entity_type: node
 bundle: article
 label: 'Private File'
-description: 'This field exists to demonstrate how http://github.com/dcycle/starterkit-drupal8site supports Private files.'
+description: 'This field exists to demonstrate how http://github.com/dcycle/starterkit-drupalsite supports Private files.'
 required: false
 translatable: false
 default_value: {  }
