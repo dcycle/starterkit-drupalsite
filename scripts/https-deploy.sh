@@ -2,9 +2,9 @@
 #
 # Set everything up for local https development.
 # See https://blog.dcycle.com/blog/2018-10-27
-# See https://github.com/dcycle/starterkit-drupal8site/blob/master/scripts/https-deploy.sh
+# See https://github.com/dcycle/starterkit-drupalsite/blob/master/scripts/https-deploy.sh
 #
-# This file originally lives on https://github.com/dcycle/starterkit-drupal8site/blob/master/scripts/https-deploy.sh.
+# This file originally lives on https://github.com/dcycle/starterkit-drupalsite/blob/master/scripts/https-deploy.sh.
 #
 set -e
 
@@ -17,7 +17,7 @@ echo ''
 echo '---PREFLIGHT: ./docker-compose.yml---'
 echo 'Making sure our ./docker-compose.yml file contains VIRTUAL_HOST; if'
 echo 'it does not, that might mean you copied this script fom'
-echo 'https://github.com/dcycle/starterkit-drupal8site/blob/master/scripts/https-deploy.sh'
+echo 'https://github.com/dcycle/starterkit-drupalsite/blob/master/scripts/https-deploy.sh'
 echo 'without adding these lines to your docker-compose file:'
 echo '    environment:'
 echo '      # The virtual host is used when we want to access our site via an'
@@ -30,7 +30,7 @@ if [ -f ./docker-compose.yml ]; then
 else
   >&2 echo './docker-compose.yml file does not exist.'
   >&2 echo 'Please make sure it looks like'
-  >&2 echo  'https://github.com/dcycle/starterkit-drupal8site/blob/master/docker-compose.yml'
+  >&2 echo  'https://github.com/dcycle/starterkit-drupalsite/blob/master/docker-compose.yml'
   exit 1
 fi
 grep 'VIRTUAL_HOST' docker-compose.yml && VHEXISTS=1 || VHEXISTS=0
@@ -39,14 +39,14 @@ if [ "$VHEXISTS" == 1 ]; then
 else
   >&2 echo './docker-compose.yml file does not contain VIRTUAL_HOST.'
   >&2 echo 'Please make sure it looks like'
-  >&2 echo  'https://github.com/dcycle/starterkit-drupal8site/blob/master/docker-compose.yml'
+  >&2 echo  'https://github.com/dcycle/starterkit-drupalsite/blob/master/docker-compose.yml'
   exit 1
 fi
 echo ''
 echo '---PREFLIGHT: ./scripts/deploy.sh---'
 echo 'Making sure our ./scripts/deploy.sh file exists; if'
 echo 'it does not, that might mean you copied this script fom'
-echo 'https://github.com/dcycle/starterkit-drupal8site/blob/master/scripts/https-deploy.sh'
+echo 'https://github.com/dcycle/starterkit-drupalsite/blob/master/scripts/https-deploy.sh'
 echo 'but you do not have ./scripts/deploy.sh in your project.'
 if [ -f ./scripts/deploy.sh ]; then
   echo './scripts/deploy.sh exists, moving on.'
@@ -54,7 +54,7 @@ else
   >&2 echo './scripts/deploy.sh file does not exist.'
   >&2 echo 'Please make sure it lauches your project on a random port.'
   >&2 echo 'It can look like'
-  >&2 echo  'https://github.com/dcycle/starterkit-drupal8site/blob/master/scripts/deploy.sh'
+  >&2 echo  'https://github.com/dcycle/starterkit-drupalsite/blob/master/scripts/deploy.sh'
   exit 1
 fi
 echo ''
