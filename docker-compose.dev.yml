@@ -8,6 +8,12 @@ services:
     ports:
       - "8025"
 
+  webserver:
+    volumes:
+      - "./drupal/custom-modules:/var/www/html/modules/custom"
+      - "./drupal/custom-themes:/var/www/html/themes/custom"
+      - "./do-not-commit/dom-captures:/var/www/html/dom-captures"
+
   drupal:
     build:
       context: .
