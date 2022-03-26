@@ -1,0 +1,7 @@
+# https://blog.dcycle.com/blog/2022-03-25/php-apache-different-containers/
+FROM httpd:alpine
+
+COPY --from=dcycle/drupal:9php8-fpm-alpine /var/www/html /var/www/html
+COPY docker-resources/apache/drupal.apache.conf /usr/local/apache2/conf/drupal.apache.conf
+RUN echo "Include /usr/local/apache2/conf/drupal.apache.conf" \
+    >> /usr/local/apache2/conf/httpd.conf
