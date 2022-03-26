@@ -1,11 +1,11 @@
-uuid: 32324615-ba4a-4add-bd70-f793a7f4d311
+uuid: bf02778e-d751-4799-8d15-fe07525dfdd0
 langcode: en
 status: true
 dependencies:
   module:
     - user
 _core:
-  default_config_hash: wTJRNzsLVTenCALONNlVfgm_pBOlqucSPuVFLOD56ck
+  default_config_hash: njaZigMvB4ap21Fg_tQcJhWgYJCGNi49Z5rRL_N6RI0
 id: user_admin_people
 label: People
 module: user
@@ -16,7 +16,7 @@ base_field: uid
 display:
   default:
     id: default
-    display_title: Master
+    display_title: Default
     display_plugin: default
     position: 0
     display_options:

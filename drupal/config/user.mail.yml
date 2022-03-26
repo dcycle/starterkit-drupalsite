@@ -1,10 +1,10 @@
 _core:
-  default_config_hash: m4J3ROov32OEquRYGLbx3SpdDGuqx9l_zJtNvihqdCg
+  default_config_hash: 6CZIzFifRq3qbdq3n3nDpEOO4hWIQtKOAQNPvGNGKeM
 langcode: en
 cancel_confirm:
   subject: 'Account cancellation request for [user:display-name] at [site:name]'
   body: |-
-    [user:display-name],
+    [user:display-name]
 
     A request to cancel your account has been made at [site:name].
 
@@ -71,7 +71,6 @@ register_pending_approval:
     [user:display-name],
 
     Thank you for registering at [site:name]. Your application for an account is currently pending approval. Once it has been approved, you will receive another email containing information about how to log in, set your password, and other details.
-
 
     --  [site:name] team
 register_pending_approval_admin:

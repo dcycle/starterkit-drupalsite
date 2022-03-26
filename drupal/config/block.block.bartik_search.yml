@@ -1,4 +1,4 @@
-uuid: cc2a7adb-a4d2-46d8-a765-490195244344
+uuid: 535dd9a9-469a-403d-b5ca-53ce9981c079
 langcode: en
 status: true
 dependencies:
@@ -7,7 +7,7 @@ dependencies:
   theme:
     - bartik
 _core:
-  default_config_hash: za-39d5WDUg6XvbyqSnuVYEeq6QM4qKJxW8MnoAha5A
+  default_config_hash: jQ-C8l3dJPqYCGST1e-kSjR14PDP4wq-iFbp8dMFcRo
 id: bartik_search
 theme: bartik
 region: sidebar_first
@@ -19,5 +19,5 @@ settings:
   label: Search
   label_display: visible
   provider: search
-  page_id: ''
+  page_id: node_search
 visibility: {  }

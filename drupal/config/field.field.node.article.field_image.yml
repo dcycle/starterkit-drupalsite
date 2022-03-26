@@ -1,4 +1,4 @@
-uuid: a9a90030-a7c4-4ae3-b876-4d97bacf1ee7
+uuid: 2c5c4e88-f290-452e-8988-17ace32fb0ef
 langcode: en
 status: true
 dependencies:
@@ -8,7 +8,7 @@ dependencies:
   module:
     - image
 _core:
-  default_config_hash: tgJzhA7Swh4M_gWU5FwFe5lPxPj5rebpMbvhpdNrERs
+  default_config_hash: PmVL51L3A9QGbPLoeLHw5epAPszeZRasCeC3imeeDRQ
 id: node.article.field_image
 field_name: field_image
 entity_type: node

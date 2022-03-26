@@ -2,6 +2,17 @@
 version: '3'
 
 services:
+  # We are splitting Apache and Drupal, see
+  # https://blog.dcycle.com/blog/2022-03-25/php-apache-different-containers/
+  webserver:
+    build:
+      context: .
+      dockerfile: Dockerfile-apache-only
+    ports:
+      - "80"
+
+  # We are splitting Apache and Drupal, see
+  # https://blog.dcycle.com/blog/2022-03-25/php-apache-different-containers/
   drupal:
     environment:
       # The virtual host is used when we want to access our site via an
@@ -15,8 +26,6 @@ services:
       - LETSENCRYPT_EMAIL="letsencrypt@${VIRTUAL_HOST}"
       - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
       - HASH_SALT=${HASH_SALT}
-    ports:
-      - "80"
     volumes:
       - "./do-not-commit:/do-not-commit:rw"
       - "drupal-files:/var/www/html/sites/default/files:rw"
