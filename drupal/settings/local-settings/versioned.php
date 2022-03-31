@@ -35,3 +35,9 @@ $settings['file_private_path'] = '/drupal-private-files';
 
 $config['system.performance']['css']['preprocess'] = FALSE;
 $config['system.performance']['js']['preprocess'] = FALSE;
+
+$settings['trusted_host_patterns'] = [
+  '^localhost$',
+  '127\.0\.0\.1',
+  '0\.0\.0\.0',
+];
