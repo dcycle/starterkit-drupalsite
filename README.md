@@ -397,14 +397,13 @@ You can set up the Stage File Proxy module to fetch files from the live server i
 Logging
 -----
 
-We are [using syslog instead of dblog](https://www.drupal.org/docs/8/core/modules/syslog/overview) for speed and ease of use. This means you will not have access to log messages through the administrative interface.
+To view logs, you can run:
 
-To access logs you can then use
+    ./scripts/ssh.sh
 
-    tail \
-      -f ./do-not-commit/log/drupal.log \
+Then use Drush to view logs:
 
-Or the Mac OS X Console application.
+    drush watchdog:show
 
 Logging emails during development
 -----
@@ -478,7 +477,3 @@ If you _know_ "something" has changed, you might want to run:
 
     ./scripts/docker-compose.sh build --no-cache
     ./scripts/deploy.sh
-
-### Can't see the syslogs (see the "Logging" section, above)
-
-Run `./scripts/deploy.sh`, which will restart rsyslog.
