@@ -22,7 +22,7 @@ echo 'https://hub.docker.com/r/dcycle/drupal/ from the Docker hub. This image'
 echo 'is updated automatically every Wednesday with the latest version of'
 echo 'Drupal and Drush. If the image has changed since the latest deployment,'
 echo 'the environment will be completely rebuilt based on this image.'
-docker pull dcycle/drupal:9php8
+docker pull dcycle/drupal:9php8-fpm-alpine
 docker pull mariadb
 
 source ./scripts/lib/hook.source.sh pull-extra-images

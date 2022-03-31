@@ -1,21 +1,22 @@
-uuid: 68472ab0-dc25-404b-a2ce-2f31509ba06a
+uuid: 26dfeb94-8880-4ccc-9702-c3ff19746d56
 langcode: en
 status: true
 dependencies:
   config:
+    - core.entity_view_display.comment.comment.default
     - field.field.node.article.body
+    - field.field.node.article.comment
     - field.field.node.article.field_image
-    - field.field.node.article.field_private_file
     - field.field.node.article.field_tags
     - image.style.large
     - node.type.article
   module:
-    - file
+    - comment
     - image
     - text
     - user
 _core:
-  default_config_hash: qVtHNxqdXB9w369AO5JB5SVhflquWqFm5xfyvYLAIlM
+  default_config_hash: b4RQ-Nfz-gOoG_jjftd_qDIz4lf_-OzlxoLHkRXjfrE
 id: node.article.default
 targetEntityType: node
 bundle: article
@@ -28,6 +29,15 @@ content:
     third_party_settings: {  }
     weight: 0
     region: content
+  comment:
+    type: comment_default
+    label: above
+    settings:
+      view_mode: default
+      pager_id: 0
+    third_party_settings: {  }
+    weight: 110
+    region: content
   field_image:
     type: image
     label: hidden
@@ -36,14 +46,6 @@ content:
       image_style: large
     third_party_settings: {  }
     weight: -1
-    region: content
-  field_private_file:
-    type: file_default
-    label: above
-    settings:
-      use_description_as_link_text: true
-    third_party_settings: {  }
-    weight: 101
     region: content
   field_tags:
     type: entity_reference_label
@@ -54,8 +56,8 @@ content:
     weight: 10
     region: content
   links:
+    settings: {  }
+    third_party_settings: {  }
     weight: 100
     region: content
-hidden:
-  field_image: true
-  field_tags: true
+hidden: {  }

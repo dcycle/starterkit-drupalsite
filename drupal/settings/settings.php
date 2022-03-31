@@ -235,23 +235,6 @@ $databases = array();
  */
 
 /**
- * The active installation profile.
- *
- * Changing this after installation is not recommended as it changes which
- * directories are scanned during extension discovery. If this is set prior to
- * installation this value will be rewritten according to the profile selected
- * by the user.
- *
- * @see install_select_profile()
- *
- * @deprecated in Drupal 8.3.0 and will be removed before Drupal 9.0.0. The
- *   install profile is written to the core.extension configuration. If a
- *   service requires the install profile use the 'install_profile' container
- *   parameter. Functional code can use \Drupal::installProfile().
- */
-# $settings['install_profile'] = '';
-
-/**
  * Salt for one-time login links, cancel links, form tokens, etc.
  *
  * This variable will be set to a random value by the installer. All one-time
@@ -738,7 +721,6 @@ $settings['entity_update_batch_size'] = 50;
 #   include $app_root . '/' . $site_path . '/settings.local.php';
 # }
 
-$settings['install_profile'] = 'standard';
 $settings['config_sync_directory'] = '../config';
 
 // On Acquia Cloud, this include file configures Drupal to use the correct
@@ -746,7 +728,7 @@ $settings['config_sync_directory'] = '../config';
 // settings.php for development on your local workstation, set $db_url
 // (Drupal 5 or 6) or $databases (Drupal 7 or 8) as described in comments above.
 if (file_exists('/var/www/site-php')) {
-  require('/var/www/site-php/starterkit-drupal8site/starterkit-drupal8site-settings.inc');
+  require('/var/www/site-php/starterkit-drupalsite/starterkit-drupalsite-settings.inc');
 }
 
 if (file_exists('/local-settings/versioned.php')) {

@@ -1,4 +1,4 @@
-uuid: 34006e90-fe24-4775-b8b6-1a7605edde12
+uuid: ed837030-4d67-4add-bf20-1ad25dda77dc
 langcode: en
 status: true
 dependencies:
@@ -6,7 +6,7 @@ dependencies:
     - file
     - user
 _core:
-  default_config_hash: rRWxAX-IQkJ5viACQRovRkC784EyCl9493GU_G23n2Q
+  default_config_hash: DaGeEDJMcbbQtgV96AuPeZ-0irMc_Oa6Zzh2U3Kmul8
 id: files
 label: Files
 module: file
@@ -17,7 +17,7 @@ base_field: fid
 display:
   default:
     id: default
-    display_title: Master
+    display_title: Default
     display_plugin: default
     position: 0
     display_options:
@@ -725,7 +725,7 @@ display:
       footer: {  }
       display_extenders: {  }
     cache_metadata:
-      max-age: 0
+      max-age: -1
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
@@ -762,7 +762,7 @@ display:
         menu_name: admin
         context: ''
     cache_metadata:
-      max-age: 0
+      max-age: -1
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
@@ -1120,7 +1120,7 @@ display:
       display_extenders: {  }
       path: admin/content/files/usage/%
     cache_metadata:
-      max-age: 0
+      max-age: -1
       contexts:
         - 'languages:language_interface'
         - url

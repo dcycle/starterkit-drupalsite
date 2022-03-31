@@ -1,13 +1,7 @@
-Starterkit for a complete Drupal 8 or 9 site
+Starterkit for a complete Drupal 9 site
 =====
 
-**["9" branch (Drupal 9, default branch, this branch)](https://github.com/dcycle/starterkit-drupal8site)**
-
-[![CircleCI](https://circleci.com/gh/dcycle/starterkit-drupal8site/tree/9.svg?style=svg)](https://circleci.com/gh/dcycle/starterkit-drupal8site/tree/9)
-
-[Master branch (Drupal 8)](https://github.com/dcycle/starterkit-drupal8site/tree/master)
-
-[![CircleCI](https://circleci.com/gh/dcycle/starterkit-drupal8site/tree/master.svg?style=svg)](https://circleci.com/gh/dcycle/starterkit-drupal8site/tree/master)
+[![CircleCI](https://circleci.com/gh/dcycle/starterkit-drupalsite/tree/master.svg?style=svg)](https://circleci.com/gh/dcycle/starterkit-drupalsite/tree/master)
 
 Contents
 -----
@@ -61,8 +55,8 @@ A starterkit to build a Drupal 8 or 9 project.
 
 ### Where to find the code
 
-* The [code lives on GitHub](https://github.com/dcycle/starterkit-drupal8site).
-* The [issue queue is on GitHub](https://github.com/dcycle/starterkit-drupal8site/issues).
+* The [code lives on GitHub](https://github.com/dcycle/starterkit-drupalsite).
+* The [issue queue is on GitHub](https://github.com/dcycle/starterkit-drupalsite/issues).
 * If you fork of copy this directory for your own project, enter other environments here (production, stage, secondary git origins).
 
 Quickstart
@@ -72,8 +66,8 @@ Step 1: Install [Docker](https://www.docker.com/get-docker) (nothing else requir
 
 Step 2:
 
-    cd ~/Desktop && git clone https://github.com/dcycle/starterkit-drupal8site.git
-    cd ~/Desktop/starterkit-drupal8site && ./scripts/deploy.sh
+    cd ~/Desktop && git clone https://github.com/dcycle/starterkit-drupalsite.git
+    cd ~/Desktop/starterkit-drupalsite && ./scripts/deploy.sh
 
 Step 3: Click on the login link at the end of the command line output and enjoy a fully installed Drupal 8 or 9 environment (depending on the branch used -- see above).
 
@@ -84,7 +78,7 @@ You can SSH into your container by running:
 HTTPS quickstart
 -----
 
-    cd ~/Desktop/starterkit-drupal8site && ./scripts/https-deploy.sh
+    cd ~/Desktop/starterkit-drupalsite && ./scripts/https-deploy.sh
 
 See the article [Local development using Docker and HTTPS, Dcycle Blog, Oct. 27, 2018](https://blog.dcycle.com/blog/2018-10-27) for details on how this works.
 
@@ -403,14 +397,13 @@ You can set up the Stage File Proxy module to fetch files from the live server i
 Logging
 -----
 
-We are [using syslog instead of dblog](https://www.drupal.org/docs/8/core/modules/syslog/overview) for speed and ease of use. This means you will not have access to log messages through the administrative interface.
+To view logs, you can run:
 
-To access logs you can then use
+    ./scripts/ssh.sh
 
-    tail \
-      -f ./do-not-commit/log/drupal.log \
+Then use Drush to view logs:
 
-Or the Mac OS X Console application.
+    drush watchdog:show
 
 Logging emails during development
 -----
@@ -439,7 +432,7 @@ Troubleshooting
 After enabling config_translation, also change the owner and group of /var/www/html/sites/default/files/translations:
 
     drush en config_translation
-    chown www-data:www-data /var/www/html/sites/default/files/translations 
+    chown www-data:www-data /var/www/html/sites/default/files/translations
 
 ### Do not use "docker-compose", use "./scripts/docker-compose.sh"
 
@@ -484,7 +477,3 @@ If you _know_ "something" has changed, you might want to run:
 
     ./scripts/docker-compose.sh build --no-cache
     ./scripts/deploy.sh
-
-### Can't see the syslogs (see the "Logging" section, above)
-
-Run `./scripts/deploy.sh`, which will restart rsyslog.

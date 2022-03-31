@@ -1,12 +1,12 @@
-uuid: 55c9b323-42ab-4978-80cb-3cbdee5d3c77
+uuid: cf7f67ee-78a4-40f0-a97d-82b58aa7b7de
 langcode: en
 status: true
 dependencies:
   config:
     - core.entity_view_mode.node.teaser
     - field.field.node.article.body
+    - field.field.node.article.comment
     - field.field.node.article.field_image
-    - field.field.node.article.field_private_file
     - field.field.node.article.field_tags
     - image.style.medium
     - node.type.article
@@ -15,7 +15,7 @@ dependencies:
     - text
     - user
 _core:
-  default_config_hash: 4NcL2hSQZBpJbYtNuh5jC6kyQTcAc1m5bQpTegEWEso
+  default_config_hash: 0ur5-yZyR8pJ3lugC_Micbr6V_tpMWz-yHFhtuLcZo8
 id: node.article.teaser
 targetEntityType: node
 bundle: article
@@ -50,6 +50,6 @@ content:
     weight: 100
     region: content
 hidden:
+  comment: true
   field_image: true
-  field_private_file: true
   field_tags: true

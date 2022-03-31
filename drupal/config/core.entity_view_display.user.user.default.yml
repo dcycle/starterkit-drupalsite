@@ -1,4 +1,4 @@
-uuid: c14a5843-2aae-4de7-ae95-e257a2cd9c20
+uuid: b90f6112-03ec-46f8-aa91-315e5415f495
 langcode: en
 status: true
 dependencies:
@@ -9,17 +9,12 @@ dependencies:
     - image
     - user
 _core:
-  default_config_hash: V51QPCKkgNREKtSmB9Iu2wmAMEpktVpnzklWaZV8UYo
+  default_config_hash: E1qmUI2SlozLlJ308jfMMFKT67l1p6PywE2LTRbeYS4
 id: user.user.default
 targetEntityType: user
 bundle: user
 mode: default
 content:
-  masquerade:
-    settings: {  }
-    third_party_settings: {  }
-    weight: 50
-    region: content
   member_for:
     weight: 5
     region: content

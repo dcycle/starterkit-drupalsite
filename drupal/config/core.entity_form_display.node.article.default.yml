@@ -1,21 +1,21 @@
-uuid: 8e536d11-900e-4b19-8b44-2547e6b98527
+uuid: 75dabd1d-2fe5-4311-9926-d429cf331d6e
 langcode: en
 status: true
 dependencies:
   config:
     - field.field.node.article.body
+    - field.field.node.article.comment
     - field.field.node.article.field_image
-    - field.field.node.article.field_private_file
     - field.field.node.article.field_tags
     - image.style.thumbnail
     - node.type.article
   module:
-    - file
+    - comment
     - image
     - path
     - text
 _core:
-  default_config_hash: buc38w3gxCqFnjINJhMiJvPpj9jWflKvlKDyBVMPVvw
+  default_config_hash: Pzq9mzrsfoPf775qgEU_SUbHSro9pv1ga-Euh1Ykd_k
 id: node.article.default
 targetEntityType: node
 bundle: article
@@ -31,6 +31,12 @@ content:
       placeholder: ''
       show_summary: false
     third_party_settings: {  }
+  comment:
+    type: comment_default
+    weight: 20
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   created:
     type: datetime_timestamp
     weight: 10
@@ -44,13 +50,6 @@ content:
     settings:
       progress_indicator: throbber
       preview_image_style: thumbnail
-    third_party_settings: {  }
-  field_private_file:
-    type: file_generic
-    weight: 121
-    region: content
-    settings:
-      progress_indicator: throbber
     third_party_settings: {  }
   field_tags:
     type: entity_reference_autocomplete_tags

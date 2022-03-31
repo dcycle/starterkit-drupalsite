@@ -1,4 +1,4 @@
-uuid: 83e0215c-4dc1-4f71-8c05-fcd59d39e08a
+uuid: b623e97e-68e5-4d06-ab86-717b2b99afc6
 langcode: en
 status: true
 dependencies:
@@ -8,13 +8,13 @@ dependencies:
   module:
     - text
 _core:
-  default_config_hash: Ay3b2hq42cpQTFB_lNu8S2ZxuVIY6-dlBsc7vLeJ-YY
+  default_config_hash: IjZnOLWk1Pjq3WRg2pLSA1ERh7Po7izCq_p6UztZr2c
 id: node.article.body
 field_name: body
 entity_type: node
 bundle: article
 label: Body
-description: 'Please do not paste from Word.'
+description: ''
 required: false
 translatable: true
 default_value: {  }

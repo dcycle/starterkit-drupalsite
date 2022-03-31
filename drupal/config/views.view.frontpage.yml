@@ -1,4 +1,4 @@
-uuid: 3434e600-4421-4cec-85c5-cd0248e01bf4
+uuid: 330a4a3e-d5ba-461e-9156-b2426faad733
 langcode: en
 status: true
 dependencies:
@@ -9,7 +9,7 @@ dependencies:
     - node
     - user
 _core:
-  default_config_hash: GNfx9kN8-0_KgQ-xf3fjdXCCzZwXCI8T0IPFW8SIe7g
+  default_config_hash: XEFoA1ECJzKZN4VpnDqqRQO-oltuYdmjjvGEYDKs8uU
 id: frontpage
 label: Frontpage
 module: node
@@ -20,7 +20,7 @@ base_field: nid
 display:
   default:
     id: default
-    display_title: Master
+    display_title: Default
     display_plugin: default
     position: 0
     display_options:
@@ -75,7 +75,7 @@ display:
           plugin_id: text_custom
           label: ''
           empty: true
-          content: 'No front page content has been created yet.'
+          content: 'No front page content has been created yet.<br/>Follow the <a target="_blank" href="https://www.drupal.org/docs/user_guide/en/index.html">User Guide</a> to start building your site.'
           tokenize: false
         node_listing_empty:
           id: node_listing_empty

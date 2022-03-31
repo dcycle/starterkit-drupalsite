@@ -38,11 +38,6 @@ composer require \
 # Avoid memory limits with large database imports.
 echo 'memory_limit = 512M' >> /usr/local/etc/php/php.ini
 
-apt-get update && \
-  apt-get --no-install-recommends -y install rsyslog && \
-  rm -rf /var/lib/apt/lists/* && \
-  echo 'local0.* /var/log/drupal.log' >> /etc/rsyslog.conf
-
 # Avoid memory limits with large database imports.
 echo 'upload_max_filesize = 25M' >> /usr/local/etc/php/php.ini
 echo 'post_max_size = 25M' >> /usr/local/etc/php/php.ini
