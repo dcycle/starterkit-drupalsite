@@ -52,6 +52,8 @@ A starterkit to build a Drupal 8 or 9 project.
 * **One-click install**: a full installation should be available simply by running `./scripts/deploy.sh`.
 * **Dependencies and generated files are not included in the repo**: modules, libraries, etc. should not be included in the repo. If you need to generate a directory with all dependencies and generated files, run `./scripts/create-build.sh`.
 * **Sass is not used**: to keep the workflow simple, this project does not use SASS; we encourage direct modification of CSS. See the section "No SASS", below.
+* **FPM and multi-container**: instead of bundling Apache and Drupal on the same container, we use different containers as described in [PHP and Apache (or Nginx) in separate Docker containers using Docker Compose, March 25, 2022, Dcycle blog](https://blog.dcycle.com/blog/2022-03-25/php-apache-different-containers/).
+* **Nginx**: we switch to the Nginx server because Apache was causing [image styles to not generate](https://github.com/docker-library/drupal/issues/215) in a multi-container Docker setups.
 
 ### Where to find the code
 
