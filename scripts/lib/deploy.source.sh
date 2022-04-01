@@ -7,7 +7,7 @@ set -e
 
 export BASE="$(pwd)"
 
-# See http://patorjk.com/software/taag/#p=display&f=Ivrit&t=D9%20Starterkit%0A
+# See http://patorjk.com/software/taag/#p=display&f=Ivrit&t=Drupal%20Starterkit
 cat ./scripts/lib/my-ascii-art.txt
 
 echo ''

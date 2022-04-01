@@ -7,7 +7,7 @@ services:
   webserver:
     build:
       context: .
-      dockerfile: Dockerfile-apache-only
+      dockerfile: Dockerfile-nginx-only
     volumes:
       - "./do-not-commit:/do-not-commit:rw"
       - "drupal-files:/var/www/html/sites/default/files:rw"
