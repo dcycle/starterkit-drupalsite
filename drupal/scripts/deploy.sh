@@ -26,7 +26,7 @@ do
       exit 1
     else
       echo "Try $i of $TRIES. MySQL container is not available yet. Should not be long..."
-      sleep 2
+      sleep 1
     fi
   else
     echo "MySQL is up! Moving on..."
