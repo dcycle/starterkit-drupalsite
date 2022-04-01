@@ -3,7 +3,7 @@ FROM dcycle/drupal:9php8-fpm-alpine
 COPY drupal/scripts /scripts
 COPY drupal/settings/settings.php /var/www/html/sites/default/settings.php
 COPY drupal/settings/services.yml /var/www/html/sites/default/services.yml
-COPY docker-resources /docker-resources
+COPY docker-resources/drupal /docker-resources
 
 RUN /docker-resources/build-drupal.sh
 
