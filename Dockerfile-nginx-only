@@ -1,0 +1,5 @@
+# https://blog.dcycle.com/blog/2022-03-25/php-apache-different-containers/
+FROM nginx:alpine
+
+COPY docker-resources/nginx/default.conf /etc/nginx/conf.d/
+COPY --from=dcycle/drupal:9php8-fpm-alpine /var/www/html /var/www/html
