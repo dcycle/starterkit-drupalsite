@@ -9,7 +9,7 @@ if [ -f "./.env" ]; then
   TARGET_ENV=$CURRENT_TARGET_ENV
   echo "Destroying environment of type $TARGET_ENV."
   source ./scripts/lib/destroy.source.sh
-  docker network rm starterkit_drupal8site_default || echo 'docker network cannot be deleted; moving on.'
+  docker network rm starterkit_drupalsite_default || echo 'docker network cannot be deleted; moving on.'
   rm .env
   echo ""
   echo "-----"

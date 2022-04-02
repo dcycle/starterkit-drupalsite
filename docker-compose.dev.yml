@@ -39,10 +39,10 @@ services:
 # for example when running ./scripts/migrate-all.sh, or when running browser
 # tests on a CI environment, or any other tasks which requires external
 # docker containers to connect to our network.
-# This network (starterkit_drupal8site_default) has been previously created in
+# This network (starterkit_drupalsite_default) has been previously created in
 # ./scripts/deploy.sh
 # See https://github.com/docker/compose/issues/3736.
 networks:
   default:
     external:
-      name: starterkit_drupal8site_default
+      name: starterkit_drupalsite_default

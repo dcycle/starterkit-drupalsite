@@ -30,12 +30,12 @@ source ./scripts/lib/hook.source.sh post-pull-steps
 
 echo ''
 echo '-----'
-echo 'About to create the starterkit_drupal8site_default network if it does'
+echo 'About to create the starterkit_drupalsite_default network if it does'
 echo 'exist, because we need it to have a predictable name when we try to'
 echo 'connect other containers to it (for example browser testers).'
 echo 'The network is then referenced in docker-compose.yml.'
 echo 'See https://github.com/docker/compose/issues/3736.'
-docker network ls | grep starterkit_drupal8site_default || docker network create starterkit_drupal8site_default
+docker network ls | grep starterkit_drupalsite_default || docker network create starterkit_drupalsite_default
 
 echo ''
 echo '---DETERMINE LOCAL DOMAIN---'

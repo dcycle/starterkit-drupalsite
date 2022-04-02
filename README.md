@@ -1,4 +1,4 @@
-Starterkit for a complete Drupal 9 site
+Dcycle Drupal Starterkit
 =====
 
 [![CircleCI](https://circleci.com/gh/dcycle/starterkit-drupalsite/tree/master.svg?style=svg)](https://circleci.com/gh/dcycle/starterkit-drupalsite/tree/master)
@@ -41,11 +41,6 @@ About
 
 A starterkit to build a Drupal 8 or 9 project.
 
-### Which branch to use
-
-* The master branch of Drupal 8
-* The 9 branch of Drupal 9
-
 ### Features
 
 * **Docker-based**: only Docker is required to build a development environment.
@@ -71,7 +66,7 @@ Step 2:
     cd ~/Desktop && git clone https://github.com/dcycle/starterkit-drupalsite.git
     cd ~/Desktop/starterkit-drupalsite && ./scripts/deploy.sh
 
-Step 3: Click on the login link at the end of the command line output and enjoy a fully installed Drupal 8 or 9 environment (depending on the branch used -- see above).
+Step 3: Click on the login link at the end of the command line output and enjoy a fully installed Drupal environment.
 
 You can SSH into your container by running:
 
@@ -207,7 +202,7 @@ This means that both public files and private files will persist beyond the life
 Database schema versions and project versions
 -----
 
-This project (Drupal 8/9 Starterkit) decouples module versions from the project code. Concretely, in ./Dockerfile-drupal-base, for example, we download, via composer, modules such as _the latest version_ (not _a specific version_) of Webform.
+This project (Dcycle Drupal Starterkit) decouples module versions from the project code. Concretely, in ./Dockerfile-drupal-base, for example, we download, via composer, modules such as _the latest version_ (not _a specific version_) of Webform.
 
 In addition, because Drupal code requires a database to do anything useful, and because we want the benefits of version control on our code, we include, as stated above in the "Starter data" section, in `./drupal/starter-data/`, a minimal database and files which work with our code.
 
@@ -458,9 +453,9 @@ Rerun `./scripts/deploy.sh`, and reimport the stage database if you need it (see
 
 ### ./scripts/docker-compose.sh down -v results in a network error
 
-If you run `docker network rm starterkit_drupal8site_default` and you get "ERROR: network starterkit_drupal8site_default id ... has active endpoints", you might need to disconnect the Drupal 7 site from the Drupal 8 network first. This should be done in the migration process, but it might not have worked. If such is the case, type:
+If you run `docker network rm starterkit_drupalsite_default` and you get "ERROR: network starterkit_drupalsite_default id ... has active endpoints", you might need to disconnect the Drupal 7 site from the Drupal 8 network first. This should be done in the migration process, but it might not have worked. If such is the case, type:
 
-    docker network disconnect starterkit_drupal8site_default $(./scripts/docker-compose.sh ps -q database)
+    docker network disconnect starterkit_drupalsite_default $(./scripts/docker-compose.sh ps -q database)
 
 ### Beware case-sensitivity
 
