@@ -3,6 +3,8 @@
 namespace Drupal\my_custom_module\traits;
 
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Logger\RfcLogLevel;
+use Drupal\Core\Utility\Error;
 
 /**
  * General utilities trait.
