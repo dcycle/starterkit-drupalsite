@@ -1,4 +1,4 @@
-FROM dcycle/drupal:9php8-fpm-alpine
+FROM dcycle/drupal:9php8-fpm-alpine-dev
 
 COPY drupal/scripts /scripts
 COPY drupal/settings/settings.php /var/www/html/sites/default/settings.php
@@ -6,7 +6,3 @@ COPY drupal/settings/services.yml /var/www/html/sites/default/services.yml
 COPY docker-resources/drupal /docker-resources
 
 RUN /docker-resources/build-drupal.sh
-
-# Make sure opcache is disabled during development so that our changes
-# to PHP are reflected immediately.
-RUN echo 'opcache.enable=0' >> /usr/local/etc/php/php.ini

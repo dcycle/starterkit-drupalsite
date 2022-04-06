@@ -33,6 +33,7 @@ Contents
 * Linting
 * Getting a local version of the database
 * Logging
+* Profiling (or "Why does it take so long?")
 * Logging emails during development
 * Troubleshooting
 
@@ -401,6 +402,40 @@ To view logs, you can run:
 Then use Drush to view logs:
 
     drush watchdog:show
+
+* Profiling (or "Why does it take so long?")
+-----
+
+If you use the "dev" environment type (see "Environment types", above), we include the [XDebug 3](https://xdebug.org) profiler to figure out where your slow code is.
+
+To use it, first run `./scripts/uli.sh`, this will show you the location of the profiling visualizer, for example:
+
+    => Drupal: http://0.0.0.0:50001/...
+    ...
+    => View profiling results (see README): http://0.0.0.0:50175
+
+**Your port numbers may differ**. If you don't see the "View profiling results" section, make sure you are using the dev environment type (see "Environment types", above).
+
+Next, visit a page on Drupal, but with ?XDEBUG_PROFILE=1, for example:
+
+    => http://0.0.0.0:50001?XDEBUG_PROFILE=1
+
+This will show your web page as normal, but will also track all your PHP code so you can find slow code.
+
+Now visit your profiler at (in this example): http://0.0.0.0:50175/webgrind.
+
+We have included the required dependencies to generate a nice call graph.
+
+If you want to profile a call from the command line, you can do this:
+
+    docker-compose exec drupal /bin/bash
+    ...
+    export XDEBUG_TRIGGER=1
+    drush php
+    >>> \Drupal\node\Entity\Node::load(1);
+    >>> exit
+
+Again, visit your profiler at (in this example): http://0.0.0.0:50175/webgrind.
 
 Logging emails during development
 -----
