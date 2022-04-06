@@ -1,8 +1,8 @@
-FROM dcycle/drupal:9php8-fpm-alpine
+FROM dcycle/drupal:9php8-fpm-alpine-dev
 
 COPY drupal/scripts /scripts
 COPY drupal/settings/settings.php /var/www/html/sites/default/settings.php
 COPY drupal/settings/services.yml /var/www/html/sites/default/services.yml
 COPY docker-resources/drupal /docker-resources
 
-RUN /docker-resources/build-drupal-dev.sh
+RUN /docker-resources/build-drupal.sh

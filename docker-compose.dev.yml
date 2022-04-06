@@ -5,11 +5,16 @@ services:
   profiling_visualizer:
     build:
       context: .
-      dockerfile: Dockerfile-webgrind
+      dockerfile: Dockerfile-webgrind-nginx-only
     volumes:
       - "tmp:/tmp"
     ports:
       - "80"
+
+  profiling_visualizer_egine:
+    image: dcycle/webgrind:1
+    volumes:
+      - "tmp:/tmp"
 
   mail:
     # Dummy email client for development, see ./README.md.
