@@ -3,6 +3,16 @@
 use Drupal\my_custom_module\App;
 
 /**
+ * Handy wrapper around App::instance().
+ *
+ * @return Drupal\my_custom_module\App
+ *   The App singleton.
+ */
+function app() : App {
+  return App::instance();
+}
+
+/**
  * Implements hook_cron().
  */
 function my_custom_module_cron() {

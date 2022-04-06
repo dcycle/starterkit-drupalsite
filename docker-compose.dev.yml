@@ -2,6 +2,15 @@
 version: '3'
 
 services:
+  profiling_visualizer:
+    build:
+      context: .
+      dockerfile: Dockerfile-webgrind
+    volumes:
+      - "tmp:/tmp"
+    ports:
+      - "80"
+
   mail:
     # Dummy email client for development, see ./README.md.
     image: mailhog/mailhog
@@ -26,6 +35,7 @@ services:
       - "./drupal/starter-data:/starter-data"
       - "./do-not-commit/log:/var/log"
       - "./do-not-commit/dom-captures:/var/www/html/dom-captures"
+      - "tmp:/tmp"
     links:
       - mail:mail
 
@@ -46,3 +56,6 @@ networks:
   default:
     external:
       name: starterkit_drupalsite_default
+
+volumes:
+  tmp:
