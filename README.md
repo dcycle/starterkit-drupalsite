@@ -403,7 +403,7 @@ Then use Drush to view logs:
 
     drush watchdog:show
 
-* Profiling (or "Why does it take so long?")
+Profiling (or "Why does it take so long?")
 -----
 
 If you use the "dev" environment type (see "Environment types", above), we include the [XDebug 3](https://xdebug.org) profiler to figure out where your slow code is.
