@@ -23,7 +23,8 @@ rm -f ./drupal/starter-data/initial.sql-e
 echo " => Done updating starter db."
 
 echo " => "
-echo " => Updating the files at ./drupal/starter-data/files from live files on" echo " => the container."
+echo " => Updating the files at ./drupal/starter-data/files from live files on"
+echo " => the container."
 echo " => "
 rm -rf ./drupal/starter-data/files
 rm -rf ./drupal/starter-data/private-files
