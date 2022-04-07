@@ -40,11 +40,11 @@ $settings['trusted_host_patterns'] = [
   // Add your own domain(s) here!
   // These are used for local development.
   '^localhost$',
-  '127\.0\.0\.1',
-  '0\.0\.0\.0',
+  '^127\.0\.0\.1$',
+  '^0\.0\.0\.0$',
   // This is used for browser testing by ./scripts/a11y-tests.sh and
   // ./scripts/end-to-end-tests.sh (which iteself accesses our site via the
   // host "webserver" at ./tests/browser-tests/testLogInAndEdit.js, for
   // example at http://webserver/user).
-  'webserver',
+  '^webserver$',
 ];
