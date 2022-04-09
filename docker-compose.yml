@@ -8,6 +8,16 @@ services:
     build:
       context: .
       dockerfile: Dockerfile-nginx-only
+    environment:
+      # The virtual host is used when we want to access our site via an
+      # Nginx Proxy locally; and is required by the script
+      # ./scripts/https-deploy.sh.
+      # See https://blog.dcycle.com/blog/2018-10-27 for details.
+      # See also https://blog.dcycle.com/blog/7f3ea9e1/
+      # See also https://blog.dcycle.com/blog/170a6078/
+      - VIRTUAL_HOST=${VIRTUAL_HOST}
+      - LETSENCRYPT_HOST=${VIRTUAL_HOST}
+      - LETSENCRYPT_EMAIL="letsencrypt@${VIRTUAL_HOST}"
     volumes:
       - "./do-not-commit:/do-not-commit:rw"
       - "drupal-files:/var/www/html/sites/default/files:rw"
@@ -23,15 +33,6 @@ services:
       context: .
       dockerfile: Dockerfile-drupal-dev
     environment:
-      # The virtual host is used when we want to access our site via an
-      # Nginx Proxy locally; and is required by the script
-      # ./scripts/https-deploy.sh.
-      # See https://blog.dcycle.com/blog/2018-10-27 for details.
-      # See also https://blog.dcycle.com/blog/7f3ea9e1/
-      # See also https://blog.dcycle.com/blog/170a6078/
-      - VIRTUAL_HOST=${VIRTUAL_HOST}
-      - LETSENCRYPT_HOST=${VIRTUAL_HOST}
-      - LETSENCRYPT_EMAIL="letsencrypt@${VIRTUAL_HOST}"
       - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
       - HASH_SALT=${HASH_SALT}
     volumes:

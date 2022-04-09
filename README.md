@@ -8,7 +8,8 @@ Contents
 
 * About
 * Quickstart
-* HTTPS quickstart
+* Local self-signed HTTPS quickstart
+* Let's Encrypt on a server
 * Initial installation on Docker
 * Incremental deployment (updating) on Docker
 * ./scripts/docker-compose.sh instead of docker-compose
@@ -73,12 +74,22 @@ You can SSH into your container by running:
 
     ./scripts/ssh.sh
 
-HTTPS quickstart
+Local self-signed HTTPS quickstart
 -----
+
+The following instructions are for local self-signed HTTPS for local development and should not be used on a server. See the section "Let's Encrypt on a server", below, to use HTTPS certificates on a live server.
 
     cd ~/Desktop/starterkit-drupalsite && ./scripts/https-deploy.sh
 
 See the article [Local development using Docker and HTTPS, Dcycle Blog, Oct. 27, 2018](https://blog.dcycle.com/blog/2018-10-27) for details on how this works.
+
+Let's Encrypt on a server
+-----
+
+Run your instance, then follow the instructions in the following blog posts:
+
+* [Letsencrypt HTTPS for Drupal on Docker, October 03, 2017, Dcycle Blog](https://blog.dcycle.com/blog/170a6078/letsencrypt-drupal-docker/)
+* [Deploying Letsencrypt with Docker-Compose, October 06, 2017, Dcycle Blog](https://blog.dcycle.com/blog/7f3ea9e1/letsencrypt-docker-compose/)
 
 Initial installation on Docker
 -----
