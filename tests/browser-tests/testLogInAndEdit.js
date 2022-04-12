@@ -19,7 +19,7 @@ it('It should be possible to log in and edit a node', async function() {
     await page.goto('http://webserver/user')
     await testBase.assertInSourceCode(page, 'Log in');
     console.log('enter credentials')
-    await page.type('[name=name]', process.env.DRUPALUSER)
+    await page.type('[name=name]', process.env.DRUPALMAIL)
     await page.type('[name=pass]', process.env.DRUPALPASS)
     await page.keyboard.press('Enter');
     await page.waitForSelector('nav.tabs')
