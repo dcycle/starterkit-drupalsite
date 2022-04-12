@@ -53,3 +53,10 @@ fi
   /scripts/public-htaccess-file.txt
 /scripts/prep-file-directory.sh \
   /drupal-private-files
+
+# Copy all items from /drupal-modules-contrib and /drupal-themes-contrib to
+# modules/contrib and themes/contrib.
+# See comments in ./docker-resources/drupal/build-drupal.sh for more details.
+cp -r /drupal-modules-contrib/* modules/contrib/
+cp -r /drupal-themes-contrib/* themes/contrib/
+rm -rf /drupal-modules-contrib /drupal-themes-contrib
