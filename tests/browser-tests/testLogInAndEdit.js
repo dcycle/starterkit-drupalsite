@@ -28,9 +28,10 @@ it('It should be possible to log in and edit a node', async function() {
 
     console.log('go to /node/1/edit')
     await page.goto('http://webserver/node/1/edit')
-
-    await page.waitForSelector('#edit-status-value')
-    await testBase.screenshot(page, 'node-1-edit', await page.content());
+    const content = await page.content();
+    await testBase.screenshot(page, 'node-1-edit', content);
+    console.log(content);
+    await page.waitForSelector('#edit-status-value');
   }
   catch (error) {
     await testBase.showError(error, browser);
