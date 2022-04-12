@@ -2,7 +2,7 @@
 version: '3'
 
 services:
-  # We are splitting Apache and Drupal, see
+  # We are splitting Nginx and Drupal, see
   # https://blog.dcycle.com/blog/2022-03-25/php-apache-different-containers/
   webserver:
     build:
@@ -26,7 +26,7 @@ services:
     ports:
       - "80"
 
-  # We are splitting Apache and Drupal, see
+  # We are splitting Nginx and Drupal, see
   # https://blog.dcycle.com/blog/2022-03-25/php-apache-different-containers/
   drupal:
     build:
