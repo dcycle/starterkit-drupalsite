@@ -39,10 +39,14 @@ if [[ "$OUTPUT" == *"ERROR"* ]]; then
   echo "Using starter data because we did not find an entry in the users table."
   echo "Installing the starter database..."
   drush sqlc < /starter-data/initial.sql
-  echo "Installing the starter files such as images..."
-  cp -r /starter-data/files/* /var/www/html/sites/default/files/
-  echo "Installing the starter private files"
-  cp -r /starter-data/private-files/* /drupal-private-files/
+  if [ -d /starter-data/files ]; then
+    echo "Instaling the starter files such as images..."
+    cp -r /starter-data/files/* /var/www/html/sites/default/files/
+  fi
+  if [ -d /starter-data/private-files ]; then
+    echo "Instaling the starter private files"
+    cp -r /starter-data/private-files/* /drupal-private-files/
+  fi
   echo "Done installing starter data."
   /scripts/update-config-in-code-if-updb-modifies-config-in-db.sh
 else
