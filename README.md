@@ -34,9 +34,11 @@ Contents
 * Linting
 * Getting a local version of the database
 * Logging
-* Profiling (or "Why does it take so long?")
+* Profiling (or "Why does it take so long?") part 1: PHP
+* Profiling (or "Why does it take so long?") part 2: Database
 * Logging emails during development
 * Troubleshooting
+* Running automated functional tests
 
 About
 -----
@@ -414,7 +416,7 @@ Then use Drush to view logs:
 
     drush watchdog:show
 
-Profiling (or "Why does it take so long?")
+Profiling (or "Why does it take so long?") part 1: PHP
 -----
 
 If you use the "dev" environment type (see "Environment types", above), we include the [XDebug 3](https://xdebug.org) profiler to figure out where your slow code is.
@@ -447,6 +449,48 @@ If you want to profile a call from the command line, you can do this:
     >>> exit
 
 Again, visit your profiler at (in this example): http://0.0.0.0:50175/webgrind.
+
+Profiling (or "Why does it take so long?") part 2: Database
+-----
+
+Every time you do anything on your site, you will trigger any number of database operations, some of which can be quite slow.
+
+If you use XDebug, as described above, to debug a slow page load, you might realize that the only slow PHP function is:
+
+    php::PDOStatement->execute
+
+This is not very helpful. To further debug this, you might want to try monitoring slow queries in PHP.
+
+To do this, you can enable and observe slow queries.
+
+### Log into your Drupal container
+
+    docker-compose exec drupal /bin/bash
+
+### Get a database command line prompt
+
+    drush sqlc
+
+### Enable slow query logging
+
+    SET GLOBAL slow_query_log=1;
+
+### Output data to the database and decide what you mean by "slow query"
+
+In this case you are monitoring all queries taking more than 1.2 seconds.
+
+    SET GLOBAL log_output='TABLE';
+    SET GLOBAL long_query_time=1.2;
+
+Now you can visit your slow page, then see your slow queries with the special backslash-G formatting:
+
+    SELECT * FROM mysql.slow_log\G
+
+### When you're done, disable slow query logging
+
+    SET GLOBAL slow_query_log=0;
+
+Source: [MariaDB Slow Query Log Overview](https://mariadb.com/kb/en/slow-query-log-overview/).
 
 Logging emails during development
 -----
@@ -520,3 +564,20 @@ If you _know_ "something" has changed, you might want to run:
 
     ./scripts/docker-compose.sh build --no-cache
     ./scripts/deploy.sh
+
+Running automated functional tests
+-----
+
+Let's say you're developing a pull request for a module, for example [masquerade](http://drupal.org/project/masquerade) you can put that module in ./drupal/custom-modules/, then run automated functional tests by running:
+
+    ./scripts/deploy.sh
+    docker-compose exec drupal /bin/bash
+
+Then once in the container:
+
+    composer require --dev phpspec/prophecy-phpunit:^2
+    mkdir -p sites/simpletest
+    chown www-data:www-data sites/simpletest
+    php ./core/scripts/run-tests.sh --url http://webserver/ --verbose --sqlite /tmp/test.sqlite masquerade
+
+https://www.drupal.org/project/drupal/issues/2958813#comment-12559056
