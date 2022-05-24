@@ -475,7 +475,7 @@ To do this, you can enable and observe slow queries.
 
     SET GLOBAL slow_query_log=1;
 
-(you can also log all queries by running `SET GLOBAL general_log=1;`).
+(you can also log all queries by running `SET GLOBAL general_log=1;`.)
 
 ### Output data to the database and decide what you mean by "slow query"
 
@@ -487,6 +487,8 @@ In this case you are monitoring all queries taking more than 1.2 seconds.
 Now you can visit your slow page, then see your slow queries with the special backslash-G formatting:
 
     SELECT * FROM mysql.slow_log\G
+
+(You can also view all queries, if you set the general_log to 1, above, by running: `SELECT * FROM mysql.general_log\G`.)
 
 ### When you're done, disable slow query logging
 
