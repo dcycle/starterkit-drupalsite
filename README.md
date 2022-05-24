@@ -475,6 +475,8 @@ To do this, you can enable and observe slow queries.
 
     SET GLOBAL slow_query_log=1;
 
+(you can also log all queries by running `SET GLOBAL general_log=1;`).
+
 ### Output data to the database and decide what you mean by "slow query"
 
 In this case you are monitoring all queries taking more than 1.2 seconds.
