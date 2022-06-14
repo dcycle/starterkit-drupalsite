@@ -88,10 +88,13 @@ See the article [Local development using Docker and HTTPS, Dcycle Blog, Oct. 27,
 Let's Encrypt on a server
 -----
 
-Run your instance, then follow the instructions in the following blog posts:
+We will follow the instructions in the following blog posts:
 
 * [Letsencrypt HTTPS for Drupal on Docker, October 03, 2017, Dcycle Blog](https://blog.dcycle.com/blog/170a6078/letsencrypt-drupal-docker/)
 * [Deploying Letsencrypt with Docker-Compose, October 06, 2017, Dcycle Blog](https://blog.dcycle.com/blog/7f3ea9e1/letsencrypt-docker-compose/)
+
+Run your instance (./scripts/deploy.sh), then
+
 
 Initial installation on Docker
 -----
@@ -517,6 +520,12 @@ The ports will be different each time, but using the above ports as an example, 
 
 Troubleshooting
 -----
+
+Start by making sure you have the latest version of your operating system, Docker, and Docker-Compose. Make sure you have at least 8Gb or RAM, and that Docker is assigned at least 6Gb or RAM. Restart your computer or server.
+
+### Unable to connect to MySQL
+
+This is known to happen if you are using an outdated version of Docker, for example on DigitalOcean's Docker image at the time of this writing. The solution is to create a Ubuntu image, then install Docker from scratch as per https://docs.docker.com/engine/install/ubuntu.
 
 ### If you cannot import translations
 
