@@ -88,10 +88,67 @@ See the article [Local development using Docker and HTTPS, Dcycle Blog, Oct. 27,
 Let's Encrypt on a server
 -----
 
-Run your instance, then follow the instructions in the following blog posts:
+(This does not apply to local development, only to publicly-accessible servers.)
+
+We will follow the instructions in the following blog posts:
 
 * [Letsencrypt HTTPS for Drupal on Docker, October 03, 2017, Dcycle Blog](https://blog.dcycle.com/blog/170a6078/letsencrypt-drupal-docker/)
 * [Deploying Letsencrypt with Docker-Compose, October 06, 2017, Dcycle Blog](https://blog.dcycle.com/blog/7f3ea9e1/letsencrypt-docker-compose/)
+
+Here are the exact steps:
+
+* Figure out the IP address of your server, for example 1.2.3.4.
+* Make sure your domain name, for example example.com, resolves to 1.2.3.4. You can test this by running:
+
+    ping example.com
+
+You should see something like:
+
+    PING example.com (1.2.3.4): 56 data bytes
+    64 bytes from 1.2.3.4: icmp_seq=0 ttl=46 time=28.269 ms
+    64 bytes from 1.2.3.4: icmp_seq=1 ttl=46 time=25.238 ms
+
+Press control-C to get out of the loop.
+
+* Run your instance (./scripts/deploy.sh)
+* edit the file .env
+* replace the line VIRTUAL_HOST=localhost with VIRTUAL_HOST=example.com
+* Run ./scripts/deploy.sh again
+
+Now set up Let's Encrypt as per the above blog posts:
+
+    mkdir "$HOME"/certs
+    docker run -d -p 80:80 -p 443:443 \
+      --name nginx-proxy \
+      -v "$HOME"/certs:/etc/nginx/certs:ro \
+      -v /etc/nginx/vhost.d \
+      -v /usr/share/nginx/html \
+      -v /var/run/docker.sock:/tmp/docker.sock:ro \
+      --label com.github.jrcs.letsencrypt_nginx_proxy_companion.nginx_proxy \
+      --restart=always \
+      jwilder/nginx-proxy
+    docker run -d \
+      --name nginx-letsencrypt \
+      -v "$HOME"/certs:/etc/nginx/certs:rw \
+      -v /var/run/docker.sock:/var/run/docker.sock:ro \
+      --volumes-from nginx-proxy \
+      --restart=always \
+      jrcs/letsencrypt-nginx-proxy-companion
+
+Figure out the network name
+
+    docker network ls
+
+It is something like "starterkit_drupalsite_default".
+
+Connect your network and restart the Let's Encrypt container:
+
+    docker network connect starterkit_drupalsite_default nginx-proxy
+    docker restart nginx-letsencrypt
+
+After 120 seconds the security certificate should work, but you will get "The provided host name is not valid for this server". This means you need to add your host to the allowed hosts. See the "Troubleshooting" section for details.
+
+Now your site should work with LetsEncrypt.
 
 Initial installation on Docker
 -----
@@ -517,6 +574,34 @@ The ports will be different each time, but using the above ports as an example, 
 
 Troubleshooting
 -----
+
+Start by making sure you have the latest version of your operating system, Docker, and Docker-Compose. Make sure you have at least 8Gb or RAM, and that Docker is assigned at least 6Gb or RAM. Restart your computer or server.
+
+### The provided host name is not valid for this server
+
+This means you are using a custom hostname or IP address to access your site.
+
+For security reasons Drupal does not allow traffic from unknown domains or IP addresses.
+
+Edit ./drupal/settings/local-settings/versioned.php, and add your domain to the list in the "Add your own domain(s) here" section, like this:
+
+    $settings['trusted_host_patterns'] = [
+      // Add your own domain(s) here!
+      '^example\.com$',
+      // These are used for local development.
+      '^localhost$',
+      '^127\.0\.0\.1$',
+      '^0\.0\.0\.0$',
+      // This is used for browser testing by ./scripts/a11y-tests.sh and
+      // ./scripts/end-to-end-tests.sh (which iteself accesses our site via the
+      // host "webserver" at ./tests/browser-tests/testLogInAndEdit.js, for
+      // example at http://webserver/user).
+      '^webserver$',
+    ];
+
+### Unable to connect to MySQL
+
+This is known to happen if you are using an outdated version of Docker, for example on DigitalOcean's Docker image at the time of this writing. The solution is to create a Ubuntu image, then install Docker from scratch as per https://docs.docker.com/engine/install/ubuntu.
 
 ### If you cannot import translations
 
