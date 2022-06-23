@@ -416,7 +416,7 @@ This project provides some integration with Acquia Cloud.
 
 ### Prerequisites on the Acquia server
 
-* We need to install the same version of PHP as can be found on the containers by typing `./scripts/docker-compose.sh exec drupal /bin/bash -c 'php -v'`.
+* We need to install the same version of PHP as can be found on the containers by typing `./scripts/docker-compose.sh exec -T drupal /bin/bash -c 'php -v'`.
 * Make sure you are periodically calling "drush cron" from the command line using [this technique](https://docs.acquia.com/acquia-cloud/manage/cron) on your Acquia site.
 
 ### Notes about cron on Acquia
@@ -458,7 +458,7 @@ Getting a local version of the database
 
 If you have a .sql file with the database database, you can run:
 
-./scripts/docker-compose.sh exec drupal /bin/bash -c 'drush sqlc' < /path/to/db.sql
+./scripts/docker-compose.sh exec -T drupal /bin/bash -c 'drush sqlc' < /path/to/db.sql
 
 You can set up the Stage File Proxy module to fetch files from the live server instead of importing the files.
 
@@ -498,7 +498,7 @@ We have included the required dependencies to generate a nice call graph.
 
 If you want to profile a call from the command line, you can do this:
 
-    docker-compose exec drupal /bin/bash
+    docker-compose exec -T drupal /bin/bash
     ...
     export XDEBUG_TRIGGER=1
     drush php
@@ -522,7 +522,7 @@ To do this, you can enable and observe slow queries.
 
 ### Log into your Drupal container
 
-    docker-compose exec drupal /bin/bash
+    docker-compose exec -T drupal /bin/bash
 
 ### Get a database command line prompt
 
@@ -660,7 +660,7 @@ Running automated functional tests
 Let's say you're developing a pull request for a module, for example [masquerade](http://drupal.org/project/masquerade) you can put that module in ./drupal/custom-modules/, then run automated functional tests by running:
 
     ./scripts/deploy.sh
-    docker-compose exec drupal /bin/bash
+    docker-compose exec -T drupal /bin/bash
 
 Then once in the container:
 

@@ -4,4 +4,4 @@
 #
 set -e
 
-./scripts/docker-compose.sh exec drupal /bin/bash -c 'drush cr'
+./scripts/docker-compose.sh exec -T drupal /bin/bash -c 'drush cr'
