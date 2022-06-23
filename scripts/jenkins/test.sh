@@ -19,5 +19,5 @@ sleep 90
 
 ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no root@"$IP" "mkdir -p starterkit-drupalsite-job"
 scp -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no ~/.dcycle-docker-credentials.sh root@$IP:~/.dcycle-docker-credentials.sh
-scp -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -r * root@"$IP":starterkit-drupalsite
-ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no root@"$IP" "cd starterkit-drupalsite && ./scripts/install-docker-and-ci.sh"
+scp -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -r * root@"$IP":starterkit-drupalsite-job
+ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no root@"$IP" "cd starterkit-drupalsite-job && ./scripts/install-docker-and-ci.sh"
