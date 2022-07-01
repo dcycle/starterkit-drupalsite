@@ -11,6 +11,11 @@
 #
 set -e
 
+# See https://getcomposer.org/allow-plugins
+composer config --no-plugins allow-plugins.composer/installers true
+composer config --no-plugins allow-plugins.dealerdirect/phpcodesniffer-composer-installer true
+composer config --no-plugins allow-plugins.drupal/* true
+
 # Download contrib modules
 # stage_file_proxy: During local development, fetch files from the stage site
 # if they do not.
@@ -30,6 +35,10 @@ composer require \
   drupal/bootstrap \
   drupal/stage_file_proxy \
   drupal/smtp
+
+# If plugins are not allowed as per https://getcomposer.org/allow-plugins (see
+# above) then modules/contrib will not exist. Fail fast is such is the case.
+ls -lah modules/contrib
 
 # Example of how to apply a patch.
 # curl -O https://www.drupal.org/files/issues/2752961-114.patch

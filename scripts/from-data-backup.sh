@@ -49,7 +49,7 @@ fi
 echo "Extracting it..."
 FULLDIRONCONTAINER="/do-not-commit/data-dumps/$1"
 FULLDIRONLOCAL=".$FULLDIRONCONTAINER"
-./scripts/docker-compose.sh exec drupal /bin/bash -c "cd /do-not-commit/data-dumps && tar xzvf $TARBALL"
+./scripts/docker-compose.sh exec -T drupal /bin/bash -c "cd /do-not-commit/data-dumps && tar xzvf $TARBALL"
 echo "It is extracted."
 echo "On the container it is at $FULLDIRONCONTAINER"
 echo "On local it is at $FULLDIRONLOCAL"
@@ -65,13 +65,13 @@ else
 fi
 
 echo "Performing a clean install..."
-./scripts/docker-compose.sh exec drupal /bin/bash -c "drush si -y"
+./scripts/docker-compose.sh exec -T drupal /bin/bash -c "drush si -y"
 echo "Grabbing the sql database..."
-./scripts/docker-compose.sh exec drupal /bin/bash -c "drush sqlc < $FULLDIRONCONTAINER/db.sql"
+./scripts/docker-compose.sh exec -T drupal /bin/bash -c "drush sqlc < $FULLDIRONCONTAINER/db.sql"
 echo "Grabbing public files..."
-./scripts/docker-compose.sh exec drupal /bin/bash -c "cp -r $FULLDIRONCONTAINER/files/* /var/www/html/sites/default/files/"
+./scripts/docker-compose.sh exec -T drupal /bin/bash -c "cp -r $FULLDIRONCONTAINER/files/* /var/www/html/sites/default/files/"
 echo "Grabbing private files..."
-./scripts/docker-compose.sh exec drupal /bin/bash -c "cp -r $FULLDIRONCONTAINER/drupal-private-files/* /drupal-private-files/"
+./scripts/docker-compose.sh exec -T drupal /bin/bash -c "cp -r $FULLDIRONCONTAINER/drupal-private-files/* /drupal-private-files/"
 
 echo "Removing $FULLDIRONCONTAINER because he have its compressed version"
 echo "already (saves disk space)..."
