@@ -22,10 +22,15 @@ composer config --no-plugins allow-plugins.drupal/* true
 # smtp: Mail should be sent to a dummy mail interface, see ./README.md for
 # details.
 # See https://getcomposer.org/doc/articles/troubleshooting.md#memory-limit-errors
+
+composer config repositories.drupal composer https://packages.drupal.org/8
+
 composer require \
-  drupal/email_registration \
+  drupal/acquia_lift \
+  drupal/acquia_contenthub:~2 \
   drupal/devel \
   drupal/field_group \
+  drupal/email_registration \
   drupal/token \
   drupal/metatag \
   drupal/pathauto \
@@ -34,6 +39,7 @@ composer require \
   drupal/masquerade \
   drupal/bootstrap \
   drupal/stage_file_proxy \
+  drupal/letsencrypt_challenge \
   drupal/smtp
 
 # If plugins are not allowed as per https://getcomposer.org/allow-plugins (see

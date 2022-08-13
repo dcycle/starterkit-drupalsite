@@ -723,12 +723,15 @@ $settings['entity_update_batch_size'] = 50;
 
 $settings['config_sync_directory'] = '../config';
 
-// On Acquia Cloud, this include file configures Drupal to use the correct
-// database in each site environment (Dev, Stage, or Prod). To use this
-// settings.php for development on your local workstation, set $db_url
-// (Drupal 5 or 6) or $databases (Drupal 7 or 8) as described in comments above.
 if (file_exists('/var/www/site-php')) {
-  require('/var/www/site-php/starterkit-drupalsite/starterkit-drupalsite-settings.inc');
+  require('/var/www/site-php/stewardcommunity/stewardcommunity-settings.inc');
+}
+
+// This is specific to Acquia environments. In Acquia, the settings.php file
+// is versioned, and environment-specific information such as database
+// passwords is in this file:
+if (file_exists('/mnt/gfs/home/stewardcommunity/local-settings-community.php')) {
+  require '/mnt/gfs/home/stewardcommunity/local-settings-community.php';
 }
 
 if (file_exists('/local-settings/versioned.php')) {
@@ -738,3 +741,18 @@ if (file_exists('/local-settings/versioned.php')) {
 if (file_exists('/local-settings/unversioned.php')) {
   require('/local-settings/unversioned.php');
 }
+
+$settings['trusted_host_patterns'] = [
+  // Add your own domain(s) here!
+  // These are used for local development.
+  '^localhost$',
+  '^127\.0\.0\.1$',
+  '^0\.0\.0\.0$',
+  // This is used for browser testing by ./scripts/a11y-tests.sh and
+  // ./scripts/end-to-end-tests.sh (which iteself accesses our site via the
+  // host "webserver" at ./tests/browser-tests/testLogInAndEdit.js, for
+  // example at http://webserver/user).
+  '^webserver$',
+  '^stewardcommunitystg\.prod\.acquia-sites\.com$',
+];
+//1641
