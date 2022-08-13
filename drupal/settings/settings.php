@@ -723,15 +723,11 @@ $settings['entity_update_batch_size'] = 50;
 
 $settings['config_sync_directory'] = '../config';
 
-if (file_exists('/var/www/site-php')) {
-  require('/var/www/site-php/stewardcommunity/stewardcommunity-settings.inc');
-}
-
 // This is specific to Acquia environments. In Acquia, the settings.php file
 // is versioned, and environment-specific information such as database
 // passwords is in this file:
-if (file_exists('/mnt/gfs/home/stewardcommunity/local-settings-community.php')) {
-  require '/mnt/gfs/home/stewardcommunity/local-settings-community.php';
+if (file_exists('/mnt/gfs/home/starterkit-drupalsite/local-settings-community.php')) {
+  require '/mnt/gfs/home/starterkit-drupalsite/local-settings-community.php';
 }
 
 if (file_exists('/local-settings/versioned.php')) {
@@ -753,6 +749,5 @@ $settings['trusted_host_patterns'] = [
   // host "webserver" at ./tests/browser-tests/testLogInAndEdit.js, for
   // example at http://webserver/user).
   '^webserver$',
-  '^stewardcommunitystg\.prod\.acquia-sites\.com$',
+  '^example\.com$',
 ];
-//1641
