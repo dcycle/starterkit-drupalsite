@@ -24,6 +24,7 @@ module:
   help: 0
   history: 0
   image: 0
+  letsencrypt_challenge: 0
   link: 0
   menu_link_content: 0
   menu_ui: 0

@@ -5,3 +5,6 @@
 PANTHEONTOKEN=abc123abc123abc123abc123abc123abc123abc123
 PANTHEONSSHKEYNOPASSDIR=/Users/me/.ssh
 PANTHEONSSHKEYNOPASSNAME=id_rsa
+ACQUIAGIT=/full/path/to/acquia/git/on/local/computer
+ACQUIA_MULTISITE_ID=default
+ACQUIA_CONFIG_DIR=config
