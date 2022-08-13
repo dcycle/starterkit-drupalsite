@@ -726,8 +726,8 @@ $settings['config_sync_directory'] = '../config';
 // This is specific to Acquia environments. In Acquia, the settings.php file
 // is versioned, and environment-specific information such as database
 // passwords is in this file:
-if (file_exists('/mnt/gfs/home/starterkit-drupalsite/local-settings-community.php')) {
-  require '/mnt/gfs/home/starterkit-drupalsite/local-settings-community.php';
+if (file_exists('/mnt/gfs/home/starterkit-drupalsite/local-settings-mysite.php')) {
+  require '/mnt/gfs/home/starterkit-drupalsite/local-settings-mysite.php';
 }
 
 if (file_exists('/local-settings/versioned.php')) {
