@@ -60,7 +60,9 @@ ls -lah modules/contrib
 # /drupal-modules-contrib and /drupal-themes-contrib allows the update script
 # at
 rm -rf /drupal-modules-contrib /drupal-themes-contrib
-cp -r modules/contrib /drupal-modules-contrib
+if [ -d ./modules/contrib ]; then
+  cp -r modules/contrib /drupal-modules-contrib
+fi
 if [ -d ./themes/contrib ]; then
   cp -r ./themes/contrib /drupal-themes-contrib
 fi
