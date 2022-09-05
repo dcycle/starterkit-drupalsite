@@ -1,3 +1,4 @@
 _core:
   default_config_hash: 6cFmNHjhs_glkuywBEhzcUQ8aiHXcFe6hZfW7PLN-qg
 login_with_username: false
+require_username_on_registration: false
