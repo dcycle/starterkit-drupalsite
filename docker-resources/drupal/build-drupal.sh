@@ -42,7 +42,9 @@ composer require \
 
 # If plugins are not allowed as per https://getcomposer.org/allow-plugins (see
 # above) then modules/contrib will not exist. Fail fast is such is the case.
-ls -lah modules/contrib
+if [ -d ./modules/contrib ]; then
+  ls -lah modules/contrib
+fi
 
 # Example of how to apply a patch.
 # curl -O https://www.drupal.org/files/issues/2752961-114.patch
