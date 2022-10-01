@@ -10,9 +10,9 @@ if [ ! -f ./do-not-commit/dom-captures/user.html ]; then
   exit 1
 fi
 
-docker run --rm --network starterkit_drupalsite_default dcycle/pa11y:1 http://webserver -T 8
-docker run --rm --network starterkit_drupalsite_default dcycle/pa11y:1 http://webserver/node/1 -T 7
-docker run --rm --network starterkit_drupalsite_default dcycle/pa11y:1 http://webserver/dom-captures/user.html -T 12
-docker run --rm --network starterkit_drupalsite_default dcycle/pa11y:1 http://webserver/dom-captures/node-1-edit.html -T 9
+docker run --rm --network starterkit_drupalsite_default dcycle/pa11y:2 http://webserver -T 8
+docker run --rm --network starterkit_drupalsite_default dcycle/pa11y:2 http://webserver/node/1 -T 7
+docker run --rm --network starterkit_drupalsite_default dcycle/pa11y:2 http://webserver/dom-captures/user.html -T 12
+docker run --rm --network starterkit_drupalsite_default dcycle/pa11y:2 http://webserver/dom-captures/node-1-edit.html -T 9
 
 echo 'If this script passes, that means the number of errors is below the allowed threshold.'
