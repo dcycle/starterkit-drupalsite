@@ -20,7 +20,7 @@ if [ -z "$DOCKERHUBUSER" ] || [ -z "$DOCKERHUBPASS" ] || [ -z "$DOCKERHUBREPONAM
   >&2 echo "export DOCKERHUBUSER=xxxx"
   >&2 echo "export DOCKERHUBPASS=xxxx"
   >&2 echo "export DOCKERHUBREPONAME=dcycle/drupal-starterkit # put yours instead."
-  >&2 echo "export DOCKERHUBREPOTAG=mybranchname"
+  >&2 echo "export DOCKERHUBREPOTAG=mytagname"
   >&2 echo "./scripts/docker-hub/push-build.sh"
   >&2 echo ""
   exit 1
