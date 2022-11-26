@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-NAMESPACE=starterkit-drupalsite
+./scripts/jenkins/preflight.sh
 
 echo "Building a droplet as per https://blog.dcycle.com/kubernetes/15.5-multi-arch-custom-docker-images/"
 doctl -t "$TOKEN" compute droplet create --ssh-keys "$SSHKEYFINGERPRINT" --image ubuntu-22-10-x64 --size s-4vcpu-8gb-intel --region nyc1 "$NAMESPACE"
@@ -15,14 +15,14 @@ ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no \
 
 ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no \
   -i "$SSHKEYFILE" \
-  root@"$IP" "mkdir -p $NAMESPACE"
+  root@"$VM_PUBLIC_IP" "mkdir -p $NAMESPACE"
 scp -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no \
   -i "$SSHKEYFILE" \
   ~/.dcycle-docker-credentials.sh \
-  root@$IP:~/.dcycle-docker-credentials.sh
+  root@$VM_PUBLIC_IP:~/.dcycle-docker-credentials.sh
 scp -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no \
   -i "$SSHKEYFILE" \
-  -r * root@"$IP:$NAMESPACE"
+  -r * root@"$VM_PUBLIC_IP:$NAMESPACE"
 ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no \
   -i "$SSHKEYFILE" \
-  root@"$IP" "cd $NAMESPACE && ls -lah && ./scripts/jenkins/install-docker-and-build-on-vm.sh"
+  root@"$VM_PUBLIC_IP" "cd $NAMESPACE && ls -lah && ./scripts/jenkins/install-docker-and-build-on-vm.sh"
