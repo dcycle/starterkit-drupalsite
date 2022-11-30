@@ -8,7 +8,7 @@ doctl -t "$TOKEN" compute droplet create --ssh-keys "$SSHKEYFINGERPRINT" --image
 
 echo "Wait for the IP address to be available."
 sleep 90
-VM_PUBLIC_IP=$(doctl -t "$TOKEN" compute droplet get "$VMNAME" --format PublicIPv4 --no-header)
+VM_PUBLIC_IP=$(doctl -t "$TOKEN" compute droplet get "$NAMESPACE" --format PublicIPv4 --no-header)
 ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no \
     -i "$SSHKEYFILE" \
     "$SSHKEYUSER@$VM_PUBLIC_IP" "echo 'Yay, this works!'"
