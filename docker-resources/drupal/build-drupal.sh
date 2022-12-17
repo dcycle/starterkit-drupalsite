@@ -39,7 +39,7 @@ composer require \
   drupal/paragraphs \
   drupal/masquerade \
   drupal/bootstrap \
-  drupal/stage_file_proxy \
+  drupal/stage_file_proxy:^1 \
   drupal/letsencrypt_challenge \
   drupal/smtp
 
