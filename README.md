@@ -43,7 +43,7 @@ Contents
 About
 -----
 
-A starterkit to build a Drupal 8 or 9 project.
+A starterkit to build a Drupal 10 project.
 
 ### Features
 

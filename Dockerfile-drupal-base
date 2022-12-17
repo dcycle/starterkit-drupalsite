@@ -1,4 +1,4 @@
-FROM dcycle/drupal:9php8-fpm-alpine
+FROM dcycle/drupal:10-fpm-alpine
 
 COPY drupal/scripts /scripts
 COPY drupal/settings/settings.php /var/www/html/sites/default/settings.php
