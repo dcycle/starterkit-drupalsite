@@ -22,7 +22,7 @@ it('It should be possible to log in and edit a node', async function() {
     await page.type('[name=name]', process.env.DRUPALMAIL)
     await page.type('[name=pass]', process.env.DRUPALPASS)
     await page.keyboard.press('Enter');
-    await page.waitForSelector('nav.tabs')
+    await page.waitForSelector('#toolbar-bar')
 
     await testBase.screenshot(page, 'user', await page.content());
 
