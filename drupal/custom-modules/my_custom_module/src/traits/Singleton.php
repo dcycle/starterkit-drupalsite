@@ -14,7 +14,7 @@ trait Singleton {
   /**
    * Interal instance variable used with the instance() method.
    *
-   * @var object
+   * @var object|null
    */
   static private $instance;
 
