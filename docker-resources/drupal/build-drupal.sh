@@ -11,9 +11,6 @@
 #
 set -e
 
-# See https://github.com/composer/composer/issues/11093
-composer self-update 2.4.1
-
 # See https://getcomposer.org/allow-plugins
 composer config --no-plugins allow-plugins.composer/installers true
 composer config --no-plugins allow-plugins.dealerdirect/phpcodesniffer-composer-installer true
