@@ -2,11 +2,11 @@
 
 namespace Drupal\my_custom_module\Tests\Form;
 
-use Drupal\my_custom_module\Form\AdminSettingsForm;
-use PHPUnit\Framework\TestCase;
 // Note that we are not actually using Drupal here, but rather our mock
 // simplified version of Drupal at ./phpunit-bootstrap.php.
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\my_custom_module\Form\AdminSettingsForm;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Test AdminSettingsForm.

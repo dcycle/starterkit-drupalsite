@@ -7,6 +7,7 @@ dependencies:
   module:
     - comment
     - contact
+    - file
     - filter
     - search
     - shortcut
@@ -22,6 +23,7 @@ permissions:
   - 'access content'
   - 'access shortcuts'
   - 'access site-wide contact form'
+  - 'delete own files'
   - 'post comments'
   - 'search content'
   - 'skip comment approval'

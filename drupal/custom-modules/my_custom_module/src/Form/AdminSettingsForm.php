@@ -2,10 +2,9 @@
 
 namespace Drupal\my_custom_module\Form;
 
-use Drupal\my_custom_module\traits\Environment;
-
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\my_custom_module\traits\Environment;
 
 /**
  * The custom asdmin settings form our site.
