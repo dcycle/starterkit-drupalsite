@@ -2,8 +2,8 @@
 
 namespace Drupal\my_custom_module;
 
-use Drupal\my_custom_module\traits\Singleton;
 use Drupal\my_custom_module\traits\Environment;
+use Drupal\my_custom_module\traits\Singleton;
 
 /**
  * Module-wide functionality.
