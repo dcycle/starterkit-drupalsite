@@ -1,5 +1,5 @@
 name: My custom module
 type: module
 description: Custom code for this site.
-core_version_requirement: ^9
-php: '7.x'
+core_version_requirement: ^10
+php: '8.x'

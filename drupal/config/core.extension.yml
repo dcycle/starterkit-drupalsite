@@ -48,4 +48,7 @@ module:
   standard: 1000
 theme:
   olivero: 0
+  bootstrap: 0
+  my_custom_theme: 0
+  claro: 0
 profile: standard
