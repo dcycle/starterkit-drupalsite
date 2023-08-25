@@ -1,8 +1,8 @@
-core_version_requirement: ^9
+core_version_requirement: ^10
 type: theme
 base theme: bootstrap
 
-name: 'THEMETITLE'
+name: 'My Custom Theme'
 description: 'Uses the jsDelivr CDN for all CSS and JavaScript. No source files or compiling is necessary and is recommended for simple sites or beginners.'
 package: 'Bootstrap'
 

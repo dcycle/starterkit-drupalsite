@@ -1,0 +1,23 @@
+uuid: db35755f-ec0b-4430-a943-8d13b97f73d7
+langcode: en
+status: true
+dependencies:
+  module:
+    - search
+  theme:
+    - my_custom_theme
+_core:
+  default_config_hash: yEBET0cqDbk8dkWzaJw-8CKft0961VBflsISoSR6Lj8
+id: my_custom_theme_search_form_narrow
+theme: my_custom_theme
+region: navigation
+weight: -4
+provider: null
+plugin: search_form_block
+settings:
+  id: search_form_block
+  label: 'Search form (narrow)'
+  label_display: '0'
+  provider: search
+  page_id: ''
+visibility: {  }
