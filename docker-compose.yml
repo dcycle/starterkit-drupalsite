@@ -74,8 +74,8 @@ services:
 # See https://github.com/docker/compose/issues/3736.
 networks:
   default:
-    external:
-      name: starterkit_drupalsite_default
+    name: starterkit_drupalsite_default
+    external: true
 
 volumes:
   mysql:
