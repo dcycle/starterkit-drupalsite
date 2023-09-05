@@ -23,7 +23,7 @@ echo 'is updated automatically every Wednesday with the latest version of'
 echo 'Drupal and Drush. If the image has changed since the latest deployment,'
 echo 'the environment will be completely rebuilt based on this image.'
 docker pull dcycle/drupal:10-fpm-alpine
-docker pull mariadb
+docker pull mariadb:10.7
 
 source ./scripts/lib/hook.source.sh pull-extra-images
 source ./scripts/lib/hook.source.sh post-pull-steps

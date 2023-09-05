@@ -46,7 +46,7 @@ services:
 
   # Database server
   mysql:
-    image: mariadb
+    image: mariadb:10.7
     volumes:
       - ./mysql/cnf:/etc/mysql/conf.d
 
