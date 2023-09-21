@@ -24,6 +24,7 @@ module:
   image: 0
   letsencrypt_challenge: 0
   link: 0
+  masquerade: 0
   menu_link_content: 0
   menu_ui: 0
   mysql: 0
