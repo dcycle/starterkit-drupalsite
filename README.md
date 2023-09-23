@@ -12,7 +12,7 @@ Contents
 * Let's Encrypt on a server
 * Initial installation on Docker
 * Incremental deployment (updating) on Docker
-* ./scripts/docker-compose.sh instead of docker-compose
+* ./scripts/docker-compose.sh instead of docker compose
 * Environment types
 * Local and environment-specific settings
 * Power up/power down the Docker environment
@@ -179,10 +179,10 @@ When you run ./scripts/deploy.sh, you can specify one of these **environment typ
 * Opcache is turned on because "build" mode is not designed to do development.
 * Code is copied to the container, so your container will have everything it needs to run.
 
-./scripts/docker-compose.sh instead of docker-compose
+./scripts/docker-compose.sh instead of docker compose
 -----
 
-The `docker-compose` command will, by default, use `docker-compose.yml`, but in our setup, `docker-compose.yml` by itself is not valid, because we have several environment types (dev, build, ...). Using `./scripts/docker-compose.sh` will find the right environment type based on the contents of the unversioned `.env` file. For example, if the environment type is "dev", we will use, automatically, `docker-compose.yml` but also `docker-compose.dev.yml` as described in ./scripts/dev/env.txt.
+The `docker compose` command will, by default, use `docker-compose.yml`, but in our setup, `docker-compose.yml` by itself is not valid, because we have several environment types (dev, build, ...). Using `./scripts/docker-compose.sh` will find the right environment type based on the contents of the unversioned `.env` file. For example, if the environment type is "dev", we will use, automatically, `docker-compose.yml` but also `docker-compose.dev.yml` as described in ./scripts/dev/env.txt.
 
 Local and environment-specific settings
 -----
@@ -356,7 +356,7 @@ Your pull request **should not** remove the module from the Dockerfile. The reas
 If you like, you might put a comment in your Dockerfile stating when the module can be deleted, perhaps 3 months from now, something like:
 
     # On 2021-10-19, remove block_class
-    RUN docker-compose require \
+    RUN composer require \
       ...
       drupal/block_class \
       ...
@@ -498,7 +498,7 @@ We have included the required dependencies to generate a nice call graph.
 
 If you want to profile a call from the command line, you can do this:
 
-    docker-compose exec -T drupal /bin/bash
+    docker compose exec -T drupal /bin/bash
     ...
     export XDEBUG_TRIGGER=1
     drush php
@@ -522,7 +522,7 @@ To do this, you can enable and observe slow queries.
 
 ### Log into your Drupal container
 
-    docker-compose exec -T drupal /bin/bash
+    docker compose exec -T drupal /bin/bash
 
 ### Get a database command line prompt
 
@@ -610,13 +610,13 @@ After enabling config_translation, also change the owner and group of /var/www/h
     drush en config_translation
     chown www-data:www-data /var/www/html/sites/default/files/translations
 
-### Do not use "docker-compose", use "./scripts/docker-compose.sh"
+### Do not use "docker compose", use "./scripts/docker-compose.sh"
 
 We construct our docker-compose environment based on an _environment type_ (see above), therefore the `docker-compose.yml` file, on its own, is invalid and will produce:
 
     ERROR: The Compose file is invalid because ...
 
-The solution is to use, for example, `./scripts/docker-compose.sh ps` instead of `docker-compose ps`.
+The solution is to use, for example, `./scripts/docker-compose.sh ps` instead of `docker compose ps`.
 
 ### First steps if anything goes wrong
 
@@ -660,7 +660,7 @@ Running automated functional tests
 Let's say you're developing a pull request for a module, for example [masquerade](http://drupal.org/project/masquerade) you can put that module in ./drupal/custom-modules/, then run automated functional tests by running:
 
     ./scripts/deploy.sh
-    docker-compose exec -T drupal /bin/bash
+    docker compose exec -T drupal /bin/bash
 
 Then once in the container:
 

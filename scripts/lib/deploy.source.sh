@@ -41,30 +41,24 @@ echo ''
 echo '---DETERMINE LOCAL DOMAIN---'
 echo 'The local domain variable, used by https-deploy.sh does not need to be'
 echo 'set during non-https deployment, however we will set it anyway because'
-echo 'otherwise docker-compose up will complain that the variable is not set.'
+echo 'otherwise docker compose up will complain that the variable is not set.'
 source ./scripts/lib/set-local-domain.sh
 
 echo ''
 echo '-----'
 echo 'About to start persistent (-d) containers based on the images defined'
 echo 'in ./Dockerfile and ./docker-compose.yml. We are also telling'
-echo 'docker-compose to rebuild the images if they are out of date.'
+echo 'docker compose to rebuild the images if they are out of date.'
 echo "Using compose files $DOCKER_COMPOSE_FILES"
 # Cannot quote $DOCKER_COMPOSE_FILES here
 # shellcheck disable=SC2086
-docker-compose $DOCKER_COMPOSE_FILES up -d --build
-
-echo ''
-echo '-----'
-echo 'Remembering docker-compose info to run faster later on.'
-# If you use docker-compose restart, rerun the following script.
-./scripts/docker-compose-remember-info.sh
+docker compose $DOCKER_COMPOSE_FILES up -d --build
 
 echo ''
 echo '-----'
 echo 'Running the deploy script on the running containers. This installs'
 echo 'Drupal if it is not yet installed.'
-docker exec "$(./scripts/docker-compose-container.sh drupal)" /scripts/deploy.sh
+docker compose exec drupal /scripts/deploy.sh
 
 # If you need to do stuff after deployment such as set a state variable, do it
 # here.
@@ -72,7 +66,7 @@ docker exec "$(./scripts/docker-compose-container.sh drupal)" /scripts/deploy.sh
 echo ''
 echo '-----'
 echo 'Running the update script on the container.'
-docker exec "$(./scripts/docker-compose-container.sh drupal)" /scripts/update.sh
+docker compose exec drupal /scripts/update.sh
 
 echo ''
 echo '-----'

@@ -8,7 +8,7 @@ set -e
 USER=admin
 PASS=$(./scripts/uuid.sh)
 echo 'Updating password for admin so our testbot knows how to login'
-docker exec "$(./scripts/docker-compose-container.sh drupal)" /bin/bash -c 'drush upwd $(drush uinf --uid=1 --field=name) '"$PASS"
+docker compose exec drupal /bin/bash -c 'drush upwd $(drush uinf --uid=1 --field=name) '"$PASS"
 
 echo 'Running our tests'
 docker run -e DRUPALUSER=admin -e DRUPALMAIL="user+1@localhost.localdomain" -e DRUPALPASS="$PASS" --rm -v "$(pwd)"/tests/browser-tests:/app/test \

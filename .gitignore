@@ -9,9 +9,6 @@ do-not-commit
 # We want to ignore environment variables used by Docker Compose
 .env
 
-# See ./.docker-compose-remember-info.sh for details
-.docker-compose-info
-
 # Lambdatest puts these files here if I trigger a tunnel from this directory.
 lt.log
 ltcupdate
