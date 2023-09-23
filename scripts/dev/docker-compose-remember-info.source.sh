@@ -1,5 +1,5 @@
 #
-# Remember environment-specific docker-compose info.
+# Remember environment-specific docker compose info.
 # Meant for use with source ...
 #
 set -e

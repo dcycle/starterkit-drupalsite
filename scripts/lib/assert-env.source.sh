@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Make sure we can run a docker-compose command.
+# Make sure we can run a docker compose command.
 #
 set -e
 

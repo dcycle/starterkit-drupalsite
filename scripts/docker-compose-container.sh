@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Get a previously remembered docker-compose container.
+# Get a previously remembered docker compose container.
 #
 set -e
 

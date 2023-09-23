@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Remember docker-compose ports due to
+# Remember docker compose ports due to
 # https://github.com/docker/compose/issues/4748.
 #
 set -e
