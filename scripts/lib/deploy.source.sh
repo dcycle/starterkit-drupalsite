@@ -58,7 +58,7 @@ echo ''
 echo '-----'
 echo 'Running the deploy script on the running containers. This installs'
 echo 'Drupal if it is not yet installed.'
-docker exec "$(docker compose ps -q drupal)" /scripts/deploy.sh
+docker compose exec -T drupal /scripts/deploy.sh
 
 # If you need to do stuff after deployment such as set a state variable, do it
 # here.
@@ -66,7 +66,7 @@ docker exec "$(docker compose ps -q drupal)" /scripts/deploy.sh
 echo ''
 echo '-----'
 echo 'Running the update script on the container.'
-docker exec "$(docker compose ps -q drupal)" /scripts/update.sh
+docker compose exec -T drupal /scripts/update.sh
 
 echo ''
 echo '-----'
