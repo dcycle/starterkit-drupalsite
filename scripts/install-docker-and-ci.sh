@@ -19,8 +19,5 @@ echo \
 sudo apt-get update
 sudo apt-get -y install docker-ce docker-ce-cli containerd.io docker-compose-plugin
 
-echo '=> Installing Docker Compose.'
-sudo apt-get -y install docker-compose
-
 echo '=> Run CI script.'
 ./scripts/ci.sh

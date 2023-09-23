@@ -8,7 +8,7 @@ set -e
 
 if [ -z "$MYSQL_ROOT_PASSWORD" ]; then
   >&2 echo 'MYSQL_ROOT_PASSWORD should always be set; please destroy your'
-  >&2 echo 'environment using "docker-compose down -v", then restart it'
+  >&2 echo 'environment using "docker compose down -v", then restart it'
   >&2 echo 'using ./scripts/deploy.sh, which should create a password in'
   >&2 echo 'the ./.env file.'
   exit 2;

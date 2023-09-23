@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Get a previously remembered docker-compose port.
+# Get a previously remembered docker compose port.
 #
 set -e
 

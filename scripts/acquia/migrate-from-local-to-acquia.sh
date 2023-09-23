@@ -29,10 +29,10 @@ if [ -z "$ACQUIA_SERVER" ]; then
 fi
 
 echo '[info] Dumping our local database to the Docker container'
-docker-compose exec -T drupal /bin/bash -c 'drush sql-dump > /db.sql'
+docker compose exec -T drupal /bin/bash -c 'drush sql-dump > /db.sql'
 
 echo '[info] Copying our database from our local container to our computer'
-docker cp $(docker-compose ps -q drupal):/db.sql ./do-not-commit/db.sql
+docker cp $(docker compose ps -q drupal):/db.sql ./do-not-commit/db.sql
 
 echo '[info] Compressing our database'
 cd "$DIR"/do-not-commit && tar -czvf db.sql.tar.gz db.sql && cd "$DIR"

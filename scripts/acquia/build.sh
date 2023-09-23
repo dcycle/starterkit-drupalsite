@@ -58,10 +58,10 @@ echo "=> version of what is in our Docker container."
 rm -rf "$ACQUIAGIT"/docroot
 
 echo "=> Preparing to copy drupal root from container..."
-cd "$BASEPWD" && docker-compose exec -T drupal /bin/bash -c "chmod u+w sites/$ACQUIA_MULTISITE_ID"
+cd "$BASEPWD" && docker compose exec -T drupal /bin/bash -c "chmod u+w sites/$ACQUIA_MULTISITE_ID"
 
 echo "=> Copying docroot to ./temporary-build-info..."
-docker cp $(cd "$BASEPWD" && docker-compose ps -q drupal):/var/www/html "$ACQUIAGIT"/temporary-build-info
+docker cp $(cd "$BASEPWD" && docker compose ps -q drupal):/var/www/html "$ACQUIAGIT"/temporary-build-info
 ls "$ACQUIAGIT"/temporary-build-info
 echo "=> Moving docroot from ./temporary-build-info... to ./docroot"
 mkdir "$ACQUIAGIT"/docroot
@@ -93,7 +93,7 @@ rm -rf "$ACQUIAGIT"/temporary-build-info
 
 echo "=> Copying drupal config from container..."
 rm -rf "$ACQUIAGIT"/config
-docker cp $(cd "$BASEPWD" && docker-compose ps -q drupal):/var/www/$ACQUIA_CONFIG_DIR "$ACQUIAGIT"/config
+docker cp $(cd "$BASEPWD" && docker compose ps -q drupal):/var/www/$ACQUIA_CONFIG_DIR "$ACQUIAGIT"/config
 mkdir -p "$ACQUIAGIT/$ACQUIA_CONFIG_DIR"/default
 touch "$ACQUIAGIT/$ACQUIA_CONFIG_DIR"/default/.gitkeep
 

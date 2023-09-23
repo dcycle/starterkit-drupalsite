@@ -16,5 +16,5 @@ TARGET="$TARGETDIRECTORY/$BUILD"
 
 echo "About to build the code in $TARGET"
 
-docker cp $(cd "$D8" && docker-compose ps -q drupal):/var/www/config "$TARGET"/config
-docker cp $(cd "$D8" && docker-compose ps -q drupal):/var/www/html "$TARGET"/docroot
+docker cp $(cd "$D8" && docker compose ps -q drupal):/var/www/config "$TARGET"/config
+docker cp $(cd "$D8" && docker compose ps -q drupal):/var/www/html "$TARGET"/docroot
