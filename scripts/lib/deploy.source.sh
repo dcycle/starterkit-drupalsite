@@ -56,15 +56,9 @@ docker compose $DOCKER_COMPOSE_FILES up -d --build
 
 echo ''
 echo '-----'
-echo 'Remembering docker compose info to run faster later on.'
-# If you use docker compose restart, rerun the following script.
-./scripts/docker-compose-remember-info.sh
-
-echo ''
-echo '-----'
 echo 'Running the deploy script on the running containers. This installs'
 echo 'Drupal if it is not yet installed.'
-docker exec "$(./scripts/docker-compose-container.sh drupal)" /scripts/deploy.sh
+docker compose exec -T drupal /scripts/deploy.sh
 
 # If you need to do stuff after deployment such as set a state variable, do it
 # here.
@@ -72,7 +66,7 @@ docker exec "$(./scripts/docker-compose-container.sh drupal)" /scripts/deploy.sh
 echo ''
 echo '-----'
 echo 'Running the update script on the container.'
-docker exec "$(./scripts/docker-compose-container.sh drupal)" /scripts/update.sh
+docker compose exec -T drupal /scripts/update.sh
 
 echo ''
 echo '-----'

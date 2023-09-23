@@ -5,7 +5,7 @@
 
 set -e
 
-docker exec "$(./scripts/docker-compose-container.sh drupal)" /bin/bash -c \
+docker compose exec -T drupal /bin/bash -c \
   "drush config:export -y"
 
 # We consider certain items to be data whereas Drupal considers them to
