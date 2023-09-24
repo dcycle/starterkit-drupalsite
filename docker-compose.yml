@@ -23,14 +23,7 @@ services:
       - "drupal-files:/var/www/html/sites/default/files:rw"
       - "drupal-themes-contrib:/var/www/html/themes/contrib"
       - "drupal-modules-contrib:/var/www/html/modules/contrib"
-    links:
-      # This seems to be required as per
-      # https://stackoverflow.com/a/48722140/1207752, even though in most
-      # cases eschewing this is not a problem. Without this, the
-      # webserver container might not see the Drupal container for a
-      # split second when everything is being spun up, resulting in a fatal
-      # error and the webserver container to exit, and requiring a restart
-      # of the container.
+    depends_on:
       - drupal
     ports:
       - "80"
@@ -51,8 +44,8 @@ services:
       - "./drupal/settings/local-settings:/local-settings"
       - "drupal-themes-contrib:/var/www/html/themes/contrib"
       - "drupal-modules-contrib:/var/www/html/modules/contrib"
-    links:
-      - mysql:mysql
+    depends_on:
+      - mysql
     working_dir: /var/www/html
 
   # Database server
