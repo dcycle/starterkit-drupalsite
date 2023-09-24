@@ -41,8 +41,6 @@ services:
       - "./do-not-commit/log:/var/log"
       - "./do-not-commit/dom-captures:/var/www/html/dom-captures"
       - "tmp:/tmp"
-    links:
-      - mail:mail
 
   # Database server
   mysql:
