@@ -24,6 +24,11 @@ docker run --rm -v \
   dcycle/php-lint:3 --standard=Drupal /code
 
 echo 'Linting shell scripts'
+echo ''
+echo 'To ignore false negatives, run:'
+echo ''
+echo '# shellcheck disable=SC2016'
+echo ''
 
-docker run --rm -v "$(pwd)":/code dcycle/shell-lint ./scripts/lint.sh
-docker run --rm -v "$(pwd)":/code dcycle/shell-lint ./scripts/https-deploy.sh
+docker run --rm -v "$(pwd)":/code dcycle/shell-lint:2 ./scripts/lint.sh
+docker run --rm -v "$(pwd)":/code dcycle/shell-lint:2 ./scripts/https-deploy.sh
