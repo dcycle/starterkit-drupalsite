@@ -18,3 +18,10 @@ function app() : App {
 function my_custom_module_cron() {
   App::instance()->hookCron();
 }
+
+function my_custom_module_preprocess_page(&$variables) {
+  $variables['elements']['#title'] = [
+    'type' => '#markup',
+    'markup' => 'Hello, world!',
+  ];
+}
