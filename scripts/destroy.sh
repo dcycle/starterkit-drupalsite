@@ -18,3 +18,5 @@ if [ -f "./.env" ]; then
 else
   echo ".env file does not exist, which means there is nothing to destroy. Consider running ./scripts/deploy.sh to create a new environment."
 fi
+
+rm -f ./drupal/settings/local-settings/unversioned.php
