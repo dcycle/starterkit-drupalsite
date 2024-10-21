@@ -18,6 +18,7 @@ composer self-update 2.4.1
 composer config --no-plugins allow-plugins.composer/installers true
 composer config --no-plugins allow-plugins.dealerdirect/phpcodesniffer-composer-installer true
 composer config --no-plugins allow-plugins.drupal/* true
+composer config --no-plugins allow-plugins.tbachert/spi true
 
 # Download contrib modules
 # stage_file_proxy: During local development, fetch files from the stage site
