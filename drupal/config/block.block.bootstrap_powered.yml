@@ -1,6 +1,6 @@
 uuid: 2883aa59-7a3b-4674-bac6-ea0ff8367796
 langcode: en
-status: true
+status: false
 dependencies:
   module:
     - system
@@ -10,7 +10,7 @@ _core:
   default_config_hash: iggZSiUKz4mYP1YPJ8SsUfFu79HIgOTt6IDy3Up59aM
 id: bootstrap_powered
 theme: bootstrap
-region: footer
+region: top_header
 weight: -10
 provider: null
 plugin: system_powered_by_block

@@ -1,6 +1,6 @@
 uuid: 27695d18-4ab8-4d7d-a56d-559fcc5e3611
 langcode: en
-status: true
+status: false
 dependencies:
   config:
     - system.menu.account
@@ -12,7 +12,7 @@ _core:
   default_config_hash: HrZTblWpMF4fo6BdbBcyHEu5Hp9ds1IZF3FiRd2Q8rU
 id: bootstrap_account_menu
 theme: bootstrap
-region: navigation_collapsible
+region: top_header
 weight: 11
 provider: null
 plugin: 'system_menu_block:account'
