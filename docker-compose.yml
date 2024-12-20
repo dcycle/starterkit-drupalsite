@@ -1,6 +1,4 @@
 ---
-version: '3'
-
 services:
   # We are splitting Nginx and Drupal, see
   # https://blog.dcycle.com/blog/2022-03-25/php-apache-different-containers/
