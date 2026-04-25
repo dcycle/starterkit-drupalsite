@@ -583,7 +583,7 @@ This means you are using a custom hostname or IP address to access your site.
 
 For security reasons Drupal does not allow traffic from unknown domains or IP addresses.
 
-Edit ./drupal/settings/local-settings/versioned.php, and add your domain to the list in the "Add your own domain(s) here" section, like this:
+Edit ./drupal/settings/local-settings/versioned.php *and* ./drupal/settings/settings.php, and add your domain to the list in the "Add your own domain(s) here" section, like this:
 
     $settings['trusted_host_patterns'] = [
       // Add your own domain(s) here!
@@ -598,6 +598,8 @@ Edit ./drupal/settings/local-settings/versioned.php, and add your domain to the 
       // example at http://webserver/user).
       '^webserver$',
     ];
+
+Then run ./scripts/deploy.sh`.
 
 ### Unable to connect to MySQL
 
